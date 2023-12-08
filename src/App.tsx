@@ -6,7 +6,7 @@ import Home from './pages/Home/Home';
 import GeneralTemplate from './pageTemplate/GeneralTemplate';
 import Profile from './pages/Profile/Profile';
 import Book from './pages/Book/Book';
-import { NoRoute } from './pages/NoRoute';
+import NoRoute from './pages/NoRoute';
 import Inventory from './pages/Inventory/Inventory';
 import Orders from './pages/Orders/Orders';
 
@@ -16,6 +16,7 @@ function App() {
 		name: '',
 	});
 
+	// Change this to real users later
 	const adminUser = useMemo(
 		() => ({
 			role: 'admin',
