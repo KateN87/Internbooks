@@ -13,8 +13,8 @@ const AdminNavigation = () => {
 				<Route path='/' element={<Inventory />} />
 				<Route path='/profile' element={<Profile />} />
 				<Route path='/orders' element={<Orders />} />
-				<Route path='*' element={<NoRoute />} />
 			</Route>
+			<Route path='*' element={<NoRoute />} />
 		</Routes>
 	);
 };

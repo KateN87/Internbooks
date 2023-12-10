@@ -14,8 +14,8 @@ const UserNavigation = () => {
 				<Route path='/profile' element={<Profile />} />
 				<Route path='/book/:bookId' element={<Book />} />
 				<Route path='/cart' element={<Cart />} />
-				<Route path='*' element={<NoRoute />} />
 			</Route>
+			<Route path='*' element={<NoRoute />} />
 		</Routes>
 	);
 };
