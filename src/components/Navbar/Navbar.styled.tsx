@@ -52,3 +52,8 @@ export const StyledSideNavbar = styled(StyledNavbar)`
 		text-decoration: underline;
 	}
 `;
+
+export const StyledLargeNavbar = styled(StyledNavbar)`
+	height: 180px;
+	justify-content: center;
+`;

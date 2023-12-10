@@ -42,3 +42,12 @@ export const StyledLogoLarge = styled(StyledLogo)`
 	width: 70px;
 	margin: 20px;
 `;
+
+export const StyledLogoXL = styled(StyledLogo)`
+	height: 90px;
+	width: 120px;
+`;
+
+export const StyledTitleLarge = styled(StyledTitle)`
+	font-size: 52px;
+`;

@@ -31,9 +31,9 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 		[]
 	);
 
-	useEffect(() => {
+	/* 	useEffect(() => {
 		setUser(adminUser);
-	}, [adminUser, userUser]);
+	}, [adminUser, userUser]); */
 
 	const value = useMemo(
 		() => ({
