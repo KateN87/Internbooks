@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { StyledLoginSignUp, StyledNavbar } from './Navbar.styled';
+import { StyledNavbar, StyledTextButton } from './Navbar.styled';
 import LogoTitle from '../LogoTitle/LogoTitle';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
@@ -14,10 +14,10 @@ const Navbar = () => {
 			<LogoTitle />
 			<div>
 				{!user && (
-					<StyledLoginSignUp>
+					<StyledTextButton>
 						<button onClick={() => navigate('/login')}>Login</button>
 						<button onClick={() => navigate('/signup')}>Sign up</button>
-					</StyledLoginSignUp>
+					</StyledTextButton>
 				)}
 				{user && <NavIcons />}
 			</div>

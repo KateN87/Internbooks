@@ -1,5 +1,5 @@
-import { Outlet } from "react-router-dom";
-import AdminNavbar from "../components/Navbar/AdminNavbar";
+import { Outlet } from 'react-router-dom';
+import AdminNavbar from '../components/Navbar/AdminNavbar';
 
 const AdminTemplate = () => {
 	return (

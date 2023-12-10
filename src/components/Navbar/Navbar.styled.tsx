@@ -11,7 +11,7 @@ export const StyledNavbar = styled.div`
 	background-color: #ffffff;
 `;
 
-export const StyledLoginSignUp = styled.div`
+export const StyledTextButton = styled.div`
 	button {
 		background-color: inherit;
 		border: none;
@@ -24,5 +24,31 @@ export const StyledLoginSignUp = styled.div`
 		&:active {
 			color: #2424247f;
 		}
+	}
+`;
+
+export const StyledTextButtonSide = styled(StyledTextButton)`
+	display: flex;
+	flex-direction: column;
+	height: 30vh;
+	justify-content: space-between;
+	margin-top: 50px;
+	text-align: center;
+
+	button {
+		padding-top: 20px;
+	}
+`;
+
+export const StyledSideNavbar = styled(StyledNavbar)`
+	position: fixed;
+	flex-direction: column;
+	border-right: 2px solid var(--light-grey);
+	width: 150px;
+	height: 100vh;
+	justify-content: flex-start;
+
+	.current {
+		text-decoration: underline;
 	}
 `;

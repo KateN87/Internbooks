@@ -32,7 +32,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
 	);
 
 	useEffect(() => {
-		setUser(userUser);
+		setUser(adminUser);
 	}, [adminUser, userUser]);
 
 	const value = useMemo(

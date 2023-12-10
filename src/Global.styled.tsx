@@ -57,4 +57,8 @@ textarea:focus, input:focus{
   background-color: var(--background-blue);
   height: 100vh;
 }
+
+.side{
+  margin-left: 150px;
+}
 `;
