@@ -3,6 +3,7 @@ import { StyledLoginSignUp, StyledNavbar } from './Navbar.styled';
 import LogoTitle from '../LogoTitle/LogoTitle';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
+import { NavIcons } from '../NavIcons/NavIcons';
 
 const Navbar = () => {
 	const { user } = useContext(UserContext);
@@ -18,12 +19,7 @@ const Navbar = () => {
 						<button onClick={() => navigate('/signup')}>Sign up</button>
 					</StyledLoginSignUp>
 				)}
-				{user && (
-					<>
-						<button onClick={() => navigate('/profile')}>Profile</button>
-						<button onClick={() => navigate('/book/2')}>Book</button>
-					</>
-				)}
+				{user && <NavIcons />}
 			</div>
 		</StyledNavbar>
 	);

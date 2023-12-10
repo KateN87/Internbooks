@@ -13,6 +13,7 @@ import { GlobalStyle } from './Global.styled';
 import { UserContext } from './context/UserContext';
 import Login from './pages/LoginSignup/Login';
 import Signup from './pages/LoginSignup/Signup';
+import Cart from './pages/Cart/Cart';
 
 const App = () => {
 	const { user } = useContext(UserContext);
@@ -45,6 +46,7 @@ const App = () => {
 						<Route path='/' element={<Home />} />
 						<Route path='/profile' element={<Profile />} />
 						<Route path='/book/:bookId' element={<Book />} />
+						<Route path='/cart' element={<Cart />} />
 					</Route>
 				)}
 
