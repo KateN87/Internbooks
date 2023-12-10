@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 :root{
   --black: #1B1A1A;
   --background-blue: #EAEDF3;
-  --superlight-grey: #D9D9D9;
+  --light-grey: #D9D9D9;
   --primary: #496A9E;
 
   --error-background: #efd5d3;
@@ -51,5 +51,10 @@ a {
 
 textarea:focus, input:focus{
     outline: none;
+}
+
+.app{
+  background-color: var(--background-blue);
+  height: 100vh;
 }
 `;
