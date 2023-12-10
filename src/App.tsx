@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect, useMemo } from 'react';
+import { useContext } from 'react';
 import AdminHome from './pages/Home/AdminHome';
 import AdminTemplate from './pageTemplate/AdminTemplate';
 import Home from './pages/Home/Home';
@@ -9,41 +9,25 @@ import Book from './pages/Book/Book';
 import NoRoute from './pages/NoRoute';
 import Inventory from './pages/Inventory/Inventory';
 import Orders from './pages/Orders/Orders';
+import { GlobalStyle } from './Global.styled';
+import { UserContext } from './context/UserContext';
+import Login from './pages/LoginSignup/Login';
+import Signup from './pages/LoginSignup/Signup';
 
-function App() {
-	const [user, setUser] = useState({
-		role: '',
-		name: '',
-	});
-
-	// Change this to real users later
-	const adminUser = useMemo(
-		() => ({
-			role: 'admin',
-			name: 'Kate',
-		}),
-		[]
-	);
-
-	const userUser = useMemo(
-		() => ({
-			role: 'user',
-			name: 'Ruth',
-		}),
-		[]
-	);
-
-	useEffect(() => {
-		setUser(userUser);
-	}, [adminUser, userUser]);
+const App = () => {
+	const { user } = useContext(UserContext);
+	console.log('USER: ', user);
 
 	return (
-		<>
+		<div className='app'>
+			<GlobalStyle />
 			<Routes>
 				{!user && (
 					<Route path='/' element={<GeneralTemplate />}>
 						<Route path='/' element={<Home />} />
 						<Route path='/book/:bookId' element={<Book />} />
+						<Route path='/login' element={<Login />} />
+						<Route path='/signup' element={<Signup />} />
 					</Route>
 				)}
 
@@ -66,8 +50,8 @@ function App() {
 
 				<Route path='*' element={<NoRoute />} />
 			</Routes>
-		</>
+		</div>
 	);
-}
+};
 
 export default App;
