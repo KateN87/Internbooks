@@ -22,6 +22,8 @@ export const GlobalStyle = createGlobalStyle`
 
   --success-background: #c9e1c4;
 	--success-text: #516f46;
+
+  --body-text: 1.2rem;
 }
 
 *{

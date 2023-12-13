@@ -1,5 +1,8 @@
+import TextInput from '../../components/Inputs/CustomTextInput';
+import LoginContainer from '../../components/Login/LoginContainer';
+
 const Login = () => {
-	return <div>Login</div>;
+	return <LoginContainer />;
 };
 
 export default Login;
