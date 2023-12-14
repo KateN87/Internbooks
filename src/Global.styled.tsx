@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
   --black: #1B1A1A;
   --background-blue: #EAEDF3;
   --light-grey: #D9D9D9;
+  --off-white: #F2E9D7;
   --primary: #496A9E;
 
   --error-background: #efd5d3;
@@ -33,6 +34,7 @@ export const GlobalStyle = createGlobalStyle`
   font-family: "Open Sans";
   font-size: 12px;
   color: var(--black);
+  letter-spacing: 0.5px;
 }
 
 a {
