@@ -7,7 +7,6 @@ import PublicNavigation from './Navigation/PublicNavigation';
 
 const App = () => {
 	const { user } = useContext(UserContext);
-	console.log('USER: ', user);
 
 	return (
 		<div className='app'>
