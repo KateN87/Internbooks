@@ -27,7 +27,8 @@ export const GlobalStyle = createGlobalStyle`
   --success-background: #c9e1c4;
 	--success-text: #516f46;
 
-  --body-text: 1.2rem;
+  --body-text-small: 1.0rem;
+  --body-text-medium: 1.2rem;
 }
 
 *{
@@ -58,6 +59,10 @@ a {
 
 h1{
   font-size: 38px;
+}
+
+h2{
+  font-size: 24px;
 }
 
 textarea:focus, input:focus{
