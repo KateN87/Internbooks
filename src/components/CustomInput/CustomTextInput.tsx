@@ -1,4 +1,8 @@
-import { StyledLabel, StyledTextInput, StyledWrapper } from './StyledInputs';
+import {
+	StyledLabel,
+	StyledTextInput,
+	StyledWrapper,
+} from './CustomInput.styled';
 
 type InputProps = {
 	type: string;
@@ -6,7 +10,7 @@ type InputProps = {
 	error: boolean;
 };
 
-const TextInput = ({ type, name, error }: InputProps) => {
+const CustomTextInput = ({ type, name, error }: InputProps) => {
 	return (
 		<StyledWrapper>
 			<StyledLabel htmlFor={name} className={error ? 'error' : ''}>
@@ -21,4 +25,4 @@ const TextInput = ({ type, name, error }: InputProps) => {
 	);
 };
 
-export default TextInput;
+export default CustomTextInput;

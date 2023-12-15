@@ -4,6 +4,10 @@ export const StyledWrapper = styled.div`
 	position: relative;
 `;
 
+export const StyledInputContainer = styled.div`
+	height: 80px;
+`;
+
 export const StyledLabel = styled.label`
 	background-color: white;
 	position: absolute;

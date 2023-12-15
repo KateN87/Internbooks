@@ -1,17 +1,15 @@
 import { FormEvent, useState } from 'react';
 import CustomButton from '../Buttons/CustomButton';
-import TextInput from '../Inputs/CustomTextInput';
-import {
-	StyledLoginContainer,
-	StyledInputContainer,
-} from './LoginContainer.styled';
-import ErrorContainer from '../Error/ErrorContainer';
+import { StyledLoginSignupContainer } from './Login-Signup.styled';
+import { Link } from 'react-router-dom';
+import CustomInputContainer from '../CustomInput/CustomInputContainer';
 
-export const LoginContainer = () => {
+const LoginContainer = () => {
 	const [error, setError] = useState({ input: '', message: '' });
 
 	const handleLogin = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+
 		const target = e.currentTarget.elements;
 		const username = target.namedItem('Username') as HTMLInputElement | null;
 		const password = target.namedItem('Password') as HTMLInputElement | null;
@@ -40,32 +38,30 @@ export const LoginContainer = () => {
 	};
 
 	return (
-		<StyledLoginContainer>
+		<StyledLoginSignupContainer>
+			<h1>Login</h1>
 			<form onSubmit={handleLogin}>
-				<StyledInputContainer>
-					<TextInput
-						type='text'
-						name='Username'
-						error={error.input === 'username'}
-					/>
+				<CustomInputContainer
+					type='text'
+					name='Username'
+					error={error.input === 'username'}
+					errorMessage={error.message}
+				/>
 
-					{error.input === 'username' && (
-						<ErrorContainer message={error.message} />
-					)}
-				</StyledInputContainer>
-				<StyledInputContainer>
-					<TextInput
-						type='password'
-						name='Password'
-						error={error.input === 'password'}
-					/>
-					{error.input === 'password' && (
-						<ErrorContainer message={error.message} />
-					)}
-				</StyledInputContainer>
+				<CustomInputContainer
+					type='password'
+					name='Password'
+					error={error.input === 'password'}
+					errorMessage={error.message}
+				/>
+
 				<CustomButton className='large' text='Log in' type='submit' />
 			</form>
-		</StyledLoginContainer>
+
+			<Link to='/signup'>
+				Don't have an account? <b>Sign up here.</b>
+			</Link>
+		</StyledLoginSignupContainer>
 	);
 };
 
