@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 :root{
-  --black: #1B1A1A;
+  --black: #383535;
   --background-blue: #EAEDF3;
   --light-grey: #D9D9D9;
   --medium-grey: #b9b8b8;
@@ -54,6 +54,10 @@ a {
   &:visited{
     color: inherit;
   }
+}
+
+h1{
+  font-size: 38px;
 }
 
 textarea:focus, input:focus{

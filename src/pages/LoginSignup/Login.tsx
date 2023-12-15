@@ -1,5 +1,4 @@
-import TextInput from '../../components/Inputs/CustomTextInput';
-import LoginContainer from '../../components/Login/LoginContainer';
+import LoginContainer from '../../components/Login-Signup/LoginContainer';
 
 const Login = () => {
 	return <LoginContainer />;

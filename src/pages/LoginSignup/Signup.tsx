@@ -1,5 +1,7 @@
+import SignupContainer from '../../components/Login-Signup/SignupContainer';
+
 const Signup = () => {
-	return <div>Sign up</div>;
+	return <SignupContainer />;
 };
 
 export default Signup;
