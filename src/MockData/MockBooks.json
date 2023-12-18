@@ -1,0 +1,108 @@
+[
+	{
+		"id": 1,
+		"title": "The Enigmatic Echo",
+		"author": "Isabel Sterling",
+		"price": 237,
+		"image": "black-book.jpg"
+	},
+	{
+		"id": 2,
+		"title": "Ephemeral Horizons",
+		"author": "Lucas Hawthorne",
+		"price": 512,
+		"image": "blue-book.jpg"
+	},
+
+	{
+		"id": 3,
+		"title": "Chronicles of the Nebula Sphere",
+		"author": "Xander Starcaster",
+		"price": 743,
+		"image": "dark-blue-book.jpg"
+	},
+	{
+		"id": 4,
+		"title": "The Labyrinth of Dreams",
+		"author": "Aria Shadowdancer",
+		"price": 385,
+		"image": "open-book-pile.jpg"
+	},
+	{
+		"id": 5,
+		"title": "Surrender to the Stars",
+		"author": "Celeste Stardust",
+		"price": 692,
+		"image": "black-book.jpg"
+	},
+	{
+		"id": 6,
+		"title": "The Quantum Cipher",
+		"author": "Elijah Quasar",
+		"price": 155,
+		"image": "blue-book.jpg"
+	},
+	{
+		"id": 7,
+		"title": "Crimson Chronicles",
+		"author": "Scarlett Ravenshade",
+		"price": 311,
+		"image": "book-pile.jpg"
+	},
+	{
+		"id": 8,
+		"title": "The Oracle's Veil",
+		"author": "Mystic Weaver",
+		"price": 478,
+		"image": "dark-blue-book.jpg"
+	},
+	{
+		"id": 9,
+		"title": "Silent Serenade",
+		"author": "Luna Silverwind",
+		"price": 219,
+		"image": "open-book-pile.jpg"
+	},
+	{
+		"id": 10,
+		"title": "Beyond the Twilight Gate",
+		"author": "Dorian Nightfall",
+		"price": 874,
+		"image": "black-book.jpg"
+	},
+	{
+		"id": 11,
+		"title": "Aetherial Alchemy",
+		"author": "Amelia Stardust",
+		"price": 593,
+		"image": "blue-book.jpg"
+	},
+	{
+		"id": 12,
+		"title": "Lost in the Echo Chamber",
+		"author": "Zephyr Whisperwind",
+		"price": 145,
+		"image": "book-pile.jpg"
+	},
+	{
+		"id": 13,
+		"title": "Spectral Symphony",
+		"author": "Phoebe Ghostlight",
+		"price": 777,
+		"image": "dark-blue-book.jpg"
+	},
+	{
+		"id": 14,
+		"title": "The Illusionist's Dilemma",
+		"author": "Tristan Mirage",
+		"price": 422,
+		"image": "open-book-pile.jpg"
+	},
+	{
+		"id": 15,
+		"title": "Whispers in the Moonlight",
+		"author": "Serena Nightshade",
+		"price": 128,
+		"image": "book-pile.jpg"
+	}
+]
