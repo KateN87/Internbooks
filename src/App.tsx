@@ -11,9 +11,9 @@ const App = () => {
 	return (
 		<div className='app'>
 			<GlobalStyle />
-			{!user && <PublicNavigation />}
-			{user && user.role === 'admin' && <AdminNavigation />}
-			{user && user.role === 'user' && <UserNavigation />}
+			{user.role === '' && <PublicNavigation />}
+			{user.role === 'admin' && <AdminNavigation />}
+			{user.role === 'user' && <UserNavigation />}
 		</div>
 	);
 };

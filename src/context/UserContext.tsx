@@ -1,18 +1,15 @@
 import React, { createContext, useEffect, useState, useMemo } from 'react';
 
-type User = {
-	role: string;
-	name: string;
-} | null;
-
 type UserContextType = {
 	user: User;
 };
 
-export const UserContext = createContext<UserContextType>({ user: null });
+export const UserContext = createContext<UserContextType>({
+	user: { name: '', role: '' },
+});
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-	const [user, setUser] = useState<User>(null);
+	const [user, setUser] = useState<User>({ name: '', role: '' });
 
 	// Change this to real users later
 	const adminUser = useMemo(

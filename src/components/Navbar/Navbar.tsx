@@ -13,13 +13,13 @@ const Navbar = () => {
 		<StyledNavbar>
 			<LogoTitle />
 			<div>
-				{!user && (
+				{user.role === '' && (
 					<StyledTextButton>
 						<button onClick={() => navigate('/login')}>Login</button>
 						<button onClick={() => navigate('/signup')}>Sign up</button>
 					</StyledTextButton>
 				)}
-				{user && <NavIcons />}
+				{user.role === 'user' && <NavIcons />}
 			</div>
 		</StyledNavbar>
 	);
