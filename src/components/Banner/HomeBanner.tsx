@@ -1,6 +1,6 @@
 import { StyledHomeBanner, StyledTextWrapper } from './StyledBanner';
 
-export const HomeBanner = () => {
+const HomeBanner = () => {
 	return (
 		<StyledHomeBanner>
 			<StyledTextWrapper>
@@ -18,3 +18,5 @@ export const HomeBanner = () => {
 		</StyledHomeBanner>
 	);
 };
+
+export default HomeBanner;
