@@ -7,6 +7,7 @@ export const StyledHomeBanner = styled.div`
 	background-size: cover;
 	height: 20vh;
 	padding: 10px;
+	width: 100%;
 `;
 
 export const StyledTextWrapper = styled.div`
