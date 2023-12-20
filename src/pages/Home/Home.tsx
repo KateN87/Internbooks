@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import HomeBanner from '../../components/Banner/HomeBanner';
 import BookCard from '../../components/BookCard/BookCard';
-import { StyledHome } from './Home.styled';
+import { StyledHome, StyledBookWrapper } from './Home.styled';
 import mockBooks from '../../MockData/MockBooks.json';
 import { BookContext } from '../../context/BookContext';
 
@@ -14,8 +14,10 @@ const Home = () => {
   return (
     <StyledHome>
       <HomeBanner />
-      {bookList.length >= 1 &&
-        bookList.map((book) => <BookCard book={book} key={book.id} />)}
+      <StyledBookWrapper>
+        {bookList.length >= 1 &&
+          bookList.map((book) => <BookCard book={book} key={book.id} />)}
+      </StyledBookWrapper>
     </StyledHome>
   );
 };
