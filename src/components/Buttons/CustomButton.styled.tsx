@@ -5,8 +5,9 @@ export const StyledButton = styled.button`
 	color: var(--off-white);
 	font-weight: bold;
 	border: none;
-	border-radius: 4px;
+	border-radius: 2px;
 	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+	cursor: pointer;
 
 	&:active {
 		background-color: #496a9edd;
