@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import Profile from '../pages/Profile/Profile';
 import AdminTemplate from '../pageTemplate/AdminTemplate';
-import AdminHome from '../pages/Home/AdminHome/AdminHome';
 import Inventory from '../pages/Inventory/Inventory';
 import Orders from '../pages/Orders/Orders';
 import NoRoute from '../pages/NoRoute';

@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useMemo, useState } from 'react';
 import mockBooks from '../MockData/MockBooks.json';
 
 type BookContextType = {
@@ -12,7 +12,7 @@ export const BookContext = createContext<BookContextType>({
 });
 
 export const BooksProvider = ({ children }: { children: React.ReactNode }) => {
-	const [bookList, setBookList] = useState<Book[]>([]);
+	const [bookList, setBookList] = useState<Book[]>(mockBooks);
 
 	const value = useMemo(
 		() => ({

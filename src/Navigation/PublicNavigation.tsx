@@ -5,7 +5,6 @@ import Book from '../pages/Book/Book';
 import Login from '../pages/LoginSignup/Login';
 import Signup from '../pages/LoginSignup/Signup';
 import NoRoute from '../pages/NoRoute';
-import AdminTemplate from '../pageTemplate/AdminTemplate';
 import LargeTemplate from '../pageTemplate/LargeTemplate';
 
 const PublicNavigation = () => {
