@@ -1,4 +1,4 @@
-import { StyledHomeBanner, StyledTextWrapper } from './StyledBanner';
+import { StyledHomeBanner, StyledTextWrapper } from './Banner.styled';
 
 const HomeBanner = () => {
 	return (
