@@ -1,90 +1,79 @@
 import { FormEvent, useState } from 'react';
 import CustomButton from '../Buttons/CustomButton';
-import { StyledLoginSignupContainer } from './Login-Signup.styled';
+import {
+  StyledInputContainer,
+  StyledLoginSignupContainer,
+} from './Login-Signup.styled';
 import { Link } from 'react-router-dom';
 import CustomInputContainer from '../CustomInput/CustomInputContainer';
+import { signupParams } from '../../params/signupLoginParams';
+import getFormData from '../../Util/getFormData';
+import validateForm from '../../Util/validateForm';
 
 const SignupContainer = () => {
-	const [error, setError] = useState({ input: '', message: '' });
+  const [error, setError] = useState({ input: '', message: '' });
+  const [isLoading, setIsLoading] = useState(false);
 
-	const handleSignup = (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
-		const target = e.currentTarget.elements;
-		const username = target.namedItem('Username') as HTMLInputElement | null;
-		const password = target.namedItem('Password') as HTMLInputElement | null;
-		const repeatPassword = target.namedItem(
-			'Repeat Password'
-		) as HTMLInputElement | null;
+  const handleSignup = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const target = e.currentTarget.elements;
 
-		setError({
-			input: '',
-			message: '',
-		});
+    setIsLoading(true);
 
-		if (!username?.value) {
-			return setError({
-				input: 'username',
-				message: 'Please fill in username',
-			});
-		}
+    setError({
+      input: '',
+      message: '',
+    });
 
-		if (!password?.value) {
-			return setError({
-				input: 'password',
-				message: 'Please fill in password',
-			});
-		}
+    const isFormValid = validateForm({
+      target,
+      params: signupParams,
+      setError,
+    });
 
-		if (!repeatPassword?.value) {
-			return setError({
-				input: 'repeatPassword',
-				message: 'Please repeat password',
-			});
-		}
+    if (!isFormValid) {
+      return setIsLoading(false);
+    }
 
-		//handle login here
-		console.log(
-			'Username, password, repeatPassword: ',
-			username.value,
-			password.value,
-			repeatPassword.value
-		);
-	};
+    const formData = getFormData(target, signupParams);
 
-	return (
-		<StyledLoginSignupContainer>
-			<h1>Sign up</h1>
+    // todo: sign up logic here
+    setIsLoading(false);
 
-			<form onSubmit={handleSignup}>
-				<CustomInputContainer
-					type='text'
-					name='Username'
-					error={error.input === 'username'}
-					errorMessage={error.message}
-				/>
+    console.log(formData);
+  };
 
-				<CustomInputContainer
-					type='password'
-					name='Password'
-					error={error.input === 'password'}
-					errorMessage={error.message}
-				/>
+  return (
+    <StyledLoginSignupContainer>
+      <h1>Sign up</h1>
 
-				<CustomInputContainer
-					type='password'
-					name='Repeat Password'
-					error={error.input === 'repeatPassword'}
-					errorMessage={error.message}
-				/>
+      <form onSubmit={handleSignup}>
+        <StyledInputContainer>
+          {signupParams.map(({ type, name, errorType }) => (
+            <CustomInputContainer
+              key={name}
+              type={type}
+              name={name}
+              error={error.input === errorType}
+              errorMessage={error.message}
+            />
+          ))}
+        </StyledInputContainer>
+        <div className="button-container">
+          <CustomButton
+            className="large"
+            text={isLoading ? 'Loading...' : 'Sign up'}
+            type="submit"
+            disabled={isLoading}
+          />
+        </div>
+      </form>
 
-				<CustomButton className='large' text='Sign up' type='submit' />
-			</form>
-
-			<Link to='/login'>
-				Already have an account? <b>Log in here.</b>
-			</Link>
-		</StyledLoginSignupContainer>
-	);
+      <Link to="/login">
+        Already have an account? <b>Log in here.</b>
+      </Link>
+    </StyledLoginSignupContainer>
+  );
 };
 
 export default SignupContainer;
