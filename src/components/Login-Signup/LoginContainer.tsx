@@ -1,68 +1,74 @@
 import { FormEvent, useState } from 'react';
 import CustomButton from '../Buttons/CustomButton';
-import { StyledLoginSignupContainer } from './Login-Signup.styled';
+import {
+  StyledInputContainer,
+  StyledLoginSignupContainer,
+} from './Login-Signup.styled';
 import { Link } from 'react-router-dom';
 import CustomInputContainer from '../CustomInput/CustomInputContainer';
+import { loginParams } from '../../params/signupLoginParams';
+import getFormData from '../../Util/getFormData';
+import validateForm from '../../Util/validateForm';
 
 const LoginContainer = () => {
-	const [error, setError] = useState({ input: '', message: '' });
+  const [error, setError] = useState({ input: '', message: '' });
+  const [isLoading, setIsLoading] = useState(false);
 
-	const handleLogin = (e: FormEvent<HTMLFormElement>) => {
-		e.preventDefault();
+  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const target = e.currentTarget.elements;
 
-		const target = e.currentTarget.elements;
-		const username = target.namedItem('Username') as HTMLInputElement | null;
-		const password = target.namedItem('Password') as HTMLInputElement | null;
+    setIsLoading(true);
 
-		setError({
-			input: '',
-			message: '',
-		});
+    setError({
+      input: '',
+      message: '',
+    });
 
-		if (!username?.value) {
-			return setError({
-				input: 'username',
-				message: 'Please fill in username',
-			});
-		}
+    const isFormValid = validateForm({ target, params: loginParams, setError });
 
-		if (!password?.value) {
-			return setError({
-				input: 'password',
-				message: 'Please fill in password',
-			});
-		}
+    if (!isFormValid) {
+      return setIsLoading(false);
+    }
 
-		//handle login here
-		console.log('Username, password: ', username.value, password.value);
-	};
+    const formData = getFormData(target, loginParams);
 
-	return (
-		<StyledLoginSignupContainer>
-			<h1>Login</h1>
-			<form onSubmit={handleLogin}>
-				<CustomInputContainer
-					type='text'
-					name='Username'
-					error={error.input === 'username'}
-					errorMessage={error.message}
-				/>
+    setIsLoading(false);
+    // todo: login logic here
+    console.log(formData);
+  };
 
-				<CustomInputContainer
-					type='password'
-					name='Password'
-					error={error.input === 'password'}
-					errorMessage={error.message}
-				/>
+  return (
+    <StyledLoginSignupContainer>
+      <h1>Log in</h1>
 
-				<CustomButton className='large' text='Log in' type='submit' />
-			</form>
+      <form onSubmit={handleLogin}>
+        <StyledInputContainer>
+          {loginParams.map(({ type, name, errorType }) => (
+            <CustomInputContainer
+              key={name}
+              type={type}
+              name={name}
+              error={error.input === errorType}
+              errorMessage={error.message}
+            />
+          ))}
+        </StyledInputContainer>
+        <div className="button-container">
+          <CustomButton
+            className="large"
+            text={isLoading ? 'Loading...' : 'Log in'}
+            type="submit"
+            disabled={isLoading}
+          />
+        </div>
+      </form>
 
-			<Link to='/signup'>
-				Don't have an account? <b>Sign up here.</b>
-			</Link>
-		</StyledLoginSignupContainer>
-	);
+      <Link to="/signup">
+        Don't have an account? <b>Sign up here.</b>
+      </Link>
+    </StyledLoginSignupContainer>
+  );
 };
 
 export default LoginContainer;

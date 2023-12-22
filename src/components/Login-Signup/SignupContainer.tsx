@@ -6,53 +6,41 @@ import {
 } from './Login-Signup.styled';
 import { Link } from 'react-router-dom';
 import CustomInputContainer from '../CustomInput/CustomInputContainer';
-import signupParams from '../../params/signupParams';
+import { signupParams } from '../../params/signupLoginParams';
+import getFormData from '../../Util/getFormData';
+import validateForm from '../../Util/validateForm';
 
 const SignupContainer = () => {
   const [error, setError] = useState({ input: '', message: '' });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSignup = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.currentTarget.elements;
-    const username = target.namedItem('Username') as HTMLInputElement | null;
-    const password = target.namedItem('Password') as HTMLInputElement | null;
-    const repeatPassword = target.namedItem(
-      'Repeat Password'
-    ) as HTMLInputElement | null;
+
+    setIsLoading(true);
 
     setError({
       input: '',
       message: '',
     });
 
-    if (!username?.value) {
-      return setError({
-        input: 'username',
-        message: 'Please fill in username',
-      });
+    const isFormValid = validateForm({
+      target,
+      params: signupParams,
+      setError,
+    });
+
+    if (!isFormValid) {
+      return setIsLoading(false);
     }
 
-    if (!password?.value) {
-      return setError({
-        input: 'password',
-        message: 'Please fill in password',
-      });
-    }
+    const formData = getFormData(target, signupParams);
 
-    if (!repeatPassword?.value) {
-      return setError({
-        input: 'repeatPassword',
-        message: 'Please repeat password',
-      });
-    }
+    // todo: sign up logic here
+    setIsLoading(false);
 
-    //handle login here
-    console.log(
-      'Username, password, repeatPassword: ',
-      username.value,
-      password.value,
-      repeatPassword.value
-    );
+    console.log(formData);
   };
 
   return (
@@ -72,7 +60,12 @@ const SignupContainer = () => {
           ))}
         </StyledInputContainer>
         <div className="button-container">
-          <CustomButton className="large" text="Sign up" type="submit" />
+          <CustomButton
+            className="large"
+            text={isLoading ? 'Loading...' : 'Sign up'}
+            type="submit"
+            disabled={isLoading}
+          />
         </div>
       </form>
 

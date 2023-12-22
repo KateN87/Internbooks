@@ -25,9 +25,10 @@ export const StyledLoginSignupContainer = styled.div`
 
 export const StyledInputContainer = styled.div`
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   gap: 0 3vw;
   justify-content: space-between;
   max-width: 50vw;
+  max-height: 40vh;
   padding: 0 20px;
 `;
