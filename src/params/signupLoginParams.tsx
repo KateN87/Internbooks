@@ -1,4 +1,17 @@
-const signupParams = [
+export const loginParams = [
+  {
+    type: 'text',
+    name: 'Username',
+    errorType: 'username',
+  },
+  {
+    type: 'password',
+    name: 'Password',
+    errorType: 'password',
+  },
+];
+
+export const signupParams = [
   {
     type: 'text',
     name: 'Username',
@@ -35,5 +48,3 @@ const signupParams = [
     errorType: 'city',
   },
 ];
-
-export default signupParams;
