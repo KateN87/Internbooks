@@ -36,6 +36,7 @@ const LoginContainer = () => {
 
     const formData = getFormData(target, loginParams);
     // todo: login logic here with formData
+    console.log(formData);
     loginUser(MockUsers[1]);
     setIsLoading(false);
   };
