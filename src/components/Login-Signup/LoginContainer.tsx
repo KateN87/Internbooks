@@ -1,16 +1,19 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+import MockUsers from '../../MockData/MockUsers.json';
 import CustomButton from '../Buttons/CustomButton';
 import {
   StyledInputContainer,
   StyledLoginSignupContainer,
 } from './Login-Signup.styled';
-import { Link } from 'react-router-dom';
 import CustomInputContainer from '../CustomInput/CustomInputContainer';
 import { loginParams } from '../../params/signupLoginParams';
 import getFormData from '../../Util/getFormData';
 import validateForm from '../../Util/validateForm';
+import { UserContext } from '../../context/UserContext';
 
 const LoginContainer = () => {
+  const { loginUser } = useContext(UserContext);
   const [error, setError] = useState({ input: '', message: '' });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,10 +35,10 @@ const LoginContainer = () => {
     }
 
     const formData = getFormData(target, loginParams);
-
-    setIsLoading(false);
-    // todo: login logic here
+    // todo: login logic here with formData
     console.log(formData);
+    loginUser(MockUsers[1]);
+    setIsLoading(false);
   };
 
   return (

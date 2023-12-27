@@ -1,59 +1,45 @@
-import React, { createContext, useEffect, useState, useMemo } from 'react';
+import React, { createContext, useState, useMemo, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 type UserContextType = {
-	user: User;
-	setUser: React.Dispatch<React.SetStateAction<User>>;
+  user: User | null;
+  loginUser: (userInfo: User) => void;
+  logoutUser: () => void;
 };
 
 export const UserContext = createContext<UserContextType>({
-	user: { id: 0, name: '', role: '' },
-	setUser: () => {},
+  user: null,
+  loginUser: () => {},
+  logoutUser: () => {},
 });
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-	const [user, setUser] = useState<User>({ id: 0, name: '', role: '' });
+  const [user, setUser] = useState<User | null>(null);
+  const navigate = useNavigate();
 
-	// Change this to real users later
-	const adminUser = useMemo(
-		() => ({
-			id: 1,
-			role: 'admin',
-			name: 'Kate',
-		}),
-		[]
-	);
+  const loginUser = useCallback(
+    (userInfo: User) => {
+      setUser(userInfo);
+      navigate('/');
+    },
+    [navigate]
+  );
 
-	const userUser = useMemo(
-		() => ({
-			id: 2,
-			role: 'user',
-			name: 'Ruth',
-		}),
-		[]
-	);
+  const logoutUser = useCallback(() => {
+    setUser(null);
+  }, []);
 
-	const noUser = useMemo(
-		() => ({
-			id: 0,
-			role: '',
-			name: '',
-		}),
-		[]
-	);
+  const value = useMemo(
+    () => ({
+      user,
+      loginUser,
+      logoutUser,
+      setUser,
+    }),
+    [user, loginUser, logoutUser, setUser]
+  );
 
-	useEffect(() => {
-		setUser(noUser);
-	}, [adminUser, userUser, noUser]);
-
-	const value = useMemo(
-		() => ({
-			user,
-			setUser,
-		}),
-		[user]
-	);
-
-	return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 };
 
 export default UserProvider;

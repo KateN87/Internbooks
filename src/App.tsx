@@ -6,16 +6,16 @@ import AdminNavigation from './Navigation/AdminNavigation';
 import PublicNavigation from './Navigation/PublicNavigation';
 
 const App = () => {
-	const { user } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
-	return (
-		<div className='app'>
-			<GlobalStyle />
-			{user.role === '' && <PublicNavigation />}
-			{user.role === 'admin' && <AdminNavigation />}
-			{user.role === 'user' && <UserNavigation />}
-		</div>
-	);
+  return (
+    <div className="app">
+      <GlobalStyle />
+      {!user && <PublicNavigation />}
+      {user && user.role === 'admin' && <AdminNavigation />}
+      {user && user.role === 'user' && <UserNavigation />}
+    </div>
+  );
 };
 
 export default App;
