@@ -17,6 +17,7 @@ type Book = {
   image: string;
   synopsis: string;
   inStock: number;
+  genre: string;
 };
 
 type FormDataParam = {
