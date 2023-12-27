@@ -34,6 +34,7 @@ const Book = () => {
         </div>
         <p>{book.synopsis}</p>
         <ButtonContainer>
+          <h1>{book.price} SEK</h1>
           <CustomButton
             className="large"
             text={isLoading ? 'Loading...' : 'Add to Cart'}

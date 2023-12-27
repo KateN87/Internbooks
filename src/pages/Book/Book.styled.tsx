@@ -33,5 +33,7 @@ export const BookInfo = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-  align-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 `;
