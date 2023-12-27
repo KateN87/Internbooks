@@ -69,7 +69,12 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
       name: '',
       email: '',
       phone: '',
-      address: {},
+      address: {
+        street: '',
+        suite: '',
+        city: '',
+        zipcode: 0,
+      },
     }),
     []
   );
