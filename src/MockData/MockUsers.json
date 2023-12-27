@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "role": "admin",
+    "name": "Kate",
+    "email": "kate@kate.com",
+    "phone": "123456789",
+    "address": {
+      "street": "storgatan",
+      "suite": "2A",
+      "city": "Gothenburg",
+      "zipcode": 12312
+    }
+  },
+  {
+    "id": 2,
+    "role": "user",
+    "name": "Ruth",
+    "email": "ruth@ruth.com",
+    "phone": "435345345",
+    "address": {
+      "street": "lillgatan",
+      "suite": "1A",
+      "city": "kattenburg",
+      "zipcode": 45678
+    }
+  }
+]
