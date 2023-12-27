@@ -32,7 +32,6 @@ export const GlobalStyle = createGlobalStyle`
   padding: 0;
   box-sizing: border-box;
   font-family: "Open Sans", Helvetica, sans-serif;
-  font-size: 12px;
   color: var(--black);
   letter-spacing: 0.5px;
 }
@@ -55,13 +54,22 @@ a {
 }
 
 h1{
-  font-size: 38px;
+  font-size: 2em;
+  font-weight: 100;
 }
 
 h2{
-  font-size: 24px;
+  font-size: 1.5em;
+  font-weight: 100;
+}
+h3{
+  font-size: 1em;
+  font-weight: 100;
 }
 
+p{
+  font-size: 1em;
+}
 textarea:focus, input:focus{
     outline: none;
 }
