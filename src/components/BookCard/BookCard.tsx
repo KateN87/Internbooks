@@ -30,7 +30,7 @@ const BookCard: FC<BookCardProps> = ({ book }) => {
 
   return (
     <StyledBookCard>
-      <div onClick={clickNavigate}>
+      <div onClick={clickNavigate} className="inner-container">
         <img src={book?.image ? `${BASE_IMAGE_URL}${book.image}` : blurImage} />
         <StyledBookInfo>
           <p className="title">{book.title}</p>

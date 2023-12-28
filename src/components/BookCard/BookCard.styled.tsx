@@ -6,18 +6,23 @@ export const StyledBookCard = styled.div`
   border-radius: 2px;
   margin: 10px;
   box-shadow: 1px 3px var(--light-grey);
-  width: 18rem;
+  width: 20vh;
   height: 30vh;
   justify-content: center;
   align-items: center;
   cursor: pointer;
 
-  & div {
-    width: 16rem;
+  & .inner-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 18vh;
   }
+
   & img {
-    width: 16rem;
+    width: 18vh;
     height: 20vh;
+    margin: 0 auto;
   }
 `;
 
