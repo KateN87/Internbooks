@@ -1,36 +1,21 @@
-import { Dispatch, SetStateAction } from 'react';
-
 type ValidateFormProps = {
   target: HTMLFormControlsCollection;
   params: FormDataParam[];
-  setError: Dispatch<
-    SetStateAction<{
-      input: string;
-      message: string;
-    }>
-  >;
 };
 
 const validateForm = ({
   target,
   params,
-  setError,
-}: ValidateFormProps): boolean => {
-  const isValid = params.every(({ name, errorType }) => {
+}: ValidateFormProps): boolean | CustomError => {
+  for (const { name, errorType } of params) {
     const inputElement = target.namedItem(name) as HTMLInputElement | null;
 
     if (!inputElement?.value) {
-      setError({
-        input: errorType,
-        message: `Please fill in ${name}`,
-      });
-      return false;
+      return { input: errorType, message: `Please fill in ${name}` };
     }
+  }
 
-    return true;
-  });
-
-  return isValid;
+  return true;
 };
 
 export default validateForm;

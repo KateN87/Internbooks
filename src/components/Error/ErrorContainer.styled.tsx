@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledErrorContainer = styled.div`
-	text-align: right;
+  width: 200px;
 
-	p {
-		color: var(--error);
-	}
+  p {
+    color: var(--error);
+  }
 `;

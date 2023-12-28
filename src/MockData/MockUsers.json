@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "role": "admin",
+    "role": ["admin"],
     "name": "Kate",
     "email": "kate@kate.com",
     "phone": "123456789",
@@ -14,7 +14,7 @@
   },
   {
     "id": 2,
-    "role": "user",
+    "role": ["user"],
     "name": "Ruth",
     "email": "ruth@ruth.com",
     "phone": "435345345",

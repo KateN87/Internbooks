@@ -32,7 +32,7 @@ const Book = () => {
           <h2>{book.author}</h2>
           <h3 className="genre">{book.genre}</h3>
         </div>
-        <p>{book.synopsis}</p>
+        <p className="largeParagraph">{book.synopsis}</p>
         <ButtonContainer>
           <h1>{book.price} SEK</h1>
           <CustomButton

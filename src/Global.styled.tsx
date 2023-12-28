@@ -68,8 +68,13 @@ h3{
 }
 
 p{
+  font-size: 0.75em;
+}
+
+.largeParagraph{
   font-size: 1em;
 }
+
 textarea:focus, input:focus{
     outline: none;
 }

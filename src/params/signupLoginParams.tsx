@@ -1,12 +1,12 @@
 export const loginParams = [
   {
     type: 'text',
-    name: 'Username',
-    errorType: 'username',
+    name: 'email',
+    errorType: 'email',
   },
   {
     type: 'password',
-    name: 'Password',
+    name: 'password',
     errorType: 'password',
   },
 ];

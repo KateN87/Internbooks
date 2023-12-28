@@ -7,8 +7,8 @@ import { NavIcons } from '../NavIcons/NavIcons';
 
 const Navbar = () => {
   const { user } = useContext(UserContext);
-
   const navigate = useNavigate();
+
   return (
     <StyledNavbar>
       <LogoTitle />
@@ -19,7 +19,7 @@ const Navbar = () => {
             <button onClick={() => navigate('/signup')}>Sign up</button>
           </StyledTextButton>
         )}
-        {user && user.role === 'user' && <NavIcons />}
+        {user && <NavIcons />}
       </div>
     </StyledNavbar>
   );
