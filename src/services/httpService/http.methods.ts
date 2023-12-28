@@ -21,7 +21,6 @@ const request = async <T>(
   url: string,
   options: AxiosRequestConfig
 ): Promise<T> => {
-  console.log('OPTIONS: ', options);
   try {
     const response: AxiosResponse<T> = await http.request<T>({
       method,
@@ -31,11 +30,7 @@ const request = async <T>(
 
     return response.data;
   } catch (error) {
-    console.error('Request failed:', error);
-    return Promise.reject({
-      message: 'An error occurred during the request',
-      originalError: error,
-    });
+    return Promise.reject();
   }
 };
 
