@@ -18,6 +18,7 @@ export const StyledLoginSignupContainer = styled.div`
 
   & form > .button-container {
     display: flex;
+    flex-direction: column;
     margin: 0 20px;
     justify-content: center;
   }

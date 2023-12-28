@@ -1,9 +1,19 @@
-import React, { createContext, useState, useMemo, useCallback } from 'react';
+import {
+  createContext,
+  useState,
+  useMemo,
+  useCallback,
+  ReactNode,
+  useContext,
+} from 'react';
 import { useNavigate } from 'react-router-dom';
+import MockUsers from '../MockData/MockUsers.json';
+import Login from '../services/api/authApi';
+import { ErrorContext } from './ErrorContext';
 
 type UserContextType = {
   user: User | null;
-  loginUser: (userInfo: User) => void;
+  loginUser: (formData: Record<string, string>) => void;
   logoutUser: () => void;
 };
 
@@ -13,16 +23,22 @@ export const UserContext = createContext<UserContextType>({
   logoutUser: () => {},
 });
 
-export const UserProvider = ({ children }: { children: React.ReactNode }) => {
+export const UserProvider = ({ children }: { children: ReactNode }) => {
+  const { handleError } = useContext(ErrorContext);
   const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
 
   const loginUser = useCallback(
-    (userInfo: User) => {
-      setUser(userInfo);
-      navigate('/');
+    async (formData: Record<string, string>) => {
+      try {
+        await Login(formData);
+        setUser(MockUsers[0]);
+        navigate('/');
+      } catch (error) {
+        handleError(error as CustomError);
+      }
     },
-    [navigate]
+    [navigate, handleError]
   );
 
   const logoutUser = useCallback(() => {
