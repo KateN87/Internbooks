@@ -7,13 +7,14 @@ import PublicNavigation from './Navigation/PublicNavigation';
 
 const App = () => {
   const { user } = useContext(UserContext);
+  const isAdmin = user?.role.includes('ADMIN');
 
   return (
     <div className="app">
       <GlobalStyle />
       {!user && <PublicNavigation />}
-      {user && user.role === 'admin' && <AdminNavigation />}
-      {user && user.role === 'user' && <UserNavigation />}
+      {user && isAdmin && <AdminNavigation />}
+      {user && !isAdmin && <UserNavigation />}
     </div>
   );
 };

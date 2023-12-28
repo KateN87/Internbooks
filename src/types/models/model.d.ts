@@ -2,7 +2,7 @@
 
 type User = {
   id: number;
-  role: string;
+  role: string[];
   name: string;
   email: string;
   address: Address;
@@ -31,4 +31,9 @@ type Address = {
   suite: string;
   city: string;
   zipcode: number;
+};
+
+type CustomError = {
+  input?: string;
+  message: string;
 };
