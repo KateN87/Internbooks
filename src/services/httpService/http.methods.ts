@@ -3,10 +3,12 @@ import http from './http.instance';
 import getAuthorization from '../authService/authorization';
 import { EHttpMethod } from '../../types/enums/enums';
 
+// For now only used for authorization
 const setupHeaders = (requireAccess: boolean = false) => {
   if (!requireAccess) {
     return;
   }
+
   const authorizationHeader = getAuthorization();
 
   return {
@@ -19,19 +21,25 @@ const request = async <T>(
   url: string,
   options: AxiosRequestConfig
 ): Promise<T> => {
+  console.log('OPTIONS: ', options);
   try {
     const response: AxiosResponse<T> = await http.request<T>({
       method,
       url,
-      /* ...options, */
+      ...options,
     });
 
     return response.data;
   } catch (error) {
-    return Promise.reject(error);
+    console.error('Request failed:', error);
+    return Promise.reject({
+      message: 'An error occurred during the request',
+      originalError: error,
+    });
   }
 };
 
+// GET requests
 const get = async <T>(
   url: string,
   requireAccess: boolean = false
@@ -41,6 +49,7 @@ const get = async <T>(
   });
 };
 
+// POST requests
 const post = async <T, P>(
   url: string,
   payload: P,
@@ -52,6 +61,7 @@ const post = async <T, P>(
   });
 };
 
+// PUT requests
 const update = async <T, P>(
   url: string,
   payload: P,
@@ -63,6 +73,7 @@ const update = async <T, P>(
   });
 };
 
+// DELETE requests
 const remove = async <T>(
   url: string,
   requireAccess: boolean = false
