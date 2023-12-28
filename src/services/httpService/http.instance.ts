@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
+import Cookies from 'js-cookie';
 
-const baseURL = 'https://exampleapi.com';
+const baseURL = 'http://user-service.eu-north-1.elasticbeanstalk.com:8020/';
 
 const http: AxiosInstance = axios.create({
   baseURL,
@@ -9,15 +10,16 @@ const http: AxiosInstance = axios.create({
 
 // Set up request interceptor
 http.interceptors.request.use((request) => {
-  // * Perform an action
-  // TODO: implement an NProgress
   return request;
 });
 
 // Set up response interceptor
 http.interceptors.response.use(
-  (response) => {
-    // * Do something
+  async (response) => {
+    if (response.headers.authorization) {
+      Cookies.set('accesstoken', response.headers.authorization);
+      return response;
+    }
     return response;
   },
   (error) => {

@@ -11,6 +11,7 @@ import { loginParams } from '../../params/signupLoginParams';
 import getFormData from '../../Util/getFormData';
 import validateForm from '../../Util/validateForm';
 import { UserContext } from '../../context/UserContext';
+import tryLogin from '../../Util/tryLogin';
 
 const LoginContainer = () => {
   const { loginUser } = useContext(UserContext);
@@ -36,8 +37,8 @@ const LoginContainer = () => {
 
     const formData = getFormData(target, loginParams);
     // todo: login logic here with formData
-    console.log(formData);
-    loginUser(MockUsers[1]);
+    const login = tryLogin(formData);
+    /* loginUser(MockUsers[1]); */
     setIsLoading(false);
   };
 
