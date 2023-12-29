@@ -12,11 +12,8 @@ http.interceptors.request.use((request) => {
 http.interceptors.response.use(
   async (response) => {
     // Todo: change this if token is sent in another way
-    if (response.data?.includes('Token is valid for 1 hour')) {
-      const splitString = response.data.split(' ');
-      const accessToken = splitString[splitString.length - 1];
-
-      Cookies.set('accesstoken', accessToken);
+    if (response.data?.jwtToken) {
+      Cookies.set('accesstoken', response.data?.jwtToken);
       return response;
     }
     /* if (response.headers.authorization) {

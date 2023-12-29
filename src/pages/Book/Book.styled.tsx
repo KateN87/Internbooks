@@ -28,7 +28,7 @@ export const BookInfo = styled.div`
     font-style: italic;
   }
   .synopsis {
-    color: blue;
+    font-size: var(--body-text-medium);
   }
 `;
 

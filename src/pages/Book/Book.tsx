@@ -32,9 +32,9 @@ const Book = () => {
           <h2>{book.author}</h2>
           <h3 className="genre">{book.genre}</h3>
         </div>
-        <p className="largeParagraph">{book.synopsis}</p>
+        <p className="synopsis">{book.synopsis}</p>
         <ButtonContainer>
-          <h1>{book.price} SEK</h1>
+          <h2>{book.price} SEK</h2>
           <CustomButton
             className="large"
             text={isLoading ? 'Loading...' : 'Add to Cart'}

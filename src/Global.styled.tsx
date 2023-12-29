@@ -23,8 +23,9 @@ export const GlobalStyle = createGlobalStyle`
   --error: #f00;
   --success-background: #c9e1c4;
 	--success-text: #516f46;
-  --body-text-small: 1.0rem;
-  --body-text-medium: 1.2rem;
+  --body-text-small: 0.75em;
+  --body-text-medium: 1em;
+  --body-text-large: 1.5em;
 }
 
 *{
@@ -69,10 +70,6 @@ h3{
 
 p{
   font-size: 0.75em;
-}
-
-.largeParagraph{
-  font-size: 1em;
 }
 
 textarea:focus, input:focus{
