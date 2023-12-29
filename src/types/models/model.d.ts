@@ -1,12 +1,16 @@
 /// <reference types="vite/client" />
 
 type User = {
-  id: number;
-  role: string[];
-  name: string;
+  jwtToken?: string;
+  userId: null | null;
+  firstname: string;
+  lastname: string;
   email: string;
-  address: Address;
-  phone: string;
+  address: string;
+  city: string;
+  postcode: number;
+  phoneNumber: string;
+  role: string;
 };
 
 type Book = {
@@ -24,13 +28,6 @@ type FormDataParam = {
   type: string;
   name: string;
   errorType: string;
-};
-
-type Address = {
-  street: string;
-  suite: string;
-  city: string;
-  zipcode: number;
 };
 
 type CustomError = {
