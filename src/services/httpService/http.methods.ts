@@ -30,6 +30,7 @@ const request = async <T>(
 
     return response.data;
   } catch (error) {
+    console.error(error);
     return Promise.reject();
   }
 };
