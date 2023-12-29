@@ -7,7 +7,6 @@ import {
   useContext,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
-import MockUsers from '../MockData/MockUsers.json';
 import Login from '../services/api/authApi';
 import { ErrorContext } from './ErrorContext';
 
@@ -31,8 +30,11 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const loginUser = useCallback(
     async (formData: Record<string, string>) => {
       try {
-        await Login(formData);
-        setUser(MockUsers[0]);
+        const userResponse: User = await Login(formData);
+        const newUser = { ...userResponse };
+        delete newUser.jwtToken;
+
+        setUser(newUser);
         navigate('/');
       } catch (error) {
         handleError(error as CustomError);
