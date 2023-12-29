@@ -14,37 +14,42 @@ export const loginParams = [
 export const signupParams = [
   {
     type: 'text',
-    name: 'Username',
-    errorType: 'username',
+    name: 'firstname',
+    errorType: 'firstname',
+  },
+  {
+    type: 'text',
+    name: 'lastname',
+    errorType: 'lastname',
+  },
+  {
+    type: 'text',
+    name: 'email',
+    errorType: 'email',
   },
   {
     type: 'password',
-    name: 'Password',
+    name: 'password',
     errorType: 'password',
   },
   {
-    type: 'password',
-    name: 'Repeat Password',
-    errorType: 'repeatPassword',
-  },
-  {
-    type: 'tel',
-    name: 'Phone Number',
-    errorType: 'phoneNumber',
+    type: 'text',
+    name: 'address',
+    errorType: 'address',
   },
   {
     type: 'text',
-    name: 'Street',
-    errorType: 'street',
+    name: 'city',
+    errorType: 'city',
   },
   {
     type: 'text',
-    name: 'Zip Code',
+    name: 'postcode',
     errorType: 'zip',
   },
   {
-    type: 'text',
-    name: 'City',
-    errorType: 'city',
+    type: 'tel',
+    name: 'phoneNumber',
+    errorType: 'phoneNumber',
   },
 ];
