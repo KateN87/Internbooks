@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledLoginSignupContainer = styled.div`
   display: flex;
   flex-direction: column;
-  border: 2px solid var(--light-grey);
+  border: 1px solid var(--light-grey);
   border-radius: 4px;
   width: fit-content;
   background-color: #ffffff;
