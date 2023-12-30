@@ -5,17 +5,21 @@ import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 
 export const NavIcons = () => {
-	const navigate = useNavigate();
-	const { user } = useContext(UserContext);
+  const navigate = useNavigate();
+  const { user, logoutUser } = useContext(UserContext);
 
-	return (
-		<StyledNavIcons>
-			<PiUserCircleThin size={24} onClick={() => navigate('/profile')} />
-			{user && user.role === 'user' && (
-				<PiBasketThin size={24} onClick={() => navigate('/cart')} />
-			)}
+  const handleLogout = () => {
+    logoutUser();
+  };
 
-			<PiSignOutThin size={24} />
-		</StyledNavIcons>
-	);
+  return (
+    <StyledNavIcons>
+      <PiUserCircleThin size={24} onClick={() => navigate('/profile')} />
+      {user && user.role === 'user' && (
+        <PiBasketThin size={24} onClick={() => navigate('/cart')} />
+      )}
+
+      <PiSignOutThin size={24} onClick={handleLogout} />
+    </StyledNavIcons>
+  );
 };
