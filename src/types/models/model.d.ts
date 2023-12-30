@@ -34,3 +34,14 @@ type CustomError = {
   input?: string;
   message: string;
 };
+
+type Register = {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+  address: string;
+  city: string;
+  postcode: number;
+  phoneNumber: string;
+};

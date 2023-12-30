@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import CustomButton from '../Buttons/CustomButton';
 import {
   StyledInputContainer,
@@ -9,38 +9,37 @@ import CustomInputContainer from '../CustomInput/CustomInputContainer';
 import { signupParams } from '../../params/signupLoginParams';
 import getFormData from '../../Util/getFormData';
 import validateForm from '../../Util/validateForm';
+import { ErrorContext } from '../../context/ErrorContext';
+import ErrorContainer from '../Error/ErrorContainer';
+import { UserContext } from '../../context/UserContext';
 
 const SignupContainer = () => {
-  const [error, setError] = useState({ input: '', message: '' });
+  const { newUser } = useContext(UserContext);
+  const { error, clearError, handleError } = useContext(ErrorContext);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSignup = (e: FormEvent<HTMLFormElement>) => {
+  const handleSignup = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
+    clearError();
     const target = e.currentTarget.elements;
 
     setIsLoading(true);
 
-    setError({
-      input: '',
-      message: '',
-    });
-
     const isFormValid = validateForm({
       target,
       params: signupParams,
-      setError,
     });
 
-    if (!isFormValid) {
+    if (typeof isFormValid === 'object') {
+      handleError(isFormValid);
       return setIsLoading(false);
     }
 
-    const formData = getFormData(target, signupParams);
+    const formData = getFormData(target, signupParams) as Register;
+    newUser(formData);
 
-    // todo: sign up logic here
     setIsLoading(false);
-
-    console.log(formData);
   };
 
   return (
@@ -54,12 +53,13 @@ const SignupContainer = () => {
               key={name}
               type={type}
               name={name}
-              error={error.input === errorType}
-              errorMessage={error.message}
+              error={error && error.input === errorType}
+              errorMessage={error && error.message}
             />
           ))}
         </StyledInputContainer>
         <div className="button-container">
+          {error && !error.input && <ErrorContainer message={error.message} />}
           <CustomButton
             className="large"
             text={isLoading ? 'Loading...' : 'Sign up'}
@@ -70,7 +70,9 @@ const SignupContainer = () => {
       </form>
 
       <Link to="/login">
-        Already have an account? <b>Log in here.</b>
+        <p>
+          Already have an account? <b>Log in here.</b>
+        </p>
       </Link>
     </StyledLoginSignupContainer>
   );
