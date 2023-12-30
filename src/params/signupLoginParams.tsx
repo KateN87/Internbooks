@@ -43,7 +43,7 @@ export const signupParams = [
     errorType: 'city',
   },
   {
-    type: 'text',
+    type: 'number',
     name: 'postcode',
     errorType: 'zip',
   },

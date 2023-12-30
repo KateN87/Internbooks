@@ -1,8 +1,8 @@
 const getFormData = (
   target: HTMLFormControlsCollection,
   params: FormDataParam[]
-) => {
-  const formData: Record<string, string> = {};
+): SignUpParams | Record<string, string> => {
+  const formData: SignUpParams | Record<string, string> = {};
 
   params.forEach(({ name }) => {
     const inputElement = target.namedItem(name) as HTMLInputElement | null;

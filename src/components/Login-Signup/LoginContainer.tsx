@@ -31,7 +31,7 @@ const LoginContainer = () => {
       return setIsLoading(false);
     }
 
-    const formData = getFormData(target, loginParams);
+    const formData = getFormData(target, loginParams) as Record<string, string>;
     loginUser(formData);
     setIsLoading(false);
   };
