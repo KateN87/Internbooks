@@ -78,7 +78,8 @@ textarea:focus, input:focus{
 
 .app{
   background-color: var(--background-blue);
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
 
 .side{
