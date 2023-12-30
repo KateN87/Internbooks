@@ -9,7 +9,7 @@ import {
 } from 'react';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
-import Login from '../services/api/authApi';
+import { Login, Logout } from '../services/api/authApi';
 import { ErrorContext } from './ErrorContext';
 
 type UserContextType = {
@@ -60,7 +60,10 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     [navigate, handleError]
   );
 
-  const logoutUser = useCallback(() => {
+  const logoutUser = useCallback(async () => {
+    await Logout();
+    Cookies.remove('accesstoken');
+    localStorage.removeItem('user');
     setUser(null);
   }, []);
 
