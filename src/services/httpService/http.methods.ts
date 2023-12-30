@@ -10,7 +10,6 @@ const setupHeaders = (requireAccess: boolean = false) => {
   }
 
   const authorizationHeader = getAuthorization();
-
   return {
     ...authorizationHeader,
   };
@@ -31,7 +30,7 @@ const request = async <T>(
     return response.data;
   } catch (error) {
     console.error(error);
-    return Promise.reject();
+    return Promise.reject(error);
   }
 };
 

@@ -9,19 +9,21 @@ import {
 } from 'react';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
-import { Login, Logout } from '../services/api/authApi';
+import { login, logout, registerUser } from '../services/api/authApi';
 import { ErrorContext } from './ErrorContext';
 
 type UserContextType = {
   user: User | null;
   loginUser: (formData: Record<string, string>) => void;
   logoutUser: () => void;
+  newUser: (formData: Register) => void;
 };
 
 export const UserContext = createContext<UserContextType>({
   user: null,
   loginUser: () => {},
   logoutUser: () => {},
+  newUser: () => {},
 });
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
@@ -44,7 +46,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const loginUser = useCallback(
     async (formData: Record<string, string>) => {
       try {
-        const userResponse: User = await Login(formData);
+        const userResponse: User = await login(formData);
         const newUser = { ...userResponse };
         delete newUser.jwtToken;
         setUser(newUser);
@@ -61,20 +63,39 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   );
 
   const logoutUser = useCallback(async () => {
-    await Logout();
-    Cookies.remove('accesstoken');
-    localStorage.removeItem('user');
-    setUser(null);
+    try {
+      await logout();
+      Cookies.remove('accesstoken');
+      localStorage.removeItem('user');
+      setUser(null);
+    } catch (error) {
+      Cookies.remove('accesstoken');
+      localStorage.removeItem('user');
+      setUser(null);
+    }
   }, []);
+
+  const newUser = useCallback(
+    async (formData: Register) => {
+      try {
+        await registerUser(formData);
+        await loginUser({ email: formData.email, password: formData.password });
+      } catch (error) {
+        handleError(error as CustomError);
+      }
+    },
+    [handleError, loginUser]
+  );
 
   const value = useMemo(
     () => ({
       user,
       loginUser,
       logoutUser,
+      newUser,
       setUser,
     }),
-    [user, loginUser, logoutUser, setUser]
+    [user, loginUser, logoutUser, newUser, setUser]
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
