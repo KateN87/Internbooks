@@ -1,36 +1,36 @@
 [
   {
-    "ordNr": 1468,
+    "orderNr": "1468",
     "date": "2023-01-01",
     "itemsNr": 5,
     "price": 1245
   },
   {
-    "ordNr": 2876,
+    "orderNr": "2876",
     "date": "2023-02-15",
     "itemsNr": 3,
     "price": 789
   },
   {
-    "ordNr": 5123,
+    "orderNr": "5123",
     "date": "2023-03-22",
     "itemsNr": 8,
     "price": 2300
   },
   {
-    "ordNr": 7412,
+    "orderNr": "7412",
     "date": "2023-04-10",
     "itemsNr": 4,
     "price": 1450
   },
   {
-    "ordNr": 9634,
+    "orderNr": "9634",
     "date": "2023-05-05",
     "itemsNr": 6,
     "price": 1789
   },
   {
-    "ordNr": 1205,
+    "orderNr": "1205",
     "date": "2023-06-20",
     "itemsNr": 2,
     "price": 500
