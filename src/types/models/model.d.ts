@@ -45,3 +45,10 @@ type Register = {
   postcode: number;
   phoneNumber: string;
 };
+
+type UserOrder = {
+  orderNr: string;
+  date: string;
+  itemsNr: number;
+  price: number;
+};
