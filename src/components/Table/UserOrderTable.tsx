@@ -1,21 +1,34 @@
 import { SlArrowRight } from 'react-icons/sl';
 import { StyledRow, StyledTable } from './Table.styled';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 
 type UserTableProps = {
   data: UserOrder[];
 };
 
 const UserOrderTable = ({ data }: UserTableProps) => {
+  const navigate = useNavigate();
+
+  const goToOrder = (orderNr: string) => {
+    navigate({
+      pathname: '/profile/myorders',
+      search: `?${createSearchParams({ order: orderNr })}`,
+    });
+  };
+
   return (
     <StyledTable>
       {data.map((d) => (
-        <StyledRow className="row">
+        <StyledRow
+          className="row"
+          onClick={() => goToOrder(d.orderNr)}
+          key={d.orderNr}
+        >
           <div>
             <p>
               <b>Date: </b>
               {d.date}
             </p>
-
             <p>
               <b>Order Nr: </b>
               {d.orderNr}

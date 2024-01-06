@@ -10,6 +10,7 @@ export const StyledProfile = styled.div`
     margin: 20px;
     display: flex;
     flex-direction: row;
+    height: 400px;
     width: 80vw;
     max-width: 1700px;
     justify-content: space-evenly;
