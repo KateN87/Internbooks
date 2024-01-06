@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import HomeBanner from '../../components/Banner/HomeBanner';
-import BookCard from '../../components/BookCard/BookCard';
+import BookCard from '../../components/Cards/BookCard/BookCard';
 import { StyledHome, StyledBookWrapper } from './Home.styled';
 import mockBooks from '../../MockData/MockBooks.json';
 import { BookContext } from '../../context/BookContext';

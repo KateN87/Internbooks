@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
+import { UserContext } from '../../../context/UserContext';
 import {
   SmallInfoContainer,
   StyledUserCard,
   ButtonContainer,
 } from './UserCard.styled';
-import CustomButton from '../Buttons/CustomButton';
+import CustomButton from '../../Buttons/CustomButton';
 
 export const UserCard = () => {
   const { user } = useContext(UserContext);
