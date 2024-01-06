@@ -3,6 +3,8 @@ import { useSearchParams } from 'react-router-dom';
 import mockOrder from '../../MockData/MockOrderUser.json';
 import DataCard from '../../components/Cards/DataCard/DataCard';
 import { UserContext } from '../../context/UserContext';
+import UserOrderCard from '../../components/Cards/UserOrderCard/UserOrderCard';
+import { InfoContainers, MainContainer } from './MyOrders.styled';
 
 const MyOrders = () => {
   const [searchParams] = useSearchParams();
@@ -27,9 +29,6 @@ const MyOrders = () => {
 
   useEffect(() => {
     const order = mockOrder.find((order) => order.orderNr === orderNr);
-    /*     const newOrderArray = [
-      {}
-    ] */
     setOrderInfo(order);
   }, [orderNr]);
 
@@ -38,11 +37,17 @@ const MyOrders = () => {
   }
 
   return (
-    <div>
-      <h1>MyOrders</h1>
-      <DataCard data={userInfo} />
-      <DataCard data={paymentInfo} />
-    </div>
+    <MainContainer>
+      <h1>Order number: {orderNr}</h1>
+      <InfoContainers>
+        <div>
+          <DataCard data={userInfo} />
+          <DataCard data={paymentInfo} />
+        </div>
+
+        <UserOrderCard orderInfo={orderInfo} />
+      </InfoContainers>
+    </MainContainer>
   );
 };
 

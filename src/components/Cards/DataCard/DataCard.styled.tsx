@@ -7,7 +7,8 @@ export const CardContainer = styled.div`
   border-radius: 2px;
   margin: 10px;
   box-shadow: 1px 2px var(--light-grey);
-  width: 20vh;
+  width: 18vw;
+  max-width: 200px;
   height: fit-content;
   padding: 0 0 10px 10px;
   background-color: #ffffff;

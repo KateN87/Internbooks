@@ -3,36 +3,160 @@
     "orderNr": "1468",
     "date": "2023-01-01",
     "itemsNr": 5,
-    "price": 1245
+    "price": 1245,
+    "items": [
+      {
+        "amount": 2,
+        "id": 2,
+        "title": "Ephemeral Horizons",
+        "author": "Lucas Hawthorne",
+        "price": 512,
+        "image": "blue-book.jpg"
+      },
+      {
+        "amount": 1,
+        "id": 3,
+        "title": "Chronicles of the Nebula Sphere",
+        "author": "Xander Starcaster",
+        "price": 743,
+        "image": "dark-blue-book.jpg"
+      },
+      {
+        "amount": 8,
+        "id": 4,
+        "title": "The Labyrinth of Dreams",
+        "author": "Aria Shadowdancer",
+        "price": 385,
+        "image": "open-book-pile.jpg"
+      }
+    ]
   },
   {
     "orderNr": "2876",
     "date": "2023-02-15",
     "itemsNr": 3,
-    "price": 789
+    "price": 789,
+    "items": [
+      {
+        "amount": 24,
+        "id": 5,
+        "title": "Surrender to the Stars",
+        "author": "Celeste Stardust",
+        "price": 692,
+        "image": "black-book.jpg"
+      },
+      {
+        "amount": 1,
+        "id": 6,
+        "title": "The Quantum Cipher",
+        "author": "Elijah Quasar",
+        "price": 155,
+        "image": "blue-book.jpg"
+      }
+    ]
   },
   {
     "orderNr": "5123",
     "date": "2023-03-22",
     "itemsNr": 8,
-    "price": 2300
+    "price": 2300,
+    "items": [
+      {
+        "amount": 1,
+        "id": 7,
+        "title": "Crimson Chronicles",
+        "author": "Scarlett Ravenshade",
+        "price": 311,
+        "image": "book-pile.jpg"
+      }
+    ]
   },
   {
     "orderNr": "7412",
     "date": "2023-04-10",
     "itemsNr": 4,
-    "price": 1450
+    "price": 1450,
+    "items": [
+      {
+        "amount": 1,
+        "id": 8,
+        "title": "The Oracle's Veil",
+        "author": "Mystic Weaver",
+        "price": 478,
+        "image": "dark-blue-book.jpg"
+      },
+      {
+        "amount": 4,
+        "id": 9,
+        "title": "Silent Serenade",
+        "author": "Luna Silverwind",
+        "price": 219,
+        "image": "open-book-pile.jpg"
+      },
+      {
+        "amount": 8,
+        "id": 10,
+        "title": "Beyond the Twilight Gate",
+        "author": "Dorian Nightfall",
+        "price": 874,
+        "image": "black-book.jpg"
+      },
+      {
+        "amount": 1,
+        "id": 11,
+        "title": "Aetherial Alchemy",
+        "author": "Amelia Stardust",
+        "price": 593,
+        "image": "blue-book.jpg"
+      }
+    ]
   },
   {
     "orderNr": "9634",
     "date": "2023-05-05",
     "itemsNr": 6,
-    "price": 1789
+    "price": 1789,
+    "items": [
+      {
+        "amount": 1,
+        "id": 12,
+        "title": "Lost in the Echo Chamber",
+        "author": "Zephyr Whisperwind",
+        "price": 145,
+        "image": "book-pile.jpg"
+      },
+      {
+        "amount": 1,
+        "id": 13,
+        "title": "Spectral Symphony",
+        "author": "Phoebe Ghostlight",
+        "price": 777,
+        "image": "dark-blue-book.jpg"
+      }
+    ]
   },
   {
     "orderNr": "1205",
     "date": "2023-06-20",
     "itemsNr": 2,
-    "price": 500
+    "price": 500,
+    "items": [
+      {
+        "amount": 7,
+        "id": 14,
+        "title": "The Illusionist's Dilemma",
+        "author": "Tristan Mirage",
+        "price": 422,
+        "image": "open-book-pile.jpg"
+      },
+      {
+        "amount": 42,
+        "id": 15,
+        "title": "Whispers in the Moonlight",
+        "author": "Serena Nightshade",
+        "price": 128,
+        "image": "book-pile.jpg"
+      }
+    ]
   }
 ]
