@@ -11,7 +11,7 @@ export const UserOrderCard = ({ orderInfo }: OrderCardProps) => {
   return (
     <UserOrderCardStyled>
       {orderInfo.items.map((item) => (
-        <BookInfoStyled>
+        <BookInfoStyled key={item.id}>
           <div className="amount-book">
             <img
               src={item?.image ? `${BASE_IMAGE_URL}${item.image}` : blurImage}
