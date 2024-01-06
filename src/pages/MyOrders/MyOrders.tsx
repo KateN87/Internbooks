@@ -1,12 +1,18 @@
 import { useContext, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { HiArrowLeft } from 'react-icons/hi2';
 import mockOrder from '../../MockData/MockOrderUser.json';
 import DataCard from '../../components/Cards/DataCard/DataCard';
 import { UserContext } from '../../context/UserContext';
 import UserOrderCard from '../../components/Cards/UserOrderCard/UserOrderCard';
-import { InfoContainers, MainContainer } from './MyOrders.styled';
+import {
+  BackContainer,
+  InfoContainers,
+  MainContainer,
+} from './MyOrders.styled';
 
 const MyOrders = () => {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { user } = useContext(UserContext);
   const [orderInfo, setOrderInfo] = useState<UserOrder>();
@@ -38,6 +44,10 @@ const MyOrders = () => {
 
   return (
     <MainContainer>
+      <BackContainer onClick={() => navigate(-1)}>
+        <HiArrowLeft className="icon" size="30px" />
+        <h2>Go Back</h2>
+      </BackContainer>
       <h1>Order number: {orderNr}</h1>
       <InfoContainers>
         <div>
