@@ -5,7 +5,7 @@ import Profile from '../pages/Profile/Profile';
 import Book from '../pages/Book/Book';
 import Cart from '../pages/Cart/Cart';
 import NoRoute from '../pages/NoRoute';
-import { MyOrders } from '../pages/MyOrders/MyOrders';
+import MyOrders from '../pages/MyOrders/MyOrders';
 
 const UserNavigation = () => {
   return (

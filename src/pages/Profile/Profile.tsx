@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
-import { UserCard } from '../../components/UserCard/UserCard';
+import { UserCard } from '../../components/Cards/UserCard/UserCard';
 import { StyledProfile } from './Profile.styled';
 import UserOrderTable from '../../components/Table/UserOrderTable';
 import mockOrders from '../../MockData/MockOrderUser.json';
