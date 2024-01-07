@@ -2,7 +2,7 @@
 
 type User = {
   jwtToken?: string;
-  userId: null | null;
+  userId: string | null | undefined;
   firstname: string;
   lastname: string;
   email: string;
@@ -11,6 +11,7 @@ type User = {
   postcode: number;
   phoneNumber: string;
   role: string;
+  inCart: Book[] | [];
 };
 
 type Book = {

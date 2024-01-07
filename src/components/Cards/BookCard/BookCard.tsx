@@ -1,9 +1,10 @@
-import { MouseEvent, FC } from 'react';
+import { MouseEvent, FC, useContext } from 'react';
 import CustomButton from '../../Buttons/CustomButton';
 import { StyledBookCard, StyledBookInfo } from './BookCard.styled';
 import blurImage from '/assets/blurImage.jpg';
 
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../../context/UserContext';
 
 type BookCardProps = {
   book: Book;
@@ -12,6 +13,7 @@ type BookCardProps = {
 const BookCard: FC<BookCardProps> = ({ book }) => {
   const BASE_IMAGE_URL = '/assets/';
   const navigate = useNavigate();
+  const { user, updateCart } = useContext(UserContext);
 
   const clickNavigate = () => {
     navigate(`/book/${book.itemCode}`, {
@@ -25,6 +27,9 @@ const BookCard: FC<BookCardProps> = ({ book }) => {
     } else {
       //stop propagation to not go to book page
       event.stopPropagation();
+      if (user) {
+        updateCart(book);
+      }
       //  Todo: add functionality to add book to basket
     }
   };
