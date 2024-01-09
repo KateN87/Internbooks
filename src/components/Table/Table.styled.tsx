@@ -19,12 +19,17 @@ export const StyledTable = styled.div`
   }
 `;
 
+export const StyledInventoryTable = styled(StyledTable)`
+  max-height: 80vh;
+  overflow-y: scroll;
+  min-width: fit-content;
+`;
+
 export const StyledRow = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-
   width: 50vw;
   max-width: 1000px;
   padding: 20px;
@@ -32,5 +37,22 @@ export const StyledRow = styled.div`
 
   & p {
     text-align: right;
+    padding: 0 5px;
   }
+
+  & div {
+    flex: 1 1 0;
+  }
+`;
+
+export const StyledInventoryRow = styled(StyledRow)`
+  width: 70vw;
+  min-width: fit-content;
+`;
+
+export const StyledInventoryHeadRow = styled(StyledInventoryRow)`
+  background-color: #ffffff;
+  font-weight: bold;
+  width: 70vw;
+  min-width: fit-content;
 `;
