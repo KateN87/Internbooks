@@ -20,7 +20,8 @@ type Book = {
   price: number;
   image: string;
   synopsis: string;
-  inStock: number;
+  quantity: number;
+  inStock: boolean;
   genre: string;
 };
 
