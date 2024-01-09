@@ -67,13 +67,15 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       await logout();
       Cookies.remove('accesstoken');
       localStorage.removeItem('user');
+      navigate('/');
       setUser(null);
     } catch (error) {
       Cookies.remove('accesstoken');
       localStorage.removeItem('user');
+      navigate('/');
       setUser(null);
     }
-  }, []);
+  }, [navigate]);
 
   const newUser = useCallback(
     async (formData: Register) => {
