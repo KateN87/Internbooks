@@ -4,6 +4,7 @@ export const StyledTable = styled.div`
   border: 1px solid var(--light-grey);
   border-radius: 4px;
   height: fit-content;
+
   & .row:nth-child(even) {
     background-color: var(--light-grey);
   }
@@ -35,8 +36,14 @@ export const StyledRow = styled.div`
   padding: 20px;
   font-size: var(--body-text-medium);
 
-  & p {
+  & .left {
+    text-align: left;
+  }
+  & .right {
     text-align: right;
+  }
+
+  & p {
     padding: 0 5px;
   }
 
