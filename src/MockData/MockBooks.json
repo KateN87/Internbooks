@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "itemCode": "1",
     "title": "The Enigmatic Echo",
     "author": "Isabel Sterling",
     "price": 237,
@@ -11,7 +11,7 @@
     "genre": "Fantasy"
   },
   {
-    "id": 2,
+    "itemCode": "2",
     "title": "Ephemeral Horizons",
     "author": "Lucas Hawthorne",
     "price": 512,
@@ -22,7 +22,7 @@
     "genre": "Science Fiction"
   },
   {
-    "id": 3,
+    "itemCode": "3",
     "title": "Chronicles of the Nebula Sphere",
     "author": "Xander Starcaster",
     "price": 743,
@@ -33,7 +33,7 @@
     "genre": "Science Fiction"
   },
   {
-    "id": 4,
+    "itemCode": "4",
     "title": "The Labyrinth of Dreams",
     "author": "Aria Shadowdancer",
     "price": 385,
@@ -44,7 +44,7 @@
     "genre": "Fantasy"
   },
   {
-    "id": 5,
+    "itemCode": "5",
     "title": "Surrender to the Stars",
     "author": "Celeste Stardust",
     "price": 692,
@@ -55,7 +55,7 @@
     "genre": "Fantasy"
   },
   {
-    "id": 6,
+    "itemCode": "6",
     "title": "The Quantum Cipher",
     "author": "Elijah Quasar",
     "price": 155,
@@ -66,7 +66,7 @@
     "genre": "Science Fiction"
   },
   {
-    "id": 7,
+    "itemCode": "7",
     "title": "Crimson Chronicles",
     "author": "Scarlett Ravenshade",
     "price": 311,
@@ -77,7 +77,7 @@
     "genre": "Mystery"
   },
   {
-    "id": 8,
+    "itemCode": "8",
     "title": "The Oracle's Veil",
     "author": "Mystic Weaver",
     "price": 478,
@@ -88,7 +88,7 @@
     "genre": "Fantasy"
   },
   {
-    "id": 9,
+    "itemCode": "9",
     "title": "Silent Serenade",
     "author": "Luna Silverwind",
     "price": 219,
@@ -99,7 +99,7 @@
     "genre": "Romance"
   },
   {
-    "id": 10,
+    "itemCode": "10",
     "title": "Beyond the Twilight Gate",
     "author": "Dorian Nightfall",
     "price": 874,
@@ -110,7 +110,7 @@
     "genre": "Fantasy, Science Fiction"
   },
   {
-    "id": 11,
+    "itemCode": "11",
     "title": "Aetherial Alchemy",
     "author": "Amelia Stardust",
     "price": 593,
@@ -121,7 +121,7 @@
     "genre": "Fantasy"
   },
   {
-    "id": 12,
+    "itemCode": "12",
     "title": "Lost in the Echo Chamber",
     "author": "Zephyr Whisperwind",
     "price": 145,
@@ -132,7 +132,7 @@
     "genre": "Mystery"
   },
   {
-    "id": 13,
+    "itemCode": "13",
     "title": "Spectral Symphony",
     "author": "Phoebe Ghostlight",
     "price": 777,
@@ -143,7 +143,7 @@
     "genre": "Fantasy"
   },
   {
-    "id": 14,
+    "itemCode": "14",
     "title": "The Illusionist's Dilemma",
     "author": "Tristan Mirage",
     "price": 422,
@@ -154,7 +154,7 @@
     "genre": "Mystery, Fantasy"
   },
   {
-    "id": 15,
+    "itemCode": "15",
     "title": "Whispers in the Moonlight",
     "author": "Serena Nightshade",
     "price": 128,
