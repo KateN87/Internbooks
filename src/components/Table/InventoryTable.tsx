@@ -5,13 +5,19 @@ import {
   StyledInventoryRow,
 } from './Table.styled';
 import { createSearchParams, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-type InvenotoryTableProps = {
+type InventoryTableProps = {
   data: Book[];
 };
 
-const InventoryTable = ({ data }: InvenotoryTableProps) => {
+const InventoryTable = ({ data }: InventoryTableProps) => {
   const navigate = useNavigate();
+  const [dataList, setDataList] = useState<Book[] | []>([]);
+
+  useEffect(() => {
+    setDataList(data);
+  }, [data]);
 
   const goToBook = (book: Book) => {
     navigate({
@@ -32,7 +38,7 @@ const InventoryTable = ({ data }: InvenotoryTableProps) => {
           <p>Author</p>
         </div>
         <div>
-          <p>Quantity</p>
+          <p>Pages</p>
         </div>
         <div>
           <p>Price</p>
@@ -41,16 +47,23 @@ const InventoryTable = ({ data }: InvenotoryTableProps) => {
           <p></p>
         </div>
       </StyledInventoryHeadRow>
-      {data.map((book) => (
-        <StyledInventoryRow className="row" key={book.id}>
+      {dataList.length === 0 && (
+        <StyledInventoryRow className="row">
           <div>
-            <p>{book.title}</p>
+            <p>No books in the iventory</p>
+          </div>
+        </StyledInventoryRow>
+      )}
+      {dataList.map((book) => (
+        <StyledInventoryRow className="row" key={book.itemCode}>
+          <div>
+            <p>{book.name}</p>
           </div>
           <div>
             <p>{book.author}</p>
           </div>
           <div>
-            <p>{book.quantity}</p>
+            <p>{book.numberOfPages}</p>
           </div>
           <div>
             <p>{book.price}</p>
