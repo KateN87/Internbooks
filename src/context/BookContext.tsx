@@ -1,26 +1,42 @@
-import { createContext, useMemo, useState } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from 'react';
 import mockBooks from '../MockData/MockBooks.json';
+import { getAllBooks } from '../services/api/bookAPI';
+import { ErrorContext } from './ErrorContext';
 
 type BookContextType = {
-	bookList: Book[];
-	setBookList: React.Dispatch<React.SetStateAction<Book[]>>;
+  bookList: Book[];
+  getBooks: () => void;
 };
 
 export const BookContext = createContext<BookContextType>({
-	bookList: [],
-	setBookList: () => {},
+  bookList: [],
+  getBooks: () => {},
 });
 
 export const BooksProvider = ({ children }: { children: React.ReactNode }) => {
-	const [bookList, setBookList] = useState<Book[]>(mockBooks);
+  const { handleError } = useContext(ErrorContext);
+  const [bookList, setBookList] = useState<Book[]>([]);
 
-	const value = useMemo(
-		() => ({
-			bookList,
-			setBookList,
-		}),
-		[bookList, setBookList]
-	);
+  const getBooks = useCallback(async () => {
+    try {
+      const bookResponse: Book[] = await getAllBooks();
+      setBookList(bookResponse);
+      console.log(bookResponse);
+    } catch (error) {
+      handleError(error as CustomError);
+    }
+  }, [handleError]);
 
-	return <BookContext.Provider value={value}>{children}</BookContext.Provider>;
+  const value = {
+    bookList,
+    getBooks,
+  };
+
+  return <BookContext.Provider value={value}>{children}</BookContext.Provider>;
 };
