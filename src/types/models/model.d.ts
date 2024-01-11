@@ -15,14 +15,12 @@ type User = {
 
 type Book = {
   itemCode: string;
-  title: string;
+  name: string;
   author: string;
   price: number;
   image: string;
-  synopsis: string;
-  quantity: number;
-  inStock: boolean;
-  genre: string;
+  description: string;
+  numberOfPages: number;
 };
 
 type FormDataParam = {
