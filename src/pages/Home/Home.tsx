@@ -6,17 +6,14 @@ import mockBooks from '../../MockData/MockBooks.json';
 import { BookContext } from '../../context/BookContext';
 
 const Home = () => {
-  const { bookList, setBookList } = useContext(BookContext);
-  useEffect(() => {
-    setBookList(mockBooks);
-  }, [setBookList]);
+  const { bookList, getBooks } = useContext(BookContext);
 
   return (
     <StyledHome>
       <HomeBanner />
       <StyledBookWrapper>
         {bookList.length >= 1 &&
-          bookList.map((book) => <BookCard book={book} key={book.id} />)}
+          bookList.map((book) => <BookCard book={book} key={book.itemCode} />)}
       </StyledBookWrapper>
     </StyledHome>
   );
