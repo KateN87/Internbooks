@@ -14,13 +14,14 @@ type User = {
 };
 
 type Book = {
-  id: number;
+  itemCode: string;
   title: string;
   author: string;
   price: number;
   image: string;
   synopsis: string;
-  inStock: number;
+  quantity: number;
+  inStock: boolean;
   genre: string;
 };
 
