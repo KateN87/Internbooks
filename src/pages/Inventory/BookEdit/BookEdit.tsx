@@ -3,7 +3,7 @@ type BookEditProps = {
 };
 
 const BookEdit = ({ bookItem }: BookEditProps) => {
-  console.log(bookItems);
+  console.log(bookItem);
 
   return <div>BookEdit</div>;
 };
