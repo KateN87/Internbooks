@@ -14,7 +14,7 @@ type User = {
 };
 
 type Book = {
-  id: number;
+  itemCode: string;
   title: string;
   author: string;
   price: number;

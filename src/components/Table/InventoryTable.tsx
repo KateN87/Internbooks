@@ -4,12 +4,24 @@ import {
   StyledInventoryTable,
   StyledInventoryRow,
 } from './Table.styled';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 
 type InvenotoryTableProps = {
   data: Book[];
 };
 
 const InventoryTable = ({ data }: InvenotoryTableProps) => {
+  const navigate = useNavigate();
+
+  const goToBook = (book: Book) => {
+    navigate({
+      pathname: '/',
+      search: `?${createSearchParams({
+        bookItem: JSON.stringify(book.itemCode),
+      })}`,
+    });
+  };
+
   return (
     <StyledInventoryTable>
       <StyledInventoryHeadRow>
@@ -29,23 +41,23 @@ const InventoryTable = ({ data }: InvenotoryTableProps) => {
           <p></p>
         </div>
       </StyledInventoryHeadRow>
-      {data.map((d) => (
-        <StyledInventoryRow className="row" key={d.id}>
+      {data.map((book) => (
+        <StyledInventoryRow className="row" key={book.id}>
           <div>
-            <p>{d.title}</p>
+            <p>{book.title}</p>
           </div>
           <div>
-            <p>{d.author}</p>
+            <p>{book.author}</p>
           </div>
           <div>
-            <p>{d.quantity}</p>
+            <p>{book.quantity}</p>
           </div>
           <div>
-            <p>{d.price}</p>
+            <p>{book.price}</p>
           </div>
           <div>
             <p>
-              <SlArrowRight />
+              <SlArrowRight onClick={() => goToBook(book)} />
             </p>
           </div>
         </StyledInventoryRow>

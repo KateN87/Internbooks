@@ -13,8 +13,8 @@ const App = () => {
     <div className="app">
       <GlobalStyle />
       {!user && <PublicNavigation />}
-      {user && !isAdmin && <AdminNavigation />}
-      {user && isAdmin && <UserNavigation />}
+      {user && isAdmin && <AdminNavigation />}
+      {user && !isAdmin && <UserNavigation />}
     </div>
   );
 };
