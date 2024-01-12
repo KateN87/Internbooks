@@ -38,10 +38,10 @@ const InventoryTable = ({ data }: InventoryTableProps) => {
           <p>Author</p>
         </div>
         <div>
-          <p>Pages</p>
+          <p className="right">Pages</p>
         </div>
         <div>
-          <p>Price</p>
+          <p className="right">Price</p>
         </div>
         <div>
           <p></p>
@@ -63,13 +63,13 @@ const InventoryTable = ({ data }: InventoryTableProps) => {
             <p>{book.author}</p>
           </div>
           <div>
-            <p>{book.numberOfPages}</p>
+            <p className="right">{book.numberOfPages}</p>
           </div>
           <div>
-            <p>{book.price}</p>
+            <p className="right">{book.price}</p>
           </div>
           <div>
-            <p>
+            <p className="right">
               <SlArrowRight onClick={() => goToBook(book)} />
             </p>
           </div>

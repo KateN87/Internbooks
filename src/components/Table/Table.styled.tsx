@@ -41,6 +41,7 @@ export const StyledRow = styled.div`
   }
   & .right {
     text-align: right;
+    padding-right: 40px;
   }
 
   & p {

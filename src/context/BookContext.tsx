@@ -1,11 +1,4 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from 'react';
-import mockBooks from '../MockData/MockBooks.json';
+import { createContext, useCallback, useContext, useState } from 'react';
 import { getAllBooks } from '../services/api/bookAPI';
 import { ErrorContext } from './ErrorContext';
 
@@ -27,7 +20,6 @@ export const BooksProvider = ({ children }: { children: React.ReactNode }) => {
     try {
       const bookResponse: Book[] = await getAllBooks();
       setBookList(bookResponse);
-      console.log(bookResponse);
     } catch (error) {
       handleError(error as CustomError);
     }
