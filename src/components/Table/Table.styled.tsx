@@ -22,7 +22,7 @@ export const StyledTable = styled.div`
 
 export const StyledInventoryTable = styled(StyledTable)`
   max-height: 80vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   min-width: fit-content;
 `;
 
@@ -39,17 +39,23 @@ export const StyledRow = styled.div`
   & .left {
     text-align: left;
   }
+
   & .right {
-    text-align: right;
-    padding-right: 40px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
   }
 
   & p {
+    display: flex;
+    overflow: hidden;
     padding: 0 5px;
   }
 
   & div {
     flex: 1 1 0;
+    width: 0;
+    padding: 5px;
   }
 `;
 

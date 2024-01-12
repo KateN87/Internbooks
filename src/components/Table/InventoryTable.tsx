@@ -8,22 +8,23 @@ import { createSearchParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 type InventoryTableProps = {
-  data: Book[];
+  data: BookInventoryItem[];
 };
 
 const InventoryTable = ({ data }: InventoryTableProps) => {
   const navigate = useNavigate();
-  const [dataList, setDataList] = useState<Book[] | []>([]);
+  const [dataList, setDataList] = useState<BookInventoryItem[] | []>([]);
 
   useEffect(() => {
     setDataList(data);
   }, [data]);
 
-  const goToBook = (book: Book) => {
+  const goToBook = (book: BookInventoryItem) => {
+    console.log(book);
     navigate({
       pathname: '/',
       search: `?${createSearchParams({
-        bookItem: JSON.stringify(book.itemCode),
+        bookItem: /* JSON.stringify( */ book.itemCode /* ) */,
       })}`,
     });
   };
@@ -38,10 +39,13 @@ const InventoryTable = ({ data }: InventoryTableProps) => {
           <p>Author</p>
         </div>
         <div>
-          <p className="right">Pages</p>
+          <p>Pages</p>
         </div>
         <div>
-          <p className="right">Price</p>
+          <p>Price</p>
+        </div>
+        <div>
+          <p>Quantity</p>
         </div>
         <div>
           <p></p>
@@ -63,10 +67,13 @@ const InventoryTable = ({ data }: InventoryTableProps) => {
             <p>{book.author}</p>
           </div>
           <div>
-            <p className="right">{book.numberOfPages}</p>
+            <p>{book.numberOfPages}</p>
           </div>
           <div>
-            <p className="right">{book.price}</p>
+            <p>{book.price}</p>
+          </div>
+          <div>
+            <p>{book.quantity}</p>
           </div>
           <div>
             <p className="right">
