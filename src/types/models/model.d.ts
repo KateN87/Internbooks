@@ -23,6 +23,24 @@ type Book = {
   numberOfPages: number;
 };
 
+type InventoryItem = {
+  itemCode: string;
+  name: string;
+  quantity: number;
+  inStock: boolean;
+};
+
+type BookInventoryItem = {
+  itemCode: string;
+  name: string;
+  author: string;
+  price: number;
+  image: string;
+  description: string;
+  numberOfPages: number;
+  quantity: number;
+};
+
 type FormDataParam = {
   type: string;
   name: string;
