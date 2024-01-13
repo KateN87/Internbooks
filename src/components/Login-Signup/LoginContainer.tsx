@@ -12,6 +12,7 @@ import validateForm from '../../Util/validateForm';
 import { UserContext } from '../../context/UserContext';
 import { ErrorContext } from '../../context/ErrorContext';
 import ErrorContainer from '../Error/ErrorContainer';
+import CustomTextInput from '../CustomInput/CustomTextInput';
 
 const LoginContainer = () => {
   const { loginUser } = useContext(UserContext);
@@ -43,13 +44,16 @@ const LoginContainer = () => {
       <form onSubmit={handleLogin}>
         <StyledInputContainer>
           {loginParams.map(({ type, name, errorType }) => (
-            <CustomInputContainer
-              key={name}
-              type={type}
-              name={name}
-              error={error && error.input === errorType}
-              errorMessage={error && error.message}
-            />
+            <CustomInputContainer key={name}>
+              <CustomTextInput
+                type={type}
+                name={name}
+                error={error && error.input === errorType}
+              />
+              {error && error.input === errorType && (
+                <ErrorContainer message={error.message} />
+              )}
+            </CustomInputContainer>
           ))}
         </StyledInputContainer>
         <div className="button-container">

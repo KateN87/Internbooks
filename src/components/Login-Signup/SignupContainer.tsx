@@ -12,6 +12,7 @@ import validateForm from '../../Util/validateForm';
 import { ErrorContext } from '../../context/ErrorContext';
 import ErrorContainer from '../Error/ErrorContainer';
 import { UserContext } from '../../context/UserContext';
+import CustomTextInput from '../CustomInput/CustomTextInput';
 
 const SignupContainer = () => {
   const { newUser } = useContext(UserContext);
@@ -49,13 +50,16 @@ const SignupContainer = () => {
       <form onSubmit={handleSignup}>
         <StyledInputContainer>
           {signupParams.map(({ type, name, errorType }) => (
-            <CustomInputContainer
-              key={name}
-              type={type}
-              name={name}
-              error={error && error.input === errorType}
-              errorMessage={error && error.message}
-            />
+            <CustomInputContainer key={name}>
+              <CustomTextInput
+                type={type}
+                name={name}
+                error={error && error.input === errorType}
+              />
+              {error && error.input === errorType && (
+                <ErrorContainer message={error.message} />
+              )}
+            </CustomInputContainer>
           ))}
         </StyledInputContainer>
         <div className="button-container">
