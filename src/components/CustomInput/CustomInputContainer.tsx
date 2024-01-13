@@ -1,26 +1,12 @@
+import { FC, ReactNode } from 'react';
 import { StyledInputContainer } from './CustomInput.styled';
-import CustomTextInput from './CustomTextInput';
-import ErrorContainer from '../Error/ErrorContainer';
 
-type InputProps = {
-  type: string;
-  name: string;
-  error: boolean | null;
-  errorMessage: string | null;
+type CustomInputContainerProps = {
+  children: ReactNode;
 };
 
-const CustomInputContainer = ({
-  type,
-  name,
-  error,
-  errorMessage,
-}: InputProps) => {
-  return (
-    <StyledInputContainer>
-      <CustomTextInput type={type} name={name} error={error} />
-      {error && <ErrorContainer message={errorMessage} />}
-    </StyledInputContainer>
-  );
+const CustomInputContainer: FC<CustomInputContainerProps> = ({ children }) => {
+  return <StyledInputContainer>{children}</StyledInputContainer>;
 };
 
 export default CustomInputContainer;

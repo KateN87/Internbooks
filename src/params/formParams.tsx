@@ -53,3 +53,33 @@ export const signupParams = [
     errorType: 'phoneNumber',
   },
 ];
+
+export const bookEditParams = [
+  {
+    type: 'text',
+    name: 'title',
+    errorType: 'title',
+  },
+  {
+    type: 'text',
+    name: 'author',
+    errorType: 'author',
+  },
+  {
+    type: 'number',
+    name: 'number of pages',
+    errorType: 'number of pages',
+  },
+  {
+    type: 'number',
+    name: 'price',
+    errorType: 'price',
+  },
+
+  {
+    type: 'number',
+    name: 'quantity',
+    errorType: 'quantity',
+  },
+  { type: 'textarea', name: 'description', errorType: 'description' },
+];

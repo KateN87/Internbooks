@@ -25,10 +25,25 @@ export const StyledLabel = styled.label`
 export const StyledTextInput = styled.input`
   font-size: var(--body-text);
   width: 200px;
-  height: 40px;
+  height: 45px;
   border: 1px solid var(--medium-grey);
   border-radius: 4px;
   padding: 5px 15px;
+
+  &.error {
+    border: 1px solid var(--error);
+  }
+`;
+
+export const StyledTextArea = styled.textarea`
+  font-size: var(--body-text);
+  width: 30vw;
+  max-width: 600px;
+  min-width: 300px;
+  height: 400px;
+  border: 1px solid var(--medium-grey);
+  border-radius: 4px;
+  padding: 15px 15px;
 
   &.error {
     border: 1px solid var(--error);

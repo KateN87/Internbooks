@@ -4,6 +4,7 @@ export const StyledTable = styled.div`
   border: 1px solid var(--light-grey);
   border-radius: 4px;
   height: fit-content;
+
   & .row:nth-child(even) {
     background-color: var(--light-grey);
   }
@@ -21,7 +22,7 @@ export const StyledTable = styled.div`
 
 export const StyledInventoryTable = styled(StyledTable)`
   max-height: 80vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   min-width: fit-content;
 `;
 
@@ -35,13 +36,26 @@ export const StyledRow = styled.div`
   padding: 20px;
   font-size: var(--body-text-medium);
 
+  & .left {
+    text-align: left;
+  }
+
+  & .right {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+  }
+
   & p {
-    text-align: right;
+    display: flex;
+    overflow: hidden;
     padding: 0 5px;
   }
 
   & div {
     flex: 1 1 0;
+    width: 0;
+    padding: 5px;
   }
 `;
 

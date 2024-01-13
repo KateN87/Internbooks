@@ -1,5 +1,12 @@
 // ErrorContext.js
-import { createContext, useState, ReactNode, useCallback } from 'react';
+import {
+  createContext,
+  useState,
+  ReactNode,
+  useCallback,
+  useEffect,
+} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 type ErrorContextType = {
   error: CustomError | null;
@@ -14,7 +21,12 @@ export const ErrorContext = createContext<ErrorContextType>({
 });
 
 export const ErrorProvider = ({ children }: { children: ReactNode }) => {
+  const navigate = useNavigate();
   const [error, setError] = useState<CustomError>({ input: '', message: '' });
+
+  useEffect(() => {
+    setError({ input: '', message: '' });
+  }, [navigate]);
 
   const handleError = useCallback((customError: CustomError) => {
     setError(customError);

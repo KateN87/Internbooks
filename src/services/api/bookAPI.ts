@@ -1,23 +1,23 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { AxiosError, isAxiosError } from 'axios';
-import { post } from '../httpService/http.methods';
+import { get } from '../httpService/http.methods';
 
 const baseUrl = import.meta.env.VITE_APP_BASE_URL;
 
-export const login = async (
-  formData: Record<string, string>
-): Promise<User> => {
+export const getAllBooks = async (): Promise<Book[]> => {
   try {
-    return await post(`${baseUrl}auth/login`, formData, false);
+    return await get(`${baseUrl}book/all`, true);
   } catch (error) {
+    console.error('getBooks API:', error);
     const customError: CustomError = {
-      message: 'Problem logging in. Check your password and email address.',
+      message: 'Problem getting books. Please try again later.',
     };
+
     throw customError;
   }
 };
 
-export const logout = async () => {
+/* export const logout = async () => {
   try {
     return await post(`${baseUrl}auth/logout`, {}, true);
   } catch (error) {
@@ -35,6 +35,7 @@ export const registerUser = async (formData: Register) => {
       formData,
       false
     );
+    console.log(trysignup);
     return trysignup;
   } catch (error: unknown | AxiosError) {
     const customError: CustomError = { message: '' };
@@ -52,4 +53,4 @@ export const registerUser = async (formData: Register) => {
 
     throw customError;
   }
-};
+}; */

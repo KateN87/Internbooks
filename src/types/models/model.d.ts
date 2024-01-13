@@ -15,14 +15,30 @@ type User = {
 
 type Book = {
   itemCode: string;
-  title: string;
+  name: string;
   author: string;
   price: number;
   image: string;
-  synopsis: string;
+  description: string;
+  numberOfPages: number;
+};
+
+type InventoryItem = {
+  itemCode: string;
+  name: string;
   quantity: number;
   inStock: boolean;
-  genre: string;
+};
+
+type BookInventoryItem = {
+  itemCode: string;
+  name: string;
+  author: string;
+  price: number;
+  image: string;
+  description: string;
+  numberOfPages: number;
+  quantity: number;
 };
 
 type FormDataParam = {

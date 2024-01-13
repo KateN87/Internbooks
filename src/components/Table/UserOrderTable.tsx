@@ -24,7 +24,7 @@ const UserOrderTable = ({ data }: UserTableProps) => {
           onClick={() => goToOrder(d.orderNr)}
           key={d.orderNr}
         >
-          <div>
+          <div className="left">
             <p>
               <b>Date: </b>
               {d.date}
@@ -34,7 +34,7 @@ const UserOrderTable = ({ data }: UserTableProps) => {
               {d.orderNr}
             </p>
           </div>
-          <div>
+          <div className="right">
             <p>
               <b>Number of Items: </b>
               {d.itemsNr}

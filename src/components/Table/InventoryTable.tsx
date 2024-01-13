@@ -5,19 +5,25 @@ import {
   StyledInventoryRow,
 } from './Table.styled';
 import { createSearchParams, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-type InvenotoryTableProps = {
-  data: Book[];
+type InventoryTableProps = {
+  data: BookInventoryItem[];
 };
 
-const InventoryTable = ({ data }: InvenotoryTableProps) => {
+const InventoryTable = ({ data }: InventoryTableProps) => {
   const navigate = useNavigate();
+  const [dataList, setDataList] = useState<BookInventoryItem[] | []>([]);
 
-  const goToBook = (book: Book) => {
+  useEffect(() => {
+    setDataList(data);
+  }, [data]);
+
+  const goToBook = (book: BookInventoryItem) => {
     navigate({
       pathname: '/',
       search: `?${createSearchParams({
-        bookItem: JSON.stringify(book.itemCode),
+        bookItem: book.itemCode,
       })}`,
     });
   };
@@ -32,31 +38,44 @@ const InventoryTable = ({ data }: InvenotoryTableProps) => {
           <p>Author</p>
         </div>
         <div>
-          <p>Quantity</p>
+          <p>Pages</p>
         </div>
         <div>
           <p>Price</p>
         </div>
         <div>
+          <p>Quantity</p>
+        </div>
+        <div>
           <p></p>
         </div>
       </StyledInventoryHeadRow>
-      {data.map((book) => (
-        <StyledInventoryRow className="row" key={book.id}>
+      {dataList.length === 0 && (
+        <StyledInventoryRow className="row">
           <div>
-            <p>{book.title}</p>
+            <p>No books in the iventory</p>
+          </div>
+        </StyledInventoryRow>
+      )}
+      {dataList.map((book) => (
+        <StyledInventoryRow className="row" key={book.itemCode}>
+          <div>
+            <p>{book.name}</p>
           </div>
           <div>
             <p>{book.author}</p>
           </div>
           <div>
-            <p>{book.quantity}</p>
+            <p>{book.numberOfPages}</p>
           </div>
           <div>
             <p>{book.price}</p>
           </div>
           <div>
-            <p>
+            <p>{book.quantity}</p>
+          </div>
+          <div>
+            <p className="right">
               <SlArrowRight onClick={() => goToBook(book)} />
             </p>
           </div>
