@@ -139,7 +139,11 @@ const BookEdit = ({ bookItemCode }: BookEditProps) => {
     <BookEditStyled>
       {' '}
       <div className="cancel-button">
-        <CustomButton className="medium" text="Cancel" />
+        <CustomButton
+          className="medium"
+          text="Cancel"
+          onClick={() => cancel()}
+        />
       </div>
       <BookEditForm onSubmit={handleEdit}>
         <div className="input-container">

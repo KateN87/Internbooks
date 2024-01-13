@@ -1,12 +1,12 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import HomeBanner from '../../components/Banner/HomeBanner';
 import BookCard from '../../components/Cards/BookCard/BookCard';
 import { StyledHome, StyledBookWrapper } from './Home.styled';
-import mockBooks from '../../MockData/MockBooks.json';
+/* import mockBooks from '../../MockData/MockBooks.json'; */
 import { BookContext } from '../../context/BookContext';
 
 const Home = () => {
-  const { bookList, getBooks } = useContext(BookContext);
+  const { bookList /* getBooks */ } = useContext(BookContext);
 
   return (
     <StyledHome>
