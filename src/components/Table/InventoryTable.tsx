@@ -20,11 +20,10 @@ const InventoryTable = ({ data }: InventoryTableProps) => {
   }, [data]);
 
   const goToBook = (book: BookInventoryItem) => {
-    console.log(book);
     navigate({
       pathname: '/',
       search: `?${createSearchParams({
-        bookItem: /* JSON.stringify( */ book.itemCode /* ) */,
+        bookItem: book.itemCode,
       })}`,
     });
   };
