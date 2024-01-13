@@ -35,7 +35,6 @@ export const registerUser = async (formData: Register) => {
       formData,
       false
     );
-    console.log(trysignup);
     return trysignup;
   } catch (error: unknown | AxiosError) {
     const customError: CustomError = { message: '' };
