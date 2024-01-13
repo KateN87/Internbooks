@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, FormEvent } from 'react';
 import { useContext, useEffect, useState } from 'react';
 import { BookEditStyled, BookEditForm } from './BookEdit.styled';
 import MockBooks from '.././../../MockData/MockBooks.json';
@@ -7,12 +7,17 @@ import CustomInputContainer from '../../../components/CustomInput/CustomInputCon
 import { ErrorContext } from '../../../context/ErrorContext';
 import CustomButton from '../../../components/Buttons/CustomButton';
 import ErrorContainer from '../../../components/Error/ErrorContainer';
+import validateForm from '../../../Util/validateForm';
+import { bookEditParams } from '../../../params/formParams';
+import getFormData from '../../../Util/getFormData';
+import { useNavigate } from 'react-router-dom';
 
 type BookEditProps = {
   bookItemCode: string;
 };
 
 const BookEdit = ({ bookItemCode }: BookEditProps) => {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [author, setAuthor] = useState('');
   const [description, setDescription] = useState('');
@@ -43,8 +48,32 @@ const BookEdit = ({ bookItemCode }: BookEditProps) => {
     return <div>Loading...</div>;
   }
 
-  const handleUpdate = () => {
-    console.log('HELLo');
+  const handleEdit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+    clearError();
+    const target = e.currentTarget.elements;
+
+    const isFormValid = validateForm({ target, params: bookEditParams });
+
+    if (typeof isFormValid === 'object') {
+      handleError(isFormValid);
+      return setIsLoading(false);
+    }
+
+    const formData = getFormData(target, bookEditParams) as Record<
+      string,
+      string
+    >;
+
+    // Todo:
+    console.log('DATA', formData);
+    setIsLoading(false);
+    cancel();
+  };
+
+  const cancel = () => {
+    navigate('/');
   };
 
   const textareInput = {
@@ -70,6 +99,7 @@ const BookEdit = ({ bookItemCode }: BookEditProps) => {
     {
       type: 'text',
       name: 'author',
+      errorType: 'author',
       placeholder: author,
       value: author,
       onChange: (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) =>
@@ -87,6 +117,7 @@ const BookEdit = ({ bookItemCode }: BookEditProps) => {
     {
       type: 'number',
       name: 'price',
+      errorType: 'price',
       placeholder: price,
       value: price,
       onChange: (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) =>
@@ -106,7 +137,11 @@ const BookEdit = ({ bookItemCode }: BookEditProps) => {
 
   return (
     <BookEditStyled>
-      <BookEditForm onSubmit={handleUpdate}>
+      {' '}
+      <div className="cancel-button">
+        <CustomButton className="medium" text="Cancel" />
+      </div>
+      <BookEditForm onSubmit={handleEdit}>
         <div className="input-container">
           <div className="normal-input">
             {inputFields.map(
@@ -145,6 +180,7 @@ const BookEdit = ({ bookItemCode }: BookEditProps) => {
         </div>
         <div className="button-container">
           {error && !error.input && <ErrorContainer message={error.message} />}
+
           <CustomButton
             className="large"
             text={isLoading ? 'Loading...' : 'Save'}
