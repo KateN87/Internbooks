@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const BookEditStyled = styled.div`
   display: flex;
+  position: relative;
   border: 1px solid var(--light-grey);
   border-radius: 4px;
   width: 80vw;
@@ -13,6 +14,12 @@ export const BookEditStyled = styled.div`
 
   & h1 {
     margin-bottom: 20px;
+  }
+
+  & .cancel-button {
+    position: absolute;
+    bottom: 90px;
+    right: 60px;
   }
 `;
 
@@ -51,7 +58,9 @@ export const BookEditForm = styled.form`
   & .button-container {
     align-self: flex-end;
     display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 80px;
+    margin-right: 20px;
   }
 `;
