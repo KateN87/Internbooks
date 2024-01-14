@@ -37,7 +37,7 @@ const SignupContainer = () => {
       return setIsLoading(false);
     }
 
-    const formData = getFormData(target, signupParams) as Register;
+    const formData = getFormData(target, signupParams) as unknown as Register;
     newUser(formData);
 
     setIsLoading(false);

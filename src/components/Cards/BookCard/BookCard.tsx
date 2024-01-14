@@ -14,7 +14,7 @@ const BookCard: FC<BookCardProps> = ({ book }) => {
   const navigate = useNavigate();
 
   const clickNavigate = () => {
-    navigate(`/book/${book.id}`, {
+    navigate(`/book/${book.itemCode}`, {
       state: book,
     });
   };
@@ -34,7 +34,7 @@ const BookCard: FC<BookCardProps> = ({ book }) => {
       <div onClick={clickNavigate} className="inner-container">
         <img src={book?.image ? `${BASE_IMAGE_URL}${book.image}` : blurImage} />
         <StyledBookInfo>
-          <p className="title">{book.title}</p>
+          <p className="title">{book.name}</p>
           <p className="author">{book.author}</p>
           <div className="price-buy">
             <p className="price">{book.price} SEK</p>

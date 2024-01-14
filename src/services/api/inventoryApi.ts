@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { AxiosError, isAxiosError } from 'axios';
+/* import { AxiosError, isAxiosError } from 'axios'; */
 import { get } from '../httpService/http.methods';
 
 const baseUrl = import.meta.env.VITE_APP_BASE_URL;
