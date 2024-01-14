@@ -2,7 +2,7 @@
 import { AxiosError, isAxiosError } from 'axios';
 import { post } from '../httpService/http.methods';
 
-const baseUrl = '/api/';
+const baseUrl = import.meta.env.VITE_APP_BASE_URL;
 
 export const login = async (
   formData: Record<string, string>
