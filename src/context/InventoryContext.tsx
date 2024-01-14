@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useState } from 'react';
 import { ErrorContext } from './ErrorContext';
-import { getInventoryAll } from '../services/api/inventoryAPI';
+import { getInventoryAll } from '../services/api/inventoryApi';
 
 type InventoryContextType = {
   inventoryList: InventoryItem[];

@@ -9,7 +9,7 @@ import {
 } from 'react';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
-import { login, logout, registerUser } from '../services/api/authAPI';
+import { login, logout, registerUser } from '../services/api/authApi';
 import { ErrorContext } from './ErrorContext';
 
 type UserContextType = {
