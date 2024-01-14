@@ -17,6 +17,7 @@ type UserContextType = {
   loginUser: (formData: Record<string, string>) => void;
   logoutUser: () => void;
   newUser: (formData: Register) => void;
+  updateCart: (bookItem: Book) => void;
 };
 
 export const UserContext = createContext<UserContextType>({
@@ -24,6 +25,7 @@ export const UserContext = createContext<UserContextType>({
   loginUser: () => {},
   logoutUser: () => {},
   newUser: () => {},
+  updateCart: () => {},
 });
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
@@ -35,7 +37,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const maybeCookie = Cookies.get('accesstoken');
     const maybeUser = localStorage.getItem('user');
-
     if (!maybeCookie || !maybeUser) {
       return;
     }
@@ -47,8 +48,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     async (formData: Record<string, string>) => {
       try {
         const userResponse: User = await login(formData);
-        const newUser = { ...userResponse };
+        const newUser = { ...userResponse, inCart: [] };
         delete newUser.jwtToken;
+        console.log(newUser);
         setUser(newUser);
 
         const stringUser = JSON.stringify(newUser);
@@ -89,6 +91,18 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     [handleError, loginUser]
   );
 
+  const updateCart = useCallback((bookItem: Book) => {
+    setUser((prevUser) => {
+      if (!prevUser) {
+        return prevUser; // If prevUser is null or undefined, return as is
+      }
+      if (prevUser.inCart.length > 0) {
+        return { ...prevUser, inCart: [...prevUser.inCart, bookItem] };
+      }
+      return { ...prevUser, inCart: [bookItem] };
+    });
+  }, []);
+
   const value = useMemo(
     () => ({
       user,
@@ -96,8 +110,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       logoutUser,
       newUser,
       setUser,
+      updateCart,
     }),
-    [user, loginUser, logoutUser, newUser, setUser]
+    [user, loginUser, logoutUser, newUser, setUser, updateCart]
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

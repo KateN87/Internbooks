@@ -1,5 +1,5 @@
 import { PiUserCircleThin, PiBasketThin, PiSignOutThin } from 'react-icons/pi';
-import { StyledNavIcons } from './NavIcons.styled';
+import { CartContainer, StyledNavIcons } from './NavIcons.styled';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
@@ -7,7 +7,7 @@ import { UserContext } from '../../context/UserContext';
 export const NavIcons = () => {
   const navigate = useNavigate();
   const { user, logoutUser } = useContext(UserContext);
-
+  const itemsInCart = user?.inCart;
   const handleLogout = () => {
     logoutUser();
   };
@@ -15,8 +15,15 @@ export const NavIcons = () => {
   return (
     <StyledNavIcons>
       <PiUserCircleThin size={24} onClick={() => navigate('/profile')} />
-      {user && user.role === 'user' && (
-        <PiBasketThin size={24} onClick={() => navigate('/cart')} />
+      {user && user.role === 'USER' && (
+        <CartContainer>
+          {itemsInCart && itemsInCart.length >= 1 && (
+            <div className="items-in-cart">
+              <p>{itemsInCart.length}</p>
+            </div>
+          )}
+          <PiBasketThin size={24} onClick={() => navigate('/cart')} />
+        </CartContainer>
       )}
 
       <PiSignOutThin size={24} onClick={handleLogout} />
