@@ -1,7 +1,7 @@
 import { MouseEvent, FC } from 'react';
 import CustomButton from '../../Buttons/CustomButton';
 import { StyledBookCard, StyledBookInfo } from './BookCard.styled';
-import blurImage from '../../../../public/assets/blurImage.jpg';
+import blurImage from '/assets/blurImage.jpg';
 
 import { useNavigate } from 'react-router-dom';
 

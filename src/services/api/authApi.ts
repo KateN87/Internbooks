@@ -8,6 +8,7 @@ export const login = async (
   formData: Record<string, string>
 ): Promise<User> => {
   try {
+    console.log('BASE URL: ', `${baseUrl}auth/login`);
     return await post(`${baseUrl}auth/login`, formData, false);
   } catch (error) {
     const customError: CustomError = {
