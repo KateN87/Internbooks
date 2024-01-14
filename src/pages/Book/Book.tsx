@@ -6,18 +6,20 @@ import {
   ButtonContainer,
 } from './Book.styled';
 import CustomButton from '../../components/Buttons/CustomButton';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { UserContext } from '../../context/UserContext';
 
 const Book = () => {
   const BASE_IMAGE_URL = '/assets/';
   const { state: book } = useLocation();
+  const { user, updateCart } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
 
   const addHandler = () => {
     setIsLoading(true);
-
-    // Todo: handle add to cart
-    console.log(book.title);
+    if (user) {
+      updateCart(book);
+    }
     setIsLoading(false);
   };
 
