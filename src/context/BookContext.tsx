@@ -7,7 +7,6 @@ type BookContextType = {
   bookList: Book[];
   getBooks: () => void;
 };
-
 export const BookContext = createContext<BookContextType>({
   bookList: [],
   getBooks: () => {},

@@ -12,11 +12,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <ErrorProvider>
         <UserProvider>
-          <InventoryProvider>
-            <BooksProvider>
+          <BooksProvider>
+            <InventoryProvider>
               <App />
-            </BooksProvider>
-          </InventoryProvider>
+            </InventoryProvider>
+          </BooksProvider>
         </UserProvider>
       </ErrorProvider>
     </BrowserRouter>
