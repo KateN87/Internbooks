@@ -17,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
   --medium-grey: #b9b8b8;
   --dark-grey: #6b6a6a;
   --off-white: #F2E9D7;
-  --primary: /* #496A9E */ #f00;
+  --primary:  #496A9E;
   --error-background: #efd5d3;
 	--error-text: #793838;
   --error: #f00;

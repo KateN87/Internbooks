@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import booksBackground from '../../assets/img/book-photo-cropped.jpg';
+import booksBackground from '../../../public/assets/book-photo-cropped.jpg';
 
 export const StyledHomeBanner = styled.div`
   background: url(${booksBackground});

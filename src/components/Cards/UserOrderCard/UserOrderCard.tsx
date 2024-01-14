@@ -1,12 +1,12 @@
 import { BookInfoStyled, UserOrderCardStyled } from './UserOrderCard.styled';
-import blurImage from '../../../assets/img/blurImage.jpg';
+import blurImage from '../../../../public/assets/blurImage.jpg';
 
 type OrderCardProps = {
   orderInfo: UserOrder;
 };
 
 export const UserOrderCard = ({ orderInfo }: OrderCardProps) => {
-  const BASE_IMAGE_URL = '/src/assets/img/';
+  const BASE_IMAGE_URL = '/assets/';
 
   return (
     <UserOrderCardStyled>

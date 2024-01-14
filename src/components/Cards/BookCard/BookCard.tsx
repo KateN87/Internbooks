@@ -1,7 +1,7 @@
 import { MouseEvent, FC } from 'react';
 import CustomButton from '../../Buttons/CustomButton';
 import { StyledBookCard, StyledBookInfo } from './BookCard.styled';
-import blurImage from '../../../assets/img/blurImage.jpg';
+import blurImage from '../../../../public/assets/blurImage.jpg';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -10,7 +10,7 @@ type BookCardProps = {
 };
 
 const BookCard: FC<BookCardProps> = ({ book }) => {
-  const BASE_IMAGE_URL = '/src/assets/img/';
+  const BASE_IMAGE_URL = '/assets/';
   const navigate = useNavigate();
 
   const clickNavigate = () => {
