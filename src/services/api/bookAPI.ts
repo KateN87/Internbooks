@@ -1,7 +1,7 @@
 /* import { AxiosError, isAxiosError } from 'axios'; */
 import { get } from '../httpService/http.methods';
 
-const baseUrl = import.meta.env.VITE_APP_BASE_URL;
+const baseUrl = '/api/';
 
 export const getAllBooks = async (): Promise<Book[]> => {
   try {
