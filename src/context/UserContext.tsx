@@ -97,8 +97,19 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         return prevUser; // If prevUser is null or undefined, return as is
       }
       if (prevUser.inCart.length > 0) {
+        localStorage.setItem(
+          'user',
+          JSON.stringify({
+            ...prevUser,
+            inCart: [...prevUser.inCart, bookItem],
+          })
+        );
         return { ...prevUser, inCart: [...prevUser.inCart, bookItem] };
       }
+      localStorage.setItem(
+        'user',
+        JSON.stringify({ ...prevUser, inCart: [bookItem] })
+      );
       return { ...prevUser, inCart: [bookItem] };
     });
   }, []);
