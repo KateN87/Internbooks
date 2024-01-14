@@ -8,7 +8,6 @@ const Home = () => {
   const { bookList, getBooks } = useContext(BookContext);
 
   useEffect(() => {
-    console.log('Test');
     getBooks();
   }, [getBooks]);
 
