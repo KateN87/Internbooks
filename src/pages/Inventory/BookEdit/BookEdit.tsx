@@ -66,8 +66,8 @@ const BookEdit = ({ bookItemCode }: BookEditProps) => {
       string
     >;
 
-    // Todo:
-    console.log('DATA', formData);
+    // Todo: connnect with backend
+
     setIsLoading(false);
     cancel();
   };
