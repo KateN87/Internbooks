@@ -9,7 +9,7 @@ import CustomButton from '../../components/Buttons/CustomButton';
 import { useState } from 'react';
 
 const Book = () => {
-  const BASE_IMAGE_URL = '/src/assets/img/';
+  const BASE_IMAGE_URL = '/assets/';
   const { state: book } = useLocation();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -28,11 +28,10 @@ const Book = () => {
       </BookImage>
       <BookInfo>
         <div>
-          <h1>{book.title}</h1>
+          <h1>{book.name}</h1>
           <h2>{book.author}</h2>
-          <h3 className="genre">{book.genre}</h3>
         </div>
-        <p className="synopsis">{book.synopsis}</p>
+        <p className="synopsis">{book.description}</p>
         <ButtonContainer>
           <h2>{book.price} SEK</h2>
           <CustomButton

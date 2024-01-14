@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import Logo from '../../../public/assets/logo-png.png';
+import Logo from '/assets/logo-png.png';
 
 export const StyledLogoTitle = styled.div`
   display: flex;

@@ -1,5 +1,5 @@
 import { BookInfoStyled, UserOrderCardStyled } from './UserOrderCard.styled';
-import blurImage from '../../../../public/assets/blurImage.jpg';
+import blurImage from '/assets/blurImage.jpg';
 
 type OrderCardProps = {
   orderInfo: UserOrder;
