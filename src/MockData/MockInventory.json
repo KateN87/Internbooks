@@ -1,0 +1,77 @@
+[
+  {
+    "itemCode": "1",
+    "quantity": 256,
+    "inStock": true
+  },
+  {
+    "itemCode": "2",
+    "quantity": 567,
+    "inStock": true
+  },
+  {
+    "itemCode": "3",
+    "quantity": 2,
+    "inStock": true
+  },
+  {
+    "itemCode": "4",
+    "quantity": 2563,
+    "inStock": true
+  },
+  {
+    "itemCode": "5",
+    "quantity": 0,
+    "inStock": false
+  },
+  {
+    "itemCode": "6",
+    "quantity": 78,
+    "inStock": true
+  },
+  {
+    "itemCode": "7",
+    "quantity": 568,
+    "inStock": true
+  },
+  {
+    "itemCode": "8",
+    "quantity": 678,
+    "inStock": true
+  },
+  {
+    "itemCode": "9",
+    "quantity": 12,
+    "inStock": true
+  },
+  {
+    "itemCode": "10",
+    "quantity": 22,
+    "inStock": true
+  },
+  {
+    "itemCode": "11",
+    "quantity": 1893,
+    "inStock": true
+  },
+  {
+    "itemCode": "12",
+    "quantity": 8,
+    "inStock": true
+  },
+  {
+    "itemCode": "13",
+    "quantity": 9384,
+    "inStock": true
+  },
+  {
+    "itemCode": "14",
+    "quantity": 92,
+    "inStock": true
+  },
+  {
+    "itemCode": "15",
+    "quantity": 42,
+    "inStock": true
+  }
+]

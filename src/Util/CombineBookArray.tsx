@@ -1,7 +1,8 @@
-const combinedArray: BookInventoryItem[] = [];
+let combinedArray: BookInventoryItem[] = [];
 
 // Function to combine books and inventory
 const combineBookArrays = (books: Book[], inventory: InventoryItem[]) => {
+  combinedArray = [];
   // Iterate through books
   books.forEach((book) => {
     // Find the corresponding inventory item
