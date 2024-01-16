@@ -7,7 +7,13 @@ import { UserContext } from '../../context/UserContext';
 export const NavIcons = () => {
   const navigate = useNavigate();
   const { user, logoutUser } = useContext(UserContext);
+
   const itemsInCart = user?.inCart;
+  const totalQuantityInCart = itemsInCart?.reduce(
+    (total, book) => (total += book.quantity),
+    0
+  );
+
   const handleLogout = () => {
     logoutUser();
   };
@@ -19,7 +25,7 @@ export const NavIcons = () => {
         <CartContainer onClick={() => navigate('/cart')}>
           {itemsInCart && itemsInCart.length >= 1 && (
             <div className="items-in-cart">
-              <p>{itemsInCart.length}</p>
+              <p>{totalQuantityInCart}</p>
             </div>
           )}
           <PiBasketThin size={24} onClick={() => navigate('/cart')} />
