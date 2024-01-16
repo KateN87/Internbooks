@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const UserOrderCardStyled = styled.div`
+export const CartCardStyled = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid var(--medium-grey);

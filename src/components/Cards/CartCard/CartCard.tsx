@@ -1,22 +1,22 @@
-import { BookInfoStyled, UserOrderCardStyled } from './CartCard.styled';
+import { BookInfoStyled, CartCardStyled } from './CartCard.styled';
 import blurImage from '/assets/blurImage.jpg';
 
 type CartCardProps = {
-  cartInfo: Book[] | [];
+  cartInfo: CartItem[];
 };
 
 export const CartCard = ({ cartInfo }: CartCardProps) => {
   const BASE_IMAGE_URL = '/assets/';
 
   return (
-    <UserOrderCardStyled>
+    <CartCardStyled>
       {cartInfo.map((item) => (
         <BookInfoStyled key={item.itemCode}>
           <div className="amount-book">
             <img
               src={item?.image ? `${BASE_IMAGE_URL}${item.image}` : blurImage}
             />
-            {/* <p className="bold">{item.amount}</p> */}
+            <p className="bold">{item.quantity}</p>
 
             <div className="author-title">
               <p className="bold">{item.name}</p>
@@ -28,7 +28,7 @@ export const CartCard = ({ cartInfo }: CartCardProps) => {
         </BookInfoStyled>
       ))}
       {/* <p className="bold price">Total Amount: {orderInfo.price} SEK</p> */}
-    </UserOrderCardStyled>
+    </CartCardStyled>
   );
 };
 
