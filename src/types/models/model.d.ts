@@ -11,7 +11,7 @@ type User = {
   postcode: number;
   phoneNumber: string;
   role: string;
-  inCart: Book[] | [];
+  inCart: CartItem[] | [];
 };
 
 type Book = {
@@ -22,6 +22,17 @@ type Book = {
   image?: string;
   description: string;
   numberOfPages: number;
+};
+
+type CartItem = {
+  itemCode: string;
+  name: string;
+  author: string;
+  price: number;
+  image?: string;
+  description: string;
+  numberOfPages: number;
+  quantity: number;
 };
 
 type InventoryItem = {

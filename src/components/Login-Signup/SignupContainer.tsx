@@ -6,7 +6,7 @@ import {
 } from './Login-Signup.styled';
 import { Link } from 'react-router-dom';
 import CustomInputContainer from '../CustomInput/CustomInputContainer';
-import { signupParams } from '../../params/formParams';
+import { signupParams } from '../../pageTemplate/params/formParams';
 import getFormData from '../../Util/getFormData';
 import validateForm from '../../Util/validateForm';
 import { ErrorContext } from '../../context/ErrorContext';
