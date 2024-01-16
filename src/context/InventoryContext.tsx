@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useState } from 'react';
 import { ErrorContext } from './ErrorContext';
 import { getInventoryAll } from '../services/api/inventoryApi';
+import MockInventory from '../MockData/MockInventory.json';
 
 type InventoryContextType = {
   inventoryList: InventoryItem[];
@@ -21,6 +22,10 @@ export const InventoryProvider = ({
   const [inventoryList, setInventoryList] = useState<InventoryItem[]>([]);
 
   const getInventories = useCallback(async () => {
+    setInventoryList(MockInventory);
+  }, []);
+
+  /*   const getInventories = useCallback(async () => {
     try {
       const inventoryResponse: InventoryItem[] = await getInventoryAll();
 
@@ -28,7 +33,7 @@ export const InventoryProvider = ({
     } catch (error) {
       handleError(error as CustomError);
     }
-  }, [handleError]);
+  }, [handleError]); */
 
   const value = {
     inventoryList,
