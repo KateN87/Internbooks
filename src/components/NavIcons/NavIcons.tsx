@@ -16,7 +16,7 @@ export const NavIcons = () => {
     <StyledNavIcons>
       <PiUserCircleThin size={24} onClick={() => navigate('/profile')} />
       {user && user.role === 'USER' && (
-        <CartContainer>
+        <CartContainer onClick={() => navigate('/cart')}>
           {itemsInCart && itemsInCart.length >= 1 && (
             <div className="items-in-cart">
               <p>{itemsInCart.length}</p>
