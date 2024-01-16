@@ -1,29 +1,30 @@
 import { useSearchParams } from 'react-router-dom';
 import InventoryTable from '../../components/Table/InventoryTable';
 import { StyledInventory } from './Inventory.styled';
-/* import { useContext, useEffect} from 'react';
+import { useContext, useEffect } from 'react';
 import { BookContext } from '../../context/BookContext';
-import { InventoryContext } from '../../context/InventoryContext'; */
-/* import combineBookArrays from '../../Util/CombineBookArray'; */
+import { InventoryContext } from '../../context/InventoryContext';
+import combineBookArrays from '../../Util/CombineBookArray';
 import MockBooks from '../../MockData/MockBooks.json';
 import BookEdit from './BookEdit/BookEdit';
+
 const Orders = () => {
   const [searchParams] = useSearchParams();
   const bookItem = searchParams.get('bookItem');
-  /*   const { bookList, getBooks } = useContext(BookContext);
-  const { inventoryList, getInventories } = useContext(InventoryContext); */
+  const { bookList, getBooks } = useContext(BookContext);
+  const { inventoryList, getInventories } = useContext(InventoryContext);
 
-  /*   useEffect(() => {
+  useEffect(() => {
     getBooks();
     getInventories();
   }, [getBooks, getInventories]);
 
   // Call the function and get the result
-  const resultArray = combineBookArrays(bookList, inventoryList); */
-
+  const resultArray = combineBookArrays(bookList, inventoryList);
+  console.log(resultArray);
   return (
     <StyledInventory className="side">
-      {!bookItem && <InventoryTable data={MockBooks} />}
+      {!bookItem && <InventoryTable data={resultArray} />}
       {bookItem && <BookEdit bookItemCode={bookItem} />}
     </StyledInventory>
   );
