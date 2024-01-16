@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent } from 'react';
 import { useContext, useEffect, useState } from 'react';
 import { BookEditStyled, BookEditForm } from './BookEdit.styled';
 import MockBooks from '.././../../MockData/MockBooks.json';
+import MockInventory from '.././../../MockData/MockInventory.json';
 import CustomTextInput from '../../../components/CustomInput/CustomTextInput';
 import CustomInputContainer from '../../../components/CustomInput/CustomInputContainer';
 import { ErrorContext } from '../../../context/ErrorContext';
@@ -30,8 +31,12 @@ const BookEdit = ({ bookItemCode }: BookEditProps) => {
   useEffect(() => {
     // ToDo: Get book from backend
     const foundBook = MockBooks.find((item) => item.itemCode === bookItemCode);
-    if (foundBook) {
-      addBookInfo(foundBook);
+    const foundQuantity = MockInventory.find(
+      (item) => item.itemCode === bookItemCode
+    );
+    if (foundBook && foundQuantity) {
+      const bookItem = { ...foundBook, quantity: foundQuantity.quantity };
+      addBookInfo(bookItem);
     }
   }, [bookItemCode]);
 
