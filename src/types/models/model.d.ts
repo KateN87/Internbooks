@@ -19,14 +19,13 @@ type Book = {
   name: string;
   author: string;
   price: number;
-  image: string;
+  image?: string;
   description: string;
   numberOfPages: number;
 };
 
 type InventoryItem = {
   itemCode: string;
-  name: string;
   quantity: number;
   inStock: boolean;
 };
@@ -36,7 +35,7 @@ type BookInventoryItem = {
   name: string;
   author: string;
   price: number;
-  image: string;
+  image?: string;
   description: string;
   numberOfPages: number;
   quantity: number;
