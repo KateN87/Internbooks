@@ -96,21 +96,33 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       if (!prevUser) {
         return prevUser; // If prevUser is null or undefined, return as is
       }
-      if (prevUser.inCart.length > 0) {
-        localStorage.setItem(
-          'user',
-          JSON.stringify({
-            ...prevUser,
-            inCart: [...prevUser.inCart, bookItem],
-          })
-        );
-        return { ...prevUser, inCart: [...prevUser.inCart, bookItem] };
-      }
-      localStorage.setItem(
-        'user',
-        JSON.stringify({ ...prevUser, inCart: [bookItem] })
+
+      const existingBook = prevUser.inCart.find(
+        (book) => book.itemCode === bookItem.itemCode
       );
-      return { ...prevUser, inCart: [bookItem] };
+
+      if (existingBook) {
+        // Book is already in the cart, update quantity
+        const updatedCart = prevUser.inCart.map((book) =>
+          book.itemCode === bookItem.itemCode
+            ? { ...book, quantity: (book.quantity || 1) + 1 }
+            : book
+        );
+
+        const updatedUser = { ...prevUser, inCart: updatedCart };
+
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+        return updatedUser;
+      } else {
+        // Book is not in the cart, add with quantity 1
+        const updatedUser = {
+          ...prevUser,
+          inCart: [...prevUser.inCart, { ...bookItem, quantity: 1 }],
+        };
+
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+        return updatedUser;
+      }
     });
   }, []);
 
