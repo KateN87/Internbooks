@@ -3,6 +3,8 @@ import { UserContext } from '../../context/UserContext';
 import DataCard from '../../components/Cards/DataCard/DataCard';
 import UserOrderCard from '../../components/Cards/UserOrderCard/UserOrderCard';
 import CartCard from '../../components/Cards/CartCard/CartCard';
+import { ButtonContainer, CartStyled, OrderInfoStyled } from './Cart.styled';
+import CustomButton from '../../components/Buttons/CustomButton';
 
 const Cart = () => {
   const { user } = useContext(UserContext);
@@ -23,18 +25,23 @@ const Cart = () => {
     CVV: '123',
   };
 
-  if (!user.inCart) {
+  if (!user || !user.inCart) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div>
-      <div>
-        <DataCard data={userInfo} />
-        <DataCard data={paymentInfo} />
-      </div>
-      <CartCard cartInfo={user.inCart} />
-    </div>
+    <CartStyled>
+      <OrderInfoStyled>
+        <div>
+          <DataCard data={userInfo} />
+          <DataCard data={paymentInfo} />
+        </div>
+        <CartCard cartInfo={user.inCart} />
+      </OrderInfoStyled>
+      <ButtonContainer>
+        <CustomButton text="Place order" className="medium" />
+      </ButtonContainer>
+    </CartStyled>
   );
 };
 
