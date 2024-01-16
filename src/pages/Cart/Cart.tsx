@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 import DataCard from '../../components/Cards/DataCard/DataCard';
-import UserOrderCard from '../../components/Cards/UserOrderCard/UserOrderCard';
 import CartCard from '../../components/Cards/CartCard/CartCard';
 import { ButtonContainer, CartStyled, OrderInfoStyled } from './Cart.styled';
 import CustomButton from '../../components/Buttons/CustomButton';
