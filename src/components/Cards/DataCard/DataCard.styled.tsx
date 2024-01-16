@@ -15,6 +15,6 @@ export const CardContainer = styled.div`
 
   .title {
     font-weight: bold;
-    padding-top: 10px;
+    padding: 10px 0 5px 0;
   }
 `;
