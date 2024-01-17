@@ -88,7 +88,7 @@ const Cart = () => {
       </ErrorStyled>
       <ButtonContainer>
         <CustomButton
-          text="Place order"
+          text={isLoading ? 'Loading...' : 'Place order'}
           className="medium"
           onClick={tryPlaceOrder}
           disabled={isLoading}
