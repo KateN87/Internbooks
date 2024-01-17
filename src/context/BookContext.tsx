@@ -16,27 +16,9 @@ export const BooksProvider = ({ children }: { children: React.ReactNode }) => {
   const [bookList, setBookList] = useState<Book[]>([]);
 
   const getBooks = useCallback(async () => {
-    const imageArray = [
-      'black-book.jpg',
-      'blue-book.jpg',
-      'dark-blue-book.jpg',
-      'open-book-pile.jpg',
-    ];
     try {
       const bookResponse: Book[] = await getAllBooks();
-      // Map through each book in bookResponse
-      const updatedBookList = bookResponse.map((book, index) => {
-        // Use modulo operator to cycle through imageArray
-        const imageIndex = index % imageArray.length;
-        // Assign the image from imageArray to the book object
-        return {
-          ...book,
-          image: imageArray[imageIndex],
-        };
-      });
-
-      // Update the book list with the modified array
-      setBookList(updatedBookList);
+      setBookList(bookResponse);
     } catch (error) {
       handleError(error as CustomError);
     }

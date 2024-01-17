@@ -27,7 +27,7 @@ const Book = () => {
   return (
     <BookMainContainer>
       <BookImage>
-        <img src={`${BASE_IMAGE_URL}${book.image}`} />
+        <img src={`${BASE_IMAGE_URL}${book.imageLink}`} />
       </BookImage>
       <BookInfo>
         <div>

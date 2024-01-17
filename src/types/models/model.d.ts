@@ -19,7 +19,7 @@ type Book = {
   name: string;
   author: string;
   price: number;
-  image?: string;
+  imageLink?: string;
   description: string;
   numberOfPages: number;
 };
@@ -29,7 +29,7 @@ type CartItem = {
   name: string;
   author: string;
   price: number;
-  image?: string;
+  imageLink?: string;
   description: string;
   numberOfPages: number;
   quantity: number;
@@ -46,7 +46,7 @@ type BookInventoryItem = {
   name: string;
   author: string;
   price: number;
-  image?: string;
+  imageLink?: string;
   description: string;
   numberOfPages: number;
   quantity: number;
@@ -88,5 +88,26 @@ type OrderItem = {
   title: string;
   author: string;
   price: number;
-  image: string;
+  imageLink: string;
+};
+
+type UserOrderDataBase = {
+  id?: number;
+  firstname: string;
+  lastname: string;
+  email: string;
+  address: string;
+  city: string;
+  postcode: number;
+  phoneNumber: string;
+  orderItemsDTO?: OrderItemDataBase[];
+  orderItems?: OrderItemDataBase[];
+};
+
+type OrderItemDataBase = {
+  id?: number;
+  itemCode: string;
+  productName: string;
+  price: number;
+  quantity: number;
 };

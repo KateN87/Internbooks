@@ -14,7 +14,11 @@ export const CartCard = ({ cartInfo }: CartCardProps) => {
         <BookInfoStyled key={item.itemCode}>
           <div className="amount-book">
             <img
-              src={item?.image ? `${BASE_IMAGE_URL}${item.image}` : blurImage}
+              src={
+                item?.imageLink
+                  ? `${BASE_IMAGE_URL}${item.imageLink}`
+                  : blurImage
+              }
             />
             <p className="bold">{item.quantity}</p>
 
