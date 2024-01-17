@@ -6,6 +6,7 @@ import Book from '../pages/Book/Book';
 import Cart from '../pages/Cart/Cart';
 import NoRoute from '../pages/NoRoute';
 import MyOrders from '../pages/MyOrders/MyOrders';
+import OrderSuccess from '../pages/Cart/OrderSuccess';
 
 const UserNavigation = () => {
   return (
@@ -16,6 +17,7 @@ const UserNavigation = () => {
         <Route path="profile/myOrders" element={<MyOrders />} />
         <Route path="book/:bookId" element={<Book />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/cart/success" element={<OrderSuccess />} />
       </Route>
       <Route path="*" element={<NoRoute />} />
     </Routes>
