@@ -11,8 +11,10 @@ import {
 import CustomButton from '../../components/Buttons/CustomButton';
 import { ErrorContext } from '../../context/ErrorContext';
 import ErrorContainer from '../../components/Error/ErrorContainer';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
+  const navigate = useNavigate();
   const { user, placeOrder } = useContext(UserContext);
   const { error, handleError } = useContext(ErrorContext);
   const [isLoading, setIsLoading] = useState(false);
@@ -33,7 +35,8 @@ const Cart = () => {
     CVV: '123',
   };
 
-  const tryPlaceOrder = () => {
+  const tryPlaceOrder = async () => {
+    handleError({ message: '' });
     if (!user) {
       return handleError({
         message: 'You need to be logged in to place order',
@@ -66,8 +69,14 @@ const Cart = () => {
       orderItemsDTO,
     };
 
-    placeOrder(newOrder);
-    setIsLoading(false);
+    try {
+      await placeOrder(newOrder);
+
+      navigate('/cart/success');
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+    }
   };
 
   if (!user || !user.inCart) {
