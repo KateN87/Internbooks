@@ -11,6 +11,7 @@ import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import { login, logout, registerUser } from '../services/api/authApi';
 import { ErrorContext } from './ErrorContext';
+import { postOrder } from '../services/api/orderApi';
 
 type UserContextType = {
   user: User | null;
@@ -18,6 +19,7 @@ type UserContextType = {
   logoutUser: () => void;
   newUser: (formData: Register) => void;
   updateCart: (bookItem: Book) => void;
+  placeOrder: (order: UserOrderDataBase) => void;
 };
 
 export const UserContext = createContext<UserContextType>({
@@ -26,6 +28,7 @@ export const UserContext = createContext<UserContextType>({
   logoutUser: () => {},
   newUser: () => {},
   updateCart: () => {},
+  placeOrder: () => {},
 });
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
@@ -125,6 +128,17 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     });
   }, []);
 
+  const placeOrder = useCallback(
+    async (order: UserOrderDataBase) => {
+      try {
+        await postOrder(order);
+      } catch (error) {
+        handleError(error as CustomError);
+      }
+    },
+    [handleError]
+  );
+
   const value = useMemo(
     () => ({
       user,
@@ -133,8 +147,9 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       newUser,
       setUser,
       updateCart,
+      placeOrder,
     }),
-    [user, loginUser, logoutUser, newUser, setUser, updateCart]
+    [user, loginUser, logoutUser, newUser, setUser, updateCart, placeOrder]
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
