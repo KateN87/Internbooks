@@ -1,5 +1,4 @@
 import { createContext, useCallback, useContext, useState } from 'react';
-import MockBooks from '../MockData/MockBooks.json';
 import { getAllBooks } from '../services/api/bookAPI';
 import { ErrorContext } from './ErrorContext';
 
@@ -23,30 +22,25 @@ export const BooksProvider = ({ children }: { children: React.ReactNode }) => {
       'dark-blue-book.jpg',
       'open-book-pile.jpg',
     ];
-    // Map through each book in MockBooks
-    const updatedBookList = MockBooks.map((book, index) => {
-      // Use modulo operator to cycle through imageArray
-      const imageIndex = index % imageArray.length;
-      // Assign the image from imageArray to the book object
-      return {
-        ...book,
-        image: imageArray[imageIndex],
-      };
-    });
-
-    // Update the book list with the modified array
-    setBookList(updatedBookList);
-  }, []);
-
-  /*   const getBooks = useCallback(async () => {
     try {
       const bookResponse: Book[] = await getAllBooks();
+      // Map through each book in bookResponse
+      const updatedBookList = bookResponse.map((book, index) => {
+        // Use modulo operator to cycle through imageArray
+        const imageIndex = index % imageArray.length;
+        // Assign the image from imageArray to the book object
+        return {
+          ...book,
+          image: imageArray[imageIndex],
+        };
+      });
 
-      setBookList(bookResponse);
+      // Update the book list with the modified array
+      setBookList(updatedBookList);
     } catch (error) {
       handleError(error as CustomError);
     }
-  }, [handleError]); */
+  }, [handleError]);
 
   const value = {
     bookList,

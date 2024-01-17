@@ -10,7 +10,7 @@ export const BookMainContainer = styled.div`
 
 export const BookImage = styled.div`
   & img {
-    max-width: 60vw;
+    max-width: 40vw;
     min-width: 20vh;
     max-height: 50vh;
   }

@@ -5,7 +5,6 @@ import { useContext, useEffect } from 'react';
 import { BookContext } from '../../context/BookContext';
 import { InventoryContext } from '../../context/InventoryContext';
 import combineBookArrays from '../../Util/CombineBookArray';
-import MockBooks from '../../MockData/MockBooks.json';
 import BookEdit from './BookEdit/BookEdit';
 
 const Orders = () => {
@@ -21,7 +20,7 @@ const Orders = () => {
 
   // Call the function and get the result
   const resultArray = combineBookArrays(bookList, inventoryList);
-  console.log(resultArray);
+
   return (
     <StyledInventory className="side">
       {!bookItem && <InventoryTable data={resultArray} />}

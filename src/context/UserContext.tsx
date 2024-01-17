@@ -50,7 +50,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         const userResponse: User = await login(formData);
         const newUser = { ...userResponse, inCart: [] };
         delete newUser.jwtToken;
-        console.log(newUser);
         setUser(newUser);
 
         const stringUser = JSON.stringify(newUser);
