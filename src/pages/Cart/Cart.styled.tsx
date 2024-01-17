@@ -20,3 +20,10 @@ export const ButtonContainer = styled.div`
   justify-content: flex-end;
   margin-right: 20px;
 `;
+
+export const ErrorStyled = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  height: 40px;
+  margin-right: 10px;
+`;
