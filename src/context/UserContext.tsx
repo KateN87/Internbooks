@@ -134,6 +134,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         await postOrder(order);
       } catch (error) {
         handleError(error as CustomError);
+        throw new Error();
       }
     },
     [handleError]
