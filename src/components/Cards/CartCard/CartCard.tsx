@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import { BookInfoStyled, CartCardStyled } from './CartCard.styled';
 import blurImage from '/assets/blurImage.jpg';
+import { UserContext } from '../../../context/UserContext';
 
 type CartCardProps = {
   cartInfo: CartItem[];
@@ -7,6 +9,7 @@ type CartCardProps = {
 
 export const CartCard = ({ cartInfo }: CartCardProps) => {
   const BASE_IMAGE_URL = '/assets/';
+  const { orderSum } = useContext(UserContext);
 
   return (
     <CartCardStyled>
@@ -31,7 +34,7 @@ export const CartCard = ({ cartInfo }: CartCardProps) => {
           <p className="bold">a` {item.price}</p>
         </BookInfoStyled>
       ))}
-      {/* <p className="bold price">Total Amount: {orderInfo.price} SEK</p> */}
+      <p className="bold price">Total Amount: {orderSum} SEK</p>
     </CartCardStyled>
   );
 };

@@ -15,6 +15,7 @@ import { postOrder } from '../services/api/orderApi';
 
 type UserContextType = {
   user: User | null;
+  orderSum: number;
   loginUser: (formData: Record<string, string>) => void;
   logoutUser: () => void;
   newUser: (formData: Register) => void;
@@ -24,6 +25,7 @@ type UserContextType = {
 
 export const UserContext = createContext<UserContextType>({
   user: null,
+  orderSum: 0,
   loginUser: () => {},
   logoutUser: () => {},
   newUser: () => {},
@@ -34,6 +36,7 @@ export const UserContext = createContext<UserContextType>({
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const { handleError } = useContext(ErrorContext);
   const [user, setUser] = useState<User | null>(null);
+  const [orderSum, setOrderSum] = useState(0);
   const navigate = useNavigate();
 
   //automatically login user
@@ -121,7 +124,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
           ...prevUser,
           inCart: [...prevUser.inCart, { ...bookItem, quantity: 1 }],
         };
-
+        setOrderSum((prev) => prev + bookItem.price);
         localStorage.setItem('user', JSON.stringify(updatedUser));
         return updatedUser;
       }
@@ -143,6 +146,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const value = useMemo(
     () => ({
       user,
+      orderSum,
       loginUser,
       logoutUser,
       newUser,
@@ -150,7 +154,16 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       updateCart,
       placeOrder,
     }),
-    [user, loginUser, logoutUser, newUser, setUser, updateCart, placeOrder]
+    [
+      user,
+      orderSum,
+      loginUser,
+      logoutUser,
+      newUser,
+      setUser,
+      updateCart,
+      placeOrder,
+    ]
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
