@@ -14,7 +14,6 @@ import { ErrorContext } from './ErrorContext';
 
 type UserContextType = {
   user: User | null;
-  orderSum: number;
   loginUser: (formData: Record<string, string>) => void;
   logoutUser: () => void;
   newUser: (formData: Register) => void;
@@ -22,7 +21,6 @@ type UserContextType = {
 
 export const UserContext = createContext<UserContextType>({
   user: null,
-  orderSum: 0,
   loginUser: () => {},
   logoutUser: () => {},
   newUser: () => {},
