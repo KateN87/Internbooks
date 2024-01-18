@@ -5,6 +5,7 @@ import blurImage from '/assets/blurImage.jpg';
 
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../../context/UserContext';
+import { CartContext } from '../../../context/CartContext';
 
 type BookCardProps = {
   book: Book;
@@ -13,7 +14,8 @@ type BookCardProps = {
 const BookCard: FC<BookCardProps> = ({ book }) => {
   const BASE_IMAGE_URL = '/assets/';
   const navigate = useNavigate();
-  const { user, updateCart } = useContext(UserContext);
+  const { user } = useContext(UserContext);
+  const { updateCart } = useContext(CartContext);
 
   const clickNavigate = () => {
     navigate(`/book/${book.itemCode}`, {
@@ -28,7 +30,7 @@ const BookCard: FC<BookCardProps> = ({ book }) => {
       //stop propagation to not go to book page
       event.stopPropagation();
       if (user) {
-        updateCart(book);
+        updateCart(book, 'add', 1);
       }
       //  Todo: add functionality to add book to basket
     }
