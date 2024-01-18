@@ -11,7 +11,6 @@ type User = {
   postcode: number;
   phoneNumber: string;
   role: string;
-  inCart: CartItem[] | [];
 };
 
 type Book = {
