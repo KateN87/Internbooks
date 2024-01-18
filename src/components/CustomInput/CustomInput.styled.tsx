@@ -49,3 +49,7 @@ export const StyledTextArea = styled.textarea`
     border: 1px solid var(--error);
   }
 `;
+
+export const StyledNumberInput = styled.input`
+  border: 1px solid red;
+`;

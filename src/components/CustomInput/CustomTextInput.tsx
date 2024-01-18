@@ -4,6 +4,7 @@ import {
   StyledTextArea,
   StyledTextInput,
   StyledWrapper,
+  StyledNumberInput,
 } from './CustomInput.styled';
 
 type InputProps = {
@@ -28,7 +29,7 @@ const CustomTextInput = ({
       <StyledLabel htmlFor={name} className={error ? 'error' : ''}>
         {name}
       </StyledLabel>
-      {type === 'textarea' ? (
+      {type === 'textarea' && (
         <StyledTextArea
           name={name}
           className={error ? 'textarea error' : 'textarea'}
@@ -36,7 +37,9 @@ const CustomTextInput = ({
           placeholder={placeholder?.toString()}
           onChange={onChange}
         />
-      ) : (
+      )}
+
+      {type === 'text' && (
         <StyledTextInput
           type={type}
           name={name}
@@ -44,6 +47,29 @@ const CustomTextInput = ({
           value={value}
           placeholder={placeholder?.toString()}
           onChange={onChange}
+        />
+      )}
+
+      {type === 'password' && (
+        <StyledTextInput
+          type={type}
+          name={name}
+          className={error ? 'error' : ''}
+          value={value}
+          placeholder={placeholder?.toString()}
+          onChange={onChange}
+        />
+      )}
+
+      {type === 'number' && (
+        <StyledNumberInput
+          type={type}
+          name={name}
+          className={error ? 'error' : ''}
+          value={value}
+          placeholder={placeholder?.toString()}
+          onChange={onChange}
+          min="1"
         />
       )}
     </StyledWrapper>
