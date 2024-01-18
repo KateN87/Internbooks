@@ -12,10 +12,12 @@ import CustomButton from '../../components/Buttons/CustomButton';
 import { ErrorContext } from '../../context/ErrorContext';
 import ErrorContainer from '../../components/Error/ErrorContainer';
 import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { user, placeOrder } = useContext(UserContext);
+  const { user } = useContext(UserContext);
+  const { cartList, placeOrder } = useContext(CartContext);
   const { error, handleError } = useContext(ErrorContext);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -43,7 +45,7 @@ const Cart = () => {
       });
     }
 
-    const orderItemsDTO = user.inCart.map((item) => {
+    const orderItemsDTO = cartList.map((item) => {
       setIsLoading(true);
       const { itemCode, name, price, quantity } = item;
 
@@ -79,8 +81,8 @@ const Cart = () => {
     }
   };
 
-  if (!user || !user.inCart) {
-    return <div>Loading...</div>;
+  if (!user || cartList.length === 0) {
+    return <div>No items in cart</div>;
   }
 
   return (
@@ -90,7 +92,7 @@ const Cart = () => {
           <DataCard data={userInfo} />
           <DataCard data={paymentInfo} />
         </div>
-        <CartCard cartInfo={user.inCart} />
+        <CartCard />
       </OrderInfoStyled>
       <ErrorStyled>
         {error && <ErrorContainer message={error.message} />}

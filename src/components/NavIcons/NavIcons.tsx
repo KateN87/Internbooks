@@ -3,13 +3,14 @@ import { CartContainer, StyledNavIcons } from './NavIcons.styled';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
+import { CartContext } from '../../context/CartContext';
 
 export const NavIcons = () => {
   const navigate = useNavigate();
   const { user, logoutUser } = useContext(UserContext);
+  const { cartList } = useContext(CartContext);
 
-  const itemsInCart = user?.inCart;
-  const totalQuantityInCart = itemsInCart?.reduce(
+  const totalQuantityInCart = cartList?.reduce(
     (total, book) => (total += book.quantity),
     0
   );
@@ -23,7 +24,7 @@ export const NavIcons = () => {
       <PiUserCircleThin size={24} onClick={() => navigate('/profile')} />
       {user && user.role === 'USER' && (
         <CartContainer onClick={() => navigate('/cart')}>
-          {itemsInCart && itemsInCart.length >= 1 && (
+          {cartList && cartList.length >= 1 && (
             <div className="items-in-cart">
               <p>{totalQuantityInCart}</p>
             </div>

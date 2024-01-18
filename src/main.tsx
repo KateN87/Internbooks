@@ -5,17 +5,20 @@ import UserProvider from './context/UserContext.tsx';
 import { BooksProvider } from './context/BookContext.tsx';
 import ErrorProvider from './context/ErrorContext.tsx';
 import { InventoryProvider } from './context/InventoryContext.tsx';
+import { CartProvider } from './context/CartContext.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
     <ErrorProvider>
-      <UserProvider>
-        <BooksProvider>
-          <InventoryProvider>
-            <App />
-          </InventoryProvider>
-        </BooksProvider>
-      </UserProvider>
+      <CartProvider>
+        <UserProvider>
+          <BooksProvider>
+            <InventoryProvider>
+              <App />
+            </InventoryProvider>
+          </BooksProvider>
+        </UserProvider>
+      </CartProvider>
     </ErrorProvider>
   </BrowserRouter>
 );

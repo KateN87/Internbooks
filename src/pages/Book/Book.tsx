@@ -9,17 +9,19 @@ import {
 import CustomButton from '../../components/Buttons/CustomButton';
 
 import { UserContext } from '../../context/UserContext';
+import { CartContext } from '../../context/CartContext';
 
 const Book = () => {
   const BASE_IMAGE_URL = '/assets/';
   const { state: book } = useLocation();
-  const { user, updateCart } = useContext(UserContext);
+  const { user } = useContext(UserContext);
+  const { updateCart } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(false);
 
   const addHandler = () => {
     setIsLoading(true);
     if (user) {
-      updateCart(book);
+      updateCart(book, 'add', 1);
     }
     setIsLoading(false);
   };
