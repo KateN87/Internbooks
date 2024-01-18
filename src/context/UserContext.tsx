@@ -11,7 +11,6 @@ import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import { login, logout, registerUser } from '../services/api/authApi';
 import { ErrorContext } from './ErrorContext';
-import { postOrder } from '../services/api/orderApi';
 
 type UserContextType = {
   user: User | null;
@@ -19,8 +18,6 @@ type UserContextType = {
   loginUser: (formData: Record<string, string>) => void;
   logoutUser: () => void;
   newUser: (formData: Register) => void;
-  updateCart: (bookItem: Book) => void;
-  placeOrder: (order: UserOrderDataBase) => void;
 };
 
 export const UserContext = createContext<UserContextType>({
@@ -29,14 +26,11 @@ export const UserContext = createContext<UserContextType>({
   loginUser: () => {},
   logoutUser: () => {},
   newUser: () => {},
-  updateCart: () => {},
-  placeOrder: () => {},
 });
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
   const { handleError } = useContext(ErrorContext);
   const [user, setUser] = useState<User | null>(null);
-  const [orderSum, setOrderSum] = useState(0);
   const navigate = useNavigate();
 
   //automatically login user
@@ -74,11 +68,13 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       await logout();
       Cookies.remove('accesstoken');
       localStorage.removeItem('user');
+      localStorage.removeItem('cart');
       navigate('/');
       setUser(null);
     } catch (error) {
       Cookies.remove('accesstoken');
       localStorage.removeItem('user');
+      localStorage.removeItem('cart');
       navigate('/');
       setUser(null);
     }
@@ -96,74 +92,15 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     [handleError, loginUser]
   );
 
-  const updateCart = useCallback((bookItem: Book) => {
-    setUser((prevUser) => {
-      if (!prevUser) {
-        return prevUser; // If prevUser is null or undefined, return as is
-      }
-
-      const existingBook = prevUser.inCart.find(
-        (book) => book.itemCode === bookItem.itemCode
-      );
-
-      if (existingBook) {
-        // Book is already in the cart, update quantity
-        const updatedCart = prevUser.inCart.map((book) =>
-          book.itemCode === bookItem.itemCode
-            ? { ...book, quantity: (book.quantity || 1) + 1 }
-            : book
-        );
-
-        const updatedUser = { ...prevUser, inCart: updatedCart };
-
-        localStorage.setItem('user', JSON.stringify(updatedUser));
-        return updatedUser;
-      } else {
-        // Book is not in the cart, add with quantity 1
-        const updatedUser = {
-          ...prevUser,
-          inCart: [...prevUser.inCart, { ...bookItem, quantity: 1 }],
-        };
-        setOrderSum((prev) => prev + bookItem.price);
-        localStorage.setItem('user', JSON.stringify(updatedUser));
-        return updatedUser;
-      }
-    });
-  }, []);
-
-  const placeOrder = useCallback(
-    async (order: UserOrderDataBase) => {
-      try {
-        await postOrder(order);
-      } catch (error) {
-        handleError(error as CustomError);
-        throw new Error();
-      }
-    },
-    [handleError]
-  );
-
   const value = useMemo(
     () => ({
       user,
-      orderSum,
       loginUser,
       logoutUser,
       newUser,
       setUser,
-      updateCart,
-      placeOrder,
     }),
-    [
-      user,
-      orderSum,
-      loginUser,
-      logoutUser,
-      newUser,
-      setUser,
-      updateCart,
-      placeOrder,
-    ]
+    [user, loginUser, logoutUser, newUser, setUser]
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
