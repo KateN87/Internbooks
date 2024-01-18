@@ -7,12 +7,14 @@ import calculateTotalPrice from '../../../Util/calculateTotalPrice';
 
 export const CartCard = () => {
   const BASE_IMAGE_URL = '/assets/';
-  const { cartList } = useContext(CartContext);
+  const { cartList, updateCart } = useContext(CartContext);
 
   const updateQuantity = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    bookItem: CartItem
   ) => {
-    console.log(e.target.value);
+    const newAmount = Number(e.target.value);
+    updateCart(bookItem, 'null', newAmount);
   };
 
   return (
@@ -33,7 +35,7 @@ export const CartCard = () => {
               name=""
               placeholder=""
               value={item.quantity}
-              onChange={updateQuantity}
+              onChange={(e) => updateQuantity(e, item)}
               error={null}
             />
 

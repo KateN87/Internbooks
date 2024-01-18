@@ -50,6 +50,4 @@ export const StyledTextArea = styled.textarea`
   }
 `;
 
-export const StyledNumberInput = styled.input`
-  border: 1px solid red;
-`;
+export const StyledNumberInput = styled.input``;
