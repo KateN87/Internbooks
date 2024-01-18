@@ -1,19 +1,23 @@
-import { useContext } from 'react';
+import { ChangeEvent, useContext } from 'react';
 import { BookInfoStyled, CartCardStyled } from './CartCard.styled';
 import blurImage from '/assets/blurImage.jpg';
-import { UserContext } from '../../../context/UserContext';
+import CustomTextInput from '../../CustomInput/CustomTextInput';
+import { CartContext } from '../../../context/CartContext';
+import calculateTotalPrice from '../../../Util/calculateTotalPrice';
 
-type CartCardProps = {
-  cartInfo: CartItem[];
-};
-
-export const CartCard = ({ cartInfo }: CartCardProps) => {
+export const CartCard = () => {
   const BASE_IMAGE_URL = '/assets/';
-  const { orderSum } = useContext(UserContext);
+  const { cartList } = useContext(CartContext);
+
+  const updateQuantity = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    console.log(e.target.value);
+  };
 
   return (
     <CartCardStyled>
-      {cartInfo.map((item) => (
+      {cartList.map((item) => (
         <BookInfoStyled key={item.itemCode}>
           <div className="amount-book">
             <img
@@ -23,7 +27,15 @@ export const CartCard = ({ cartInfo }: CartCardProps) => {
                   : blurImage
               }
             />
-            <p className="bold">{item.quantity}</p>
+
+            <CustomTextInput
+              type="number"
+              name=""
+              placeholder=""
+              value={item.quantity}
+              onChange={updateQuantity}
+              error={null}
+            />
 
             <div className="author-title">
               <p className="bold">{item.name}</p>
@@ -34,7 +46,9 @@ export const CartCard = ({ cartInfo }: CartCardProps) => {
           <p className="bold">a` {item.price}</p>
         </BookInfoStyled>
       ))}
-      <p className="bold price">Total Amount: {orderSum} SEK</p>
+      <p className="bold price">
+        Total Amount: {calculateTotalPrice(cartList)} SEK
+      </p>
     </CartCardStyled>
   );
 };
