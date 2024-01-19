@@ -1,4 +1,5 @@
 import { ChangeEvent, useContext } from 'react';
+import { PiTrashLight } from 'react-icons/pi';
 import { BookInfoStyled, CartCardStyled } from './CartCard.styled';
 import blurImage from '/assets/blurImage.jpg';
 import { CartContext } from '../../../context/CartContext';
@@ -10,6 +11,10 @@ export const CartCard = () => {
   const { cartList, updateCart } = useContext(CartContext);
 
   const numberList = Array.from({ length: 99 }, (_, index) => index + 1);
+
+  const deleteHandler = (bookItem: CartItem) => {
+    updateCart(bookItem, 'null', 0);
+  };
 
   const updateQuantity = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -44,6 +49,11 @@ export const CartCard = () => {
               minInput={1}
               maxInput={99}
               numberOptions={numberList}
+            />
+            <PiTrashLight
+              size={24}
+              className="trash"
+              onClick={() => deleteHandler(item)}
             />
 
             <div className="author-title">

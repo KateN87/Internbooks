@@ -40,6 +40,11 @@ export const BookInfoStyled = styled.div`
     margin-left: 6vw;
   }
 
+  & .trash {
+    margin-left: 5px;
+    cursor: pointer;
+  }
+
   & img {
     width: 50px;
     height: 60px;
