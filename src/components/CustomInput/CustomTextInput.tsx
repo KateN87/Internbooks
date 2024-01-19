@@ -4,7 +4,6 @@ import {
   StyledTextArea,
   StyledTextInput,
   StyledWrapper,
-  StyledNumberInput,
 } from './CustomInput.styled';
 
 type InputProps = {
@@ -13,6 +12,8 @@ type InputProps = {
   error: boolean | null;
   placeholder?: string | number;
   value?: string | number;
+  minInput?: number;
+  maxInput?: number;
   onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 };
 
@@ -23,12 +24,15 @@ const CustomTextInput = ({
   value,
   placeholder,
   onChange,
+  minInput,
+  maxInput,
 }: InputProps) => {
   return (
     <StyledWrapper>
       <StyledLabel htmlFor={name} className={error ? 'error' : ''}>
         {name}
       </StyledLabel>
+
       {type === 'textarea' && (
         <StyledTextArea
           name={name}
@@ -36,10 +40,12 @@ const CustomTextInput = ({
           value={value}
           placeholder={placeholder?.toString()}
           onChange={onChange}
+          minLength={minInput}
+          maxLength={maxInput}
         />
       )}
 
-      {type === 'text' && (
+      {type != 'textarea' && (
         <StyledTextInput
           type={type}
           name={name}
@@ -47,29 +53,6 @@ const CustomTextInput = ({
           value={value}
           placeholder={placeholder?.toString()}
           onChange={onChange}
-        />
-      )}
-
-      {type === 'password' && (
-        <StyledTextInput
-          type={type}
-          name={name}
-          className={error ? 'error' : ''}
-          value={value}
-          placeholder={placeholder?.toString()}
-          onChange={onChange}
-        />
-      )}
-
-      {type === 'number' && (
-        <StyledNumberInput
-          type={type}
-          name={name}
-          className={error ? 'error' : ''}
-          value={value}
-          placeholder={placeholder?.toString()}
-          onChange={onChange}
-          min="1"
         />
       )}
     </StyledWrapper>

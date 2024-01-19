@@ -23,7 +23,7 @@ export const signupParams = [
     errorType: 'lastname',
   },
   {
-    type: 'text',
+    type: 'email',
     name: 'email',
     errorType: 'email',
   },
