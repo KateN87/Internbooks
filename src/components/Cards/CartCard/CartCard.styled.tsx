@@ -12,17 +12,6 @@ export const CartCardStyled = styled.div`
   padding: 10px;
   background-color: #ffffff;
 
-  .amount-book {
-    display: flex;
-    flex-direction: row;
-    width: 50%;
-    align-items: center;
-  }
-
-  .author-title {
-    margin-left: 6vw;
-  }
-
   .bold {
     font-weight: bold;
   }
@@ -39,6 +28,22 @@ export const BookInfoStyled = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   margin: 10px 0;
+
+  & .amount-book {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    align-items: center;
+  }
+
+  & .author-title {
+    margin-left: 6vw;
+  }
+
+  & .trash {
+    margin-left: 5px;
+    cursor: pointer;
+  }
 
   & img {
     width: 50px;

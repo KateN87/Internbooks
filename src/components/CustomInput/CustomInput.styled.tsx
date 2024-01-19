@@ -50,4 +50,24 @@ export const StyledTextArea = styled.textarea`
   }
 `;
 
-export const StyledNumberInput = styled.input``;
+export const StyledNumberInput = styled.input`
+  font-size: var(--body-text);
+  width: 35px;
+  height: 20px;
+  border: 1px solid var(--medium-grey);
+  border-radius: 4px;
+  padding: 5px 5px;
+  text-align: center;
+`;
+
+export const StyledDropdown = styled.div`
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+`;
+
+export const StyledContainer = styled.div`
+  position: relative;
+`;

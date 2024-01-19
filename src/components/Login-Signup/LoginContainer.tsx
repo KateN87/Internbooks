@@ -6,7 +6,7 @@ import {
   StyledLoginSignupContainer,
 } from './Login-Signup.styled';
 import CustomInputContainer from '../CustomInput/CustomInputContainer';
-import { loginParams } from '../../pageTemplate/params/formParams';
+import { loginParams } from '../../params/formParams';
 import getFormData from '../../Util/getFormData';
 import validateForm from '../../Util/validateForm';
 import { UserContext } from '../../context/UserContext';
