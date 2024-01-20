@@ -92,6 +92,7 @@ type OrderItem = {
 
 type UserOrderDataBase = {
   id?: number;
+  orderNumber?: string;
   firstname: string;
   lastname: string;
   email: string;
@@ -101,6 +102,19 @@ type UserOrderDataBase = {
   phoneNumber: string;
   orderItemsDTO?: OrderItemDataBase[];
   orderItems?: OrderItemDataBase[];
+};
+
+type UserOrdersDataBase = {
+  id?: number;
+  orderNumber: string;
+  firstname: string;
+  lastname: string;
+  email: string;
+  address: string;
+  city: string;
+  postcode: number;
+  phoneNumber: string;
+  orderItems: OrderItemDataBase[];
 };
 
 type OrderItemDataBase = {
