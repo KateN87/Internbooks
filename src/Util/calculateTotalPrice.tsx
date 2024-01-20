@@ -1,4 +1,8 @@
-const calculateTotalPrice = (cart: CartItem[]) => {
+type CalculateProps = {
+  cart: CartItem[] | OrderItemDataBase[];
+};
+
+const calculateTotalPrice = ({ cart }: CalculateProps) => {
   return cart.reduce((total, book) => {
     // Calculate the price for each book by multiplying the quantity with the book price
     const bookPrice = (book.quantity || 1) * book.price;
