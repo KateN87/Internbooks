@@ -1,9 +1,6 @@
-import { useContext, useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { HiArrowLeft } from 'react-icons/hi2';
-import mockOrder from '../../MockData/MockOrderUser.json';
 import DataCard from '../../components/Cards/DataCard/DataCard';
-import { UserContext } from '../../context/UserContext';
 import UserOrderCard from '../../components/Cards/UserOrderCard/UserOrderCard';
 import {
   BackContainer,
@@ -13,15 +10,13 @@ import {
 
 const MyOrders = () => {
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  const { user } = useContext(UserContext);
-  const [orderInfo, setOrderInfo] = useState<UserOrder>();
-  const orderNr = searchParams.get('order');
+  const location = useLocation();
+  const order = location.state;
 
   const userAddress = [
-    `${user?.firstname} ${user?.lastname}`,
-    user?.address,
-    `${user?.postcode} ${user?.city}`,
+    `${order.firstname} ${order.lastname}`,
+    order.address,
+    `${order.postcode} ${order.city}`,
   ];
 
   const userInfo = {
@@ -33,12 +28,7 @@ const MyOrders = () => {
     'Order placed': '2023-01-01',
   };
 
-  useEffect(() => {
-    const order = mockOrder.find((order) => order.orderNr === orderNr);
-    setOrderInfo(order);
-  }, [orderNr]);
-
-  if (!orderInfo) {
+  if (!order) {
     return <div>Loading...</div>;
   }
 
@@ -48,14 +38,14 @@ const MyOrders = () => {
         <HiArrowLeft className="icon" size="30px" />
         <h2>Go Back</h2>
       </BackContainer>
-      <h1>Order number: {orderNr}</h1>
+      <h1>Order number: {order.orderNumber}</h1>
       <InfoContainers>
         <div>
           <DataCard data={userInfo} />
           <DataCard data={paymentInfo} />
         </div>
 
-        <UserOrderCard orderInfo={orderInfo} />
+        <UserOrderCard orderInfo={order} />
       </InfoContainers>
     </MainContainer>
   );
