@@ -1,52 +1,76 @@
 import { SlArrowRight } from 'react-icons/sl';
 import { StyledRow, StyledTable } from './Table.styled';
-import { createSearchParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { getUserOrder } from '../../services/api/orderApi';
+import { UserContext } from '../../context/UserContext';
+import calculateTotalPrice from '../../Util/calculateTotalPrice';
 
-type UserTableProps = {
-  data: UserOrder[];
-};
-
-const UserOrderTable = ({ data }: UserTableProps) => {
+const UserOrderTable = () => {
   const navigate = useNavigate();
+  const { user } = useContext(UserContext);
+  const [orderList, setOrderList] = useState<UserOrdersDataBase[]>([]);
 
-  const goToOrder = (orderNr: string) => {
-    navigate({
-      pathname: '/profile/myorders',
-      search: `?${createSearchParams({ order: orderNr })}`,
-    });
+  const goToOrder = (order: UserOrdersDataBase) => {
+    navigate('/profile/myorders', { state: order });
   };
+
+  const calculatenumberOfItems = (orderItems: OrderItemDataBase[]) => {
+    return orderItems.reduce((total, book) => {
+      const bookQuantity = book.quantity || 1;
+
+      return total + bookQuantity;
+    }, 0);
+  };
+
+  useEffect(() => {
+    const getOrders = async () => {
+      if (user && user.email) {
+        const orderResponse = await getUserOrder(user.email);
+        setOrderList(orderResponse);
+      }
+      return;
+    };
+
+    getOrders();
+  }, [user]);
 
   return (
     <StyledTable>
-      {data.map((d) => (
-        <StyledRow
-          className="row"
-          onClick={() => goToOrder(d.orderNr)}
-          key={d.orderNr}
-        >
+      {orderList.length === 0 && (
+        <StyledRow className="row">
           <div className="left">
-            <p>
-              <b>Date: </b>
-              {d.date}
-            </p>
-            <p>
-              <b>Order Nr: </b>
-              {d.orderNr}
-            </p>
+            <p>You have not yet made any orders</p>
           </div>
-          <div className="right">
-            <p>
-              <b>Number of Items: </b>
-              {d.itemsNr}
-            </p>
-            <p>
-              <b>Price: </b>
-              {d.price}
-            </p>
-          </div>
-          <SlArrowRight />
         </StyledRow>
-      ))}
+      )}
+
+      {orderList.length > 0 &&
+        orderList.map((order) => (
+          <StyledRow
+            className="row"
+            onClick={() => goToOrder(order)}
+            key={order.orderNumber}
+          >
+            <div className="left">
+              <p>
+                <b>Order Nr: </b>
+                {order.orderNumber}
+              </p>
+            </div>
+            <div className="right">
+              <p>
+                <b>Number of Items: </b>
+                {calculatenumberOfItems(order.orderItems)}
+              </p>
+              <p>
+                <b>Price: </b>
+                {calculateTotalPrice({ cart: order.orderItems })}
+              </p>
+            </div>
+            <SlArrowRight />
+          </StyledRow>
+        ))}
     </StyledTable>
   );
 };

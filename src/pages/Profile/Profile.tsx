@@ -3,7 +3,6 @@ import { UserContext } from '../../context/UserContext';
 import { UserCard } from '../../components/Cards/UserCard/UserCard';
 import { StyledProfile } from './Profile.styled';
 import UserOrderTable from '../../components/Table/UserOrderTable';
-import mockOrders from '../../MockData/MockOrderUser.json';
 
 const Profile = () => {
   const { user } = useContext(UserContext);
@@ -17,7 +16,7 @@ const Profile = () => {
       <h1>Welcome, {user.firstname}</h1>
       <div className="user-info">
         <UserCard />
-        <UserOrderTable data={mockOrders} />
+        <UserOrderTable />
       </div>
     </StyledProfile>
   );
