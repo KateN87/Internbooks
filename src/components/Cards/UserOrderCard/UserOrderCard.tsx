@@ -6,7 +6,6 @@ type OrderCardProps = {
 };
 
 export const UserOrderCard = ({ orderInfo }: OrderCardProps) => {
-  console.log('ORDERITEMS: ', orderInfo.orderItems);
   return (
     <UserOrderCardStyled>
       {orderInfo.orderItems.map((item) => (
