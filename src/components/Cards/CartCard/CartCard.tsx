@@ -66,7 +66,7 @@ export const CartCard = () => {
         </BookInfoStyled>
       ))}
       <p className="bold price">
-        Total Amount: {calculateTotalPrice(cartList)} SEK
+        Total Amount: {calculateTotalPrice({ cart: cartList })} SEK
       </p>
     </CartCardStyled>
   );
