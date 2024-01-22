@@ -60,6 +60,7 @@ type FormDataParam = {
 type CustomError = {
   input?: string;
   message: string;
+  data?: string[];
 };
 
 type Register = {

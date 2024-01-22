@@ -23,7 +23,20 @@ export const ButtonContainer = styled.div`
 
 export const ErrorStyled = styled.div`
   display: flex;
-  justify-content: flex-end;
-  height: 40px;
+  flex-direction: column;
+  align-items: flex-end;
+  /*   height: 40px; */
   margin-right: 10px;
+
+  & .stock {
+    margin: 10px;
+    & li {
+      list-style-type: circle;
+      color: red;
+    }
+    & p {
+      font-weight: bold;
+      color: red;
+    }
+  }
 `;

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
 import DataCard from '../../components/Cards/DataCard/DataCard';
 import CartCard from '../../components/Cards/CartCard/CartCard';
@@ -13,12 +13,15 @@ import { ErrorContext } from '../../context/ErrorContext';
 import ErrorContainer from '../../components/Error/ErrorContainer';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
+import { BookContext } from '../../context/BookContext';
 
 const Cart = () => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
-  const { cartList, placeOrder } = useContext(CartContext);
+  const { cartList, placeOrder, emptyCart } = useContext(CartContext);
+  const { bookList, getBooks } = useContext(BookContext);
   const { error, handleError } = useContext(ErrorContext);
+  const [outOfStock, setOutOfStock] = useState<Book[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const userAddress = [
@@ -37,8 +40,29 @@ const Cart = () => {
     CVV: '123',
   };
 
+  const findBooks = useCallback(() => {
+    if (error && error.data) {
+      const books = error?.data
+        .map((data) => {
+          const foundBook = bookList.find((book) => data === book.itemCode);
+          return foundBook;
+        })
+        .filter((book) => book !== null) as Book[];
+
+      setOutOfStock(books);
+    }
+  }, [bookList, error]);
+
+  useEffect(() => {
+    if (error?.data && bookList.length === 0) {
+      getBooks();
+    } else if (error?.data) {
+      findBooks();
+    }
+  }, [error?.data, bookList, findBooks, getBooks]);
+
   const tryPlaceOrder = async () => {
-    handleError({ message: '' });
+    /* clearError(); */
     if (!user) {
       return handleError({
         message: 'You need to be logged in to place order',
@@ -73,10 +97,10 @@ const Cart = () => {
 
     try {
       await placeOrder(newOrder);
-
+      emptyCart();
       navigate('/cart/success');
       setIsLoading(false);
-    } catch (error) {
+    } catch (err) {
       setIsLoading(false);
     }
   };
@@ -95,7 +119,23 @@ const Cart = () => {
         <CartCard />
       </OrderInfoStyled>
       <ErrorStyled>
-        {error && <ErrorContainer message={error.message} />}
+        {error && (
+          <>
+            <ErrorContainer message={error.message} />
+          </>
+        )}
+        {outOfStock.length > 0 && (
+          <div className="stock">
+            <p>The following book(s) are out of stock:</p>
+            <ul>
+              {outOfStock.map((book) => (
+                <li key={book.itemCode}>
+                  <p>{book.name}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </ErrorStyled>
       <ButtonContainer>
         <CustomButton

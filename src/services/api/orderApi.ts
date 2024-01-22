@@ -13,6 +13,17 @@ export const postOrder = async (
 
     if (isAxiosError(error)) {
       if (error?.response?.data.message.includes('Items out of stock:')) {
+        const itemCodeRegex = /itemCode=([a-f0-9-]+)/g;
+        const itemCodes = [];
+        let match;
+
+        //Extract which item codes are out of stock
+        while (
+          (match = itemCodeRegex.exec(error?.response?.data.message)) !== null
+        ) {
+          itemCodes.push(match[1]);
+        }
+        customError.data = itemCodes;
         customError.message =
           'Sorry, one or more items in your order is out of stock';
       }

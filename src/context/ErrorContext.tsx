@@ -15,25 +15,30 @@ type ErrorContextType = {
 };
 
 export const ErrorContext = createContext<ErrorContextType>({
-  error: { input: '', message: '' },
+  error: { input: '', message: '', data: [] },
+  error: { input: '', message: '', data: [] },
   handleError: () => {},
   clearError: () => {},
 });
 
 export const ErrorProvider = ({ children }: { children: ReactNode }) => {
   const navigate = useNavigate();
-  const [error, setError] = useState<CustomError>({ input: '', message: '' });
+  const [error, setError] = useState<CustomError>({
+    input: '',
+    message: '',
+    data: [],
+  });
 
   useEffect(() => {
-    setError({ input: '', message: '' });
+    setError({ input: '', message: '', data: [] });
   }, [navigate]);
+
+  const clearError = useCallback(() => {
+    setError({ input: '', message: '', data: [] });
+  }, []);
 
   const handleError = useCallback((customError: CustomError) => {
     setError(customError);
-  }, []);
-
-  const clearError = useCallback(() => {
-    setError({ input: '', message: '' });
   }, []);
 
   return (
