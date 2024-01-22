@@ -25,18 +25,34 @@ export const ErrorStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  /*   height: 40px; */
   margin-right: 10px;
 
   & .stock {
     margin: 10px;
     & li {
       list-style-type: circle;
-      color: red;
+      color: var(--error);
     }
     & p {
       font-weight: bold;
-      color: red;
+      color: var(--error);
     }
+  }
+`;
+
+export const StyledEmpty = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 1px solid var(--light-grey);
+  border-radius: 4px;
+  width: 350px;
+  background-color: #ffffff;
+  padding: 40px;
+  margin: 40px auto;
+
+  & p {
+    font-size: var(--body-text-medium);
+    margin-bottom: 10px;
   }
 `;

@@ -7,6 +7,7 @@ import {
   CartStyled,
   OrderInfoStyled,
   ErrorStyled,
+  StyledEmpty,
 } from './Cart.styled';
 import CustomButton from '../../components/Buttons/CustomButton';
 import { ErrorContext } from '../../context/ErrorContext';
@@ -106,7 +107,17 @@ const Cart = () => {
   };
 
   if (!user || cartList.length === 0) {
-    return <div>No items in cart</div>;
+    return (
+      <StyledEmpty>
+        <p>It seems like your cart is empty!</p>
+        <p>Check out the awesome books we have in our store.</p>
+        <CustomButton
+          text="Browse Books"
+          className="large"
+          onClick={() => navigate('/')}
+        />
+      </StyledEmpty>
+    );
   }
 
   return (

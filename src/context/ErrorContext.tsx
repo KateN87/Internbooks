@@ -16,7 +16,6 @@ type ErrorContextType = {
 
 export const ErrorContext = createContext<ErrorContextType>({
   error: { input: '', message: '', data: [] },
-  error: { input: '', message: '', data: [] },
   handleError: () => {},
   clearError: () => {},
 });
