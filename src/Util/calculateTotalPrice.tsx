@@ -10,8 +10,7 @@ const calculateTotalPrice = ({ cart }: CalculateProps) => {
     // Add the calculated price to the total
     return accumulator + itemPrice;
   }, 0);
-
-  // Use toFixed to round the total to 2 decimal places and parseFloat to convert it back to a number
+  // round the total to 2 decimal places
   return parseFloat(total.toFixed(2));
 };
 
