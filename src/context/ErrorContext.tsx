@@ -16,6 +16,7 @@ type ErrorContextType = {
 
 export const ErrorContext = createContext<ErrorContextType>({
   error: { input: '', message: '', data: [] },
+  error: { input: '', message: '', data: [] },
   handleError: () => {},
   clearError: () => {},
 });
@@ -37,6 +38,7 @@ export const ErrorProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const handleError = useCallback((customError: CustomError) => {
+    console.log('hello');
     setError(customError);
   }, []);
 
