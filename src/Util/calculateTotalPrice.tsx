@@ -1,12 +1,17 @@
-const calculateTotalPrice = (cart: CartItem[]) => {
-  const total = cart.reduce((total, book) => {
-    // Calculate the price for each book by multiplying the quantity with the book price
-    const bookPrice = (book.quantity || 1) * book.price;
+type CalculateProps = {
+  cart: CartItem[] | OrderItemDataBase[];
+};
+
+const calculateTotalPrice = ({ cart }: CalculateProps) => {
+  const total = cart.reduce((accumulator, item) => {
+    // Calculate the price for each item by multiplying the quantity with the item price
+    const itemPrice = (item.quantity || 1) * item.price;
 
     // Add the calculated price to the total
-    return total + bookPrice;
+    return accumulator + itemPrice;
   }, 0);
-  // round the total to 2 decimal places
+
+  // Use toFixed to round the total to 2 decimal places and parseFloat to convert it back to a number
   return parseFloat(total.toFixed(2));
 };
 
