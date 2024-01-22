@@ -38,7 +38,6 @@ export const ErrorProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const handleError = useCallback((customError: CustomError) => {
-    console.log('hello');
     setError(customError);
   }, []);
 
