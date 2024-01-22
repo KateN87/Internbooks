@@ -13,12 +13,14 @@ type CartContextType = {
   cartList: CartItem[];
   updateCart: (bookItem: Book, type: string, amount: number) => void;
   placeOrder: (order: UserOrderDataBase) => void;
+  emptyCart: () => void;
 };
 
 export const CartContext = createContext<CartContextType>({
   cartList: [],
   updateCart: () => {},
   placeOrder: () => {},
+  emptyCart: () => {},
 });
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
@@ -88,13 +90,18 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     []
   );
 
+  const emptyCart = useCallback(() => {
+    setCartList([]);
+  }, []);
+
   const value = useMemo(
     () => ({
       cartList,
       updateCart,
       placeOrder,
+      emptyCart,
     }),
-    [cartList, updateCart, placeOrder]
+    [cartList, updateCart, placeOrder, emptyCart]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
