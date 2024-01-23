@@ -23,6 +23,15 @@ type Book = {
   numberOfPages: number;
 };
 
+type EditBook = {
+  name: string;
+  author: string;
+  price: number;
+  imageLink?: string;
+  description: string;
+  numberOfPages: number;
+};
+
 type CartItem = {
   itemCode: string;
   name: string;

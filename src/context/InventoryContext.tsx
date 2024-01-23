@@ -1,15 +1,17 @@
 import { createContext, useCallback, useContext, useState } from 'react';
 import { ErrorContext } from './ErrorContext';
-import { getInventoryAll } from '../services/api/inventoryApi';
+import { getInventoryAll, putInventory } from '../services/api/inventoryApi';
 
 type InventoryContextType = {
   inventoryList: InventoryItem[];
   getInventories: () => void;
+  updateInventories: (itemCode: string, quantity: number) => void;
 };
 
 export const InventoryContext = createContext<InventoryContextType>({
   inventoryList: [],
   getInventories: () => {},
+  updateInventories: () => {},
 });
 
 export const InventoryProvider = ({
@@ -30,9 +32,24 @@ export const InventoryProvider = ({
     }
   }, [handleError]);
 
+  const updateInventories = useCallback(
+    async (itemCode: string, quantity: number) => {
+      try {
+        const resp = await putInventory(itemCode, quantity);
+
+        console.log('RESPONSE: ', resp);
+        getInventories();
+      } catch (error) {
+        handleError(error as CustomError);
+      }
+    },
+    [handleError, getInventories]
+  );
+
   const value = {
     inventoryList,
     getInventories,
+    updateInventories,
   };
 
   return (

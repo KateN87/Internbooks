@@ -10,6 +10,7 @@ const setupHeaders = (requireAccess: boolean = false) => {
   }
 
   const authorizationHeader = getAuthorization();
+
   return {
     ...authorizationHeader,
   };

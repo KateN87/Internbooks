@@ -53,6 +53,7 @@ const CustomTextInput = ({
           value={value}
           placeholder={placeholder?.toString()}
           onChange={onChange}
+          min="0"
         />
       )}
     </StyledWrapper>
