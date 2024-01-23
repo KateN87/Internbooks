@@ -1,4 +1,4 @@
-import { SlArrowRight } from 'react-icons/sl';
+import { SlArrowRight, SlTrash } from 'react-icons/sl';
 import {
   StyledInventoryHeadRow,
   StyledInventoryTable,
@@ -9,9 +9,10 @@ import { useEffect, useState } from 'react';
 
 type InventoryTableProps = {
   data: BookInventoryItem[];
+  deleteHandler: (name: string, itemCode: string) => void;
 };
 
-const InventoryTable = ({ data }: InventoryTableProps) => {
+const InventoryTable = ({ data, deleteHandler }: InventoryTableProps) => {
   const navigate = useNavigate();
   const [dataList, setDataList] = useState<BookInventoryItem[] | []>([]);
 
@@ -58,11 +59,7 @@ const InventoryTable = ({ data }: InventoryTableProps) => {
         </StyledInventoryRow>
       )}
       {dataList.map((book) => (
-        <StyledInventoryRow
-          className="row"
-          key={book.itemCode}
-          onClick={() => goToBook(book)}
-        >
+        <StyledInventoryRow className="row" key={book.itemCode}>
           <div>
             <p>{book.name}</p>
           </div>
@@ -78,9 +75,14 @@ const InventoryTable = ({ data }: InventoryTableProps) => {
           <div>
             <p>{book.quantity}</p>
           </div>
-          <div>
+          <div className="iconContainer">
             <p className="right">
-              <SlArrowRight />
+              <SlTrash
+                onClick={() => deleteHandler(book.name, book.itemCode)}
+              />
+            </p>
+            <p>
+              <SlArrowRight onClick={() => goToBook(book)} />
             </p>
           </div>
         </StyledInventoryRow>

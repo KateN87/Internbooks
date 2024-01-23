@@ -1,4 +1,3 @@
-import React from 'react';
 import { ChangeEvent, FormEvent } from 'react';
 import { useContext, useEffect, useState } from 'react';
 import { BookEditStyled, BookEditForm } from './BookEdit.styled';
@@ -9,7 +8,6 @@ import CustomButton from '../../../components/Buttons/CustomButton';
 import ErrorContainer from '../../../components/Error/ErrorContainer';
 import validateForm from '../../../Util/validateForm';
 import { bookEditParams } from '../../../params/formParams';
-import getFormData from '../../../Util/getFormData';
 import { useNavigate } from 'react-router-dom';
 import { BookContext } from '../../../context/BookContext';
 import { InventoryContext } from '../../../context/InventoryContext';
@@ -66,11 +64,6 @@ const BookEdit = ({ bookItemCode }: BookEditProps) => {
       handleError(isFormValid);
       return setIsLoading(false);
     }
-
-    const formData = getFormData(target, bookEditParams) as Record<
-      string,
-      string
-    >;
 
     try {
       const book = {

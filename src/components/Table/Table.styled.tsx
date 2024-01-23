@@ -36,6 +36,11 @@ export const StyledRow = styled.div`
   padding: 20px;
   font-size: var(--body-text-medium);
 
+  & .iconContainer {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
   & .left {
     text-align: left;
   }
