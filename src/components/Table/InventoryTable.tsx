@@ -58,7 +58,11 @@ const InventoryTable = ({ data }: InventoryTableProps) => {
         </StyledInventoryRow>
       )}
       {dataList.map((book) => (
-        <StyledInventoryRow className="row" key={book.itemCode}>
+        <StyledInventoryRow
+          className="row"
+          key={book.itemCode}
+          onClick={() => goToBook(book)}
+        >
           <div>
             <p>{book.name}</p>
           </div>
@@ -76,7 +80,7 @@ const InventoryTable = ({ data }: InventoryTableProps) => {
           </div>
           <div>
             <p className="right">
-              <SlArrowRight onClick={() => goToBook(book)} />
+              <SlArrowRight />
             </p>
           </div>
         </StyledInventoryRow>
