@@ -21,6 +21,10 @@ export const BookEditStyled = styled.div`
     bottom: 90px;
     right: 60px;
   }
+
+  &.error {
+    border: 1px solid var(--error);
+  }
 `;
 
 export const BookEditForm = styled.form`
@@ -62,5 +66,27 @@ export const BookEditForm = styled.form`
     gap: 10px;
     margin-top: 80px;
     margin-right: 20px;
+  }
+`;
+
+export const StyledQuantityContainer = styled.div`
+  display: flex;
+  min-width: 200px;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+
+  & .quantity {
+    font-size: var(--body-text);
+    margin-left: 20px;
+  }
+
+  & .title {
+    position: absolute;
+    bottom: 200px;
+    z-index: 10;
+    padding: 15px;
+    color: var(--dark-grey);
+    font-size: 12px;
   }
 `;

@@ -1,6 +1,10 @@
 import { ChangeEvent, FormEvent } from 'react';
 import { useContext, useEffect, useState } from 'react';
-import { BookEditStyled, BookEditForm } from './BookEdit.styled';
+import {
+  BookEditStyled,
+  BookEditForm,
+  StyledQuantityContainer,
+} from './BookEdit.styled';
 import CustomTextInput from '../../../components/CustomInput/CustomTextInput';
 import CustomInputContainer from '../../../components/CustomInput/CustomInputContainer';
 import { ErrorContext } from '../../../context/ErrorContext';
@@ -11,6 +15,7 @@ import { bookEditParams } from '../../../params/formParams';
 import { useNavigate } from 'react-router-dom';
 import { BookContext } from '../../../context/BookContext';
 import { InventoryContext } from '../../../context/InventoryContext';
+import QuantityCard from '../../../components/Cards/QuantityCard/QuantityCard';
 
 type BookEditProps = {
   bookItemCode: string;
@@ -19,7 +24,8 @@ type BookEditProps = {
 const BookEdit = ({ bookItemCode }: BookEditProps) => {
   const navigate = useNavigate();
   const { bookList, updateBook } = useContext(BookContext);
-  const { inventoryList, updateInventories } = useContext(InventoryContext);
+  const { inventoryList } = useContext(InventoryContext);
+  const [showQuantity, setShowQuantity] = useState(false);
   const [name, setName] = useState('');
   const [author, setAuthor] = useState('');
   const [description, setDescription] = useState('');
@@ -74,9 +80,13 @@ const BookEdit = ({ bookItemCode }: BookEditProps) => {
         price,
         imageLink: image,
       };
-      // Todo: connnect with backend
-      await updateInventories(bookItemCode, quantity);
-      await updateBook(bookItemCode, book);
+
+      const resp = await updateBook(bookItemCode, book);
+
+      if (resp === undefined) {
+        setIsLoading(false);
+        return;
+      }
       setIsLoading(false);
       cancel();
     } catch {
@@ -139,22 +149,10 @@ const BookEdit = ({ bookItemCode }: BookEditProps) => {
       onChange: (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) =>
         setPrice(Number(e.target.value)),
     },
-
-    {
-      type: 'number',
-      name: 'quantity',
-      errorType: 'quantity',
-      placeholder: quantity,
-      value: quantity,
-      state: setQuantity,
-      onChange: (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) =>
-        setQuantity(Number(e.target.value)),
-    },
   ];
 
   return (
     <BookEditStyled>
-      {' '}
       <div className="cancel-button">
         <CustomButton
           className="medium"
@@ -182,6 +180,15 @@ const BookEdit = ({ bookItemCode }: BookEditProps) => {
                 </CustomInputContainer>
               )
             )}
+            <StyledQuantityContainer>
+              <p className="title">quantity</p>
+              <p className="quantity">{quantity}</p>
+              <CustomButton
+                className="medium"
+                text="Edit quantity"
+                onClick={() => setShowQuantity(true)}
+              />
+            </StyledQuantityContainer>
           </div>
           <div className="area-input">
             <CustomInputContainer key={textareaInput.name}>
@@ -193,6 +200,7 @@ const BookEdit = ({ bookItemCode }: BookEditProps) => {
                 onChange={textareaInput.onChange}
                 error={error && error.input === textareaInput.errorType}
               />
+
               {error && error.input === textareaInput.errorType && (
                 <ErrorContainer message={error.message} />
               )}
@@ -210,6 +218,13 @@ const BookEdit = ({ bookItemCode }: BookEditProps) => {
           />
         </div>
       </BookEditForm>
+      {showQuantity && (
+        <QuantityCard
+          setShowQuantity={setShowQuantity}
+          bookItemCode={bookItemCode}
+          quantity={quantity}
+        />
+      )}
     </BookEditStyled>
   );
 };

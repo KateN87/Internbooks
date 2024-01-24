@@ -35,10 +35,10 @@ export const InventoryProvider = ({
   const updateInventories = useCallback(
     async (itemCode: string, quantity: number) => {
       try {
-        const resp = await putInventory(itemCode, quantity);
+        await putInventory(itemCode, quantity);
 
-        console.log('RESPONSE: ', resp);
         getInventories();
+        return true;
       } catch (error) {
         handleError(error as CustomError);
       }

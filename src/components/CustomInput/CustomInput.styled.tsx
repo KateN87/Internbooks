@@ -58,6 +58,10 @@ export const StyledNumberInput = styled.input`
   border-radius: 4px;
   padding: 5px 5px;
   text-align: center;
+
+  &.quantity {
+    width: 50px;
+  }
 `;
 
 export const StyledDropdown = styled.div`
@@ -66,6 +70,11 @@ export const StyledDropdown = styled.div`
   border: 1px solid #ccc;
   max-height: 200px;
   overflow-y: auto;
+  overflow-x: hidden;
+
+  &.quantity {
+    left: 140px;
+  }
 `;
 
 export const StyledContainer = styled.div`

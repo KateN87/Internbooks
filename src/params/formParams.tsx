@@ -75,11 +75,5 @@ export const bookEditParams = [
     name: 'price',
     errorType: 'price',
   },
-
-  {
-    type: 'number',
-    name: 'quantity',
-    errorType: 'quantity',
-  },
   { type: 'textarea', name: 'description', errorType: 'description' },
 ];

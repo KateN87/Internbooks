@@ -15,6 +15,7 @@ type InputProps = {
   onChange?: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
+  className?: string;
 };
 
 const CustomListInput: React.FC<InputProps> = ({
@@ -24,6 +25,7 @@ const CustomListInput: React.FC<InputProps> = ({
   minInput,
   maxInput,
   numberOptions,
+  className,
 }) => {
   const clampedValue =
     value !== undefined
@@ -46,9 +48,10 @@ const CustomListInput: React.FC<InputProps> = ({
         value={clampedValue}
         onChange={() => {}}
         onClick={() => setDropdownOpen(!isDropdownOpen)}
+        className={className}
       />
       {isDropdownOpen && (
-        <StyledDropdown>
+        <StyledDropdown className={className}>
           {numberOptions.map((option) => (
             <div key={option} onClick={() => handleSelect(option)}>
               {option}

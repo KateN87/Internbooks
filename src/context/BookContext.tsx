@@ -31,9 +31,8 @@ export const BooksProvider = ({ children }: { children: React.ReactNode }) => {
   const updateBook = useCallback(
     async (itemCode: string, book: EditBook) => {
       try {
-        const resp = await putBook(itemCode, book);
+        await putBook(itemCode, book);
 
-        console.log('RESPONSE BOOK: ', resp);
         getBooks();
         return true;
       } catch (error) {
@@ -46,9 +45,8 @@ export const BooksProvider = ({ children }: { children: React.ReactNode }) => {
   const deleteBook = useCallback(
     async (itemCode: string) => {
       try {
-        const resp = await removeBook(itemCode);
+        await removeBook(itemCode);
 
-        console.log('RESPONSE BOOK: ', resp);
         getBooks();
         return true;
       } catch (error) {
