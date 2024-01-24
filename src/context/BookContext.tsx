@@ -1,16 +1,18 @@
 import { createContext, useCallback, useContext, useState } from 'react';
-import { getAllBooks, putBook } from '../services/api/bookAPI';
+import { getAllBooks, putBook, removeBook } from '../services/api/bookAPI';
 import { ErrorContext } from './ErrorContext';
 
 type BookContextType = {
   bookList: Book[];
   getBooks: () => void;
   updateBook: (itemCode: string, book: EditBook) => void;
+  deleteBook: (itemCode: string) => void;
 };
 export const BookContext = createContext<BookContextType>({
   bookList: [],
   getBooks: () => {},
   updateBook: () => {},
+  deleteBook: () => {},
 });
 
 export const BooksProvider = ({ children }: { children: React.ReactNode }) => {
@@ -33,6 +35,22 @@ export const BooksProvider = ({ children }: { children: React.ReactNode }) => {
 
         console.log('RESPONSE BOOK: ', resp);
         getBooks();
+        return true;
+      } catch (error) {
+        handleError(error as CustomError);
+      }
+    },
+    [handleError, getBooks]
+  );
+
+  const deleteBook = useCallback(
+    async (itemCode: string) => {
+      try {
+        const resp = await removeBook(itemCode);
+
+        console.log('RESPONSE BOOK: ', resp);
+        getBooks();
+        return true;
       } catch (error) {
         handleError(error as CustomError);
       }
@@ -44,6 +62,7 @@ export const BooksProvider = ({ children }: { children: React.ReactNode }) => {
     bookList,
     getBooks,
     updateBook,
+    deleteBook,
   };
 
   return <BookContext.Provider value={value}>{children}</BookContext.Provider>;

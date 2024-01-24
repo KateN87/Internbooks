@@ -28,3 +28,9 @@ export const ButtonContainer = styled.div`
   width: 80%;
   margin-top: 40px;
 `;
+
+export const StyledError = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+`;
