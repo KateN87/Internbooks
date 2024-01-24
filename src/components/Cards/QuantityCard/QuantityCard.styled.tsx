@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const StyledDeleteCard = styled.div`
+export const StyledQuantityCard = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
-  margin: 300px auto;
+  margin: 150px auto;
   border: 1px solid red;
   border: 1px solid var(--light-grey);
   border-radius: 4px;
@@ -14,6 +14,7 @@ export const StyledDeleteCard = styled.div`
   padding: 30px 10px;
   align-items: space-evenly;
   text-align: center;
+  z-index: 100;
 
   & p {
     font-size: var(--body-text-medium);
@@ -33,4 +34,5 @@ export const StyledError = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  font-size: 12px;
 `;

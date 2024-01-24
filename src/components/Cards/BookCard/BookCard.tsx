@@ -32,7 +32,6 @@ const BookCard: FC<BookCardProps> = ({ book }) => {
       if (user) {
         updateCart(book, 'add', 1);
       }
-      //  Todo: add functionality to add book to basket
     }
   };
 

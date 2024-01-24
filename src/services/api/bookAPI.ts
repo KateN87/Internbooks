@@ -1,5 +1,5 @@
 /* import { AxiosError, isAxiosError } from 'axios'; */
-import { get, update } from '../httpService/http.methods';
+import { get, update, remove } from '../httpService/http.methods';
 
 const baseUrl = import.meta.env.VITE_APP_BASE_URL;
 
@@ -26,6 +26,19 @@ export const putBook = async (
     console.error('putBook API:', error);
     const customError: CustomError = {
       message: 'Problem updating book. Please try again later.',
+    };
+
+    throw customError;
+  }
+};
+
+export const removeBook = async (itemCode: string): Promise<Book> => {
+  try {
+    return await update(`${baseUrl}book/${itemCode}`, true);
+  } catch (error) {
+    console.error('removeBook API:', error);
+    const customError: CustomError = {
+      message: 'Problem removing book. Please try again later.',
     };
 
     throw customError;
