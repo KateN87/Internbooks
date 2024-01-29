@@ -1,20 +1,13 @@
 import { SlArrowRight } from 'react-icons/sl';
 import { StyledRow, StyledTable } from './Table.styled';
-import { useNavigate } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
-import { getUserOrder } from '../../services/api/orderApi';
-import { UserContext } from '../../context/UserContext';
 import calculateTotalPrice from '../../Util/calculateTotalPrice';
 
-const UserOrderTable = () => {
-  const navigate = useNavigate();
-  const { user } = useContext(UserContext);
-  const [orderList, setOrderList] = useState<UserOrdersDataBase[]>([]);
+type OrderTableProps = {
+  orderList: UserOrdersDataBase[];
+  onClick: (order: UserOrdersDataBase) => void;
+};
 
-  const goToOrder = (order: UserOrdersDataBase) => {
-    navigate('/profile/myorders', { state: order });
-  };
-
+const UserOrderTable = ({ orderList, onClick }: OrderTableProps) => {
   const calculatenumberOfItems = (orderItems: OrderItemDataBase[]) => {
     return orderItems.reduce((total, book) => {
       const bookQuantity = book.quantity || 1;
@@ -22,18 +15,6 @@ const UserOrderTable = () => {
       return total + bookQuantity;
     }, 0);
   };
-
-  useEffect(() => {
-    const getOrders = async () => {
-      if (user && user.email) {
-        const orderResponse = await getUserOrder(user.email);
-        setOrderList(orderResponse);
-      }
-      return;
-    };
-
-    getOrders();
-  }, [user]);
 
   return (
     <StyledTable>
@@ -49,7 +30,7 @@ const UserOrderTable = () => {
         orderList.map((order) => (
           <StyledRow
             className="row"
-            onClick={() => goToOrder(order)}
+            onClick={() => onClick(order)}
             key={order.orderNumber}
           >
             <div className="left">
