@@ -97,9 +97,10 @@ const Cart = () => {
     };
 
     try {
-      await placeOrder(newOrder);
+      const orderResponse = await placeOrder(newOrder);
+
       emptyCart();
-      navigate('/cart/success');
+      navigate('/cart/success', { state: orderResponse });
       setIsLoading(false);
     } catch (err) {
       setIsLoading(false);
