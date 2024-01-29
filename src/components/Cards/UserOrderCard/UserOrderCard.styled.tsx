@@ -7,7 +7,8 @@ export const UserOrderCardStyled = styled.div`
   border-radius: 2px;
   margin: 10px;
   box-shadow: 1px 2px var(--light-grey);
-  width: 100%;
+  width: 50vw;
+  max-width: 550px;
   height: fit-content;
   padding: 10px;
   background-color: #ffffff;

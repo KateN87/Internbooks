@@ -1,7 +1,7 @@
 import { SlArrowRight, SlTrash } from 'react-icons/sl';
 import {
   StyledInventoryHeadRow,
-  StyledInventoryTable,
+  StyledTable,
   StyledInventoryRow,
 } from './Table.styled';
 import { createSearchParams, useNavigate } from 'react-router-dom';
@@ -30,7 +30,7 @@ const InventoryTable = ({ data, deleteHandler }: InventoryTableProps) => {
   };
 
   return (
-    <StyledInventoryTable>
+    <StyledTable>
       <StyledInventoryHeadRow>
         <div>
           <p>Title</p>
@@ -78,16 +78,22 @@ const InventoryTable = ({ data, deleteHandler }: InventoryTableProps) => {
           <div className="iconContainer">
             <p className="right">
               <SlTrash
+                className="icon"
                 onClick={() => deleteHandler(book.name, book.itemCode)}
+                size={16}
               />
             </p>
             <p>
-              <SlArrowRight onClick={() => goToBook(book)} />
+              <SlArrowRight
+                onClick={() => goToBook(book)}
+                className="icon"
+                size={16}
+              />
             </p>
           </div>
         </StyledInventoryRow>
       ))}
-    </StyledInventoryTable>
+    </StyledTable>
   );
 };
 

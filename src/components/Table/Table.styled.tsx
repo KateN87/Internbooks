@@ -4,9 +4,14 @@ export const StyledTable = styled.div`
   border: 1px solid var(--light-grey);
   border-radius: 4px;
   height: fit-content;
+  max-height: 80vh;
+  width: 50vw;
+  max-width: 1000px;
+  overflow-y: auto;
+  min-width: fit-content;
 
   & .row:nth-child(even) {
-    background-color: var(--light-grey);
+    background-color: var(--primary-transparent);
   }
   & .row:nth-child(odd) {
     background-color: #ffffff;
@@ -22,6 +27,8 @@ export const StyledTable = styled.div`
 
 export const StyledInventoryTable = styled(StyledTable)`
   max-height: 80vh;
+  width: 50vw;
+  max-width: 1000px;
   overflow-y: auto;
   min-width: fit-content;
 `;
@@ -33,12 +40,16 @@ export const StyledRow = styled.div`
   align-items: center;
   width: 50vw;
   max-width: 1000px;
-  padding: 20px;
+  padding: 20px 30px;
   font-size: var(--body-text-medium);
 
   & .iconContainer {
     display: flex;
     justify-content: space-evenly;
+  }
+
+  & .icon {
+    cursor: pointer;
   }
 
   & .left {
@@ -47,8 +58,9 @@ export const StyledRow = styled.div`
 
   & .right {
     display: flex;
-    justify-content: flex-end;
-    padding-right: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    overflow: visible;
   }
 
   & p {

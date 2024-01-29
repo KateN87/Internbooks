@@ -4,7 +4,7 @@ import { getUserOrder } from '../../services/api/orderApi';
 import { UserContext } from '../../context/UserContext';
 import { UserCard } from '../../components/Cards/UserCard/UserCard';
 import { StyledProfile } from './Profile.styled';
-import UserOrderTable from '../../components/Table/UserOrderTable';
+import OrderTable from '../../components/Table/OrderTable';
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ const Profile = () => {
       <h1>Welcome, {user.firstname}</h1>
       <div className="user-info">
         <UserCard />
-        <UserOrderTable orderList={orderList} onClick={goToOrder} />
+        <OrderTable orderList={orderList} onClick={goToOrder} />
       </div>
     </StyledProfile>
   );

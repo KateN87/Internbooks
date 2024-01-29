@@ -7,7 +7,7 @@ type OrderTableProps = {
   onClick: (order: UserOrdersDataBase) => void;
 };
 
-const UserOrderTable = ({ orderList, onClick }: OrderTableProps) => {
+const OrderTable = ({ orderList, onClick }: OrderTableProps) => {
   const calculatenumberOfItems = (orderItems: OrderItemDataBase[]) => {
     return orderItems.reduce((total, book) => {
       const bookQuantity = book.quantity || 1;
@@ -21,7 +21,7 @@ const UserOrderTable = ({ orderList, onClick }: OrderTableProps) => {
       {orderList.length === 0 && (
         <StyledRow className="row">
           <div className="left">
-            <p>You have not yet made any orders</p>
+            <p>You don't have any orders yet</p>
           </div>
         </StyledRow>
       )}
@@ -49,11 +49,11 @@ const UserOrderTable = ({ orderList, onClick }: OrderTableProps) => {
                 {calculateTotalPrice({ cart: order.orderItems })}
               </p>
             </div>
-            <SlArrowRight />
+            <SlArrowRight className="icon" size={16} />
           </StyledRow>
         ))}
     </StyledTable>
   );
 };
 
-export default UserOrderTable;
+export default OrderTable;
