@@ -18,6 +18,7 @@ export const GlobalStyle = createGlobalStyle`
   --dark-grey: #6b6a6a;
   --off-white: #F2E9D7;
   --primary: #496A9E;
+  --primary-transparent: #496a9e2d;
   --primary-pink: #E170AA; 
   --error-background: #efd5d3;
 	--error-text: #793838;
@@ -58,6 +59,8 @@ a {
 h1{
   font-size: 2em;
   font-weight: 100;
+  font-family: Gruppo;
+    font-weight: bold;
 }
 
 h2{

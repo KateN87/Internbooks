@@ -48,3 +48,16 @@ export const getUserOrder = async (
     throw customError;
   }
 };
+
+export const getAllOrders = async (): Promise<UserOrdersDataBase[]> => {
+  try {
+    return await get(`${baseUrl}order/all`, true);
+  } catch (error) {
+    console.error('getUserOrder:', error);
+    const customError: CustomError = {
+      message: 'Problem getting orders. Please try again later.',
+    };
+
+    throw customError;
+  }
+};

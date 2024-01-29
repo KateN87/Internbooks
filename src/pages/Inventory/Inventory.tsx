@@ -31,6 +31,7 @@ const Orders = () => {
 
   return (
     <StyledInventory className="side">
+      <h1>Inventory</h1>
       {!bookItem && (
         <InventoryTable data={resultArray} deleteHandler={deleteHandler} />
       )}
