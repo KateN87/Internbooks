@@ -40,7 +40,8 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const placeOrder = useCallback(
     async (order: UserOrderDataBase) => {
       try {
-        await postOrder(order);
+        const orderResponse = await postOrder(order);
+        return orderResponse;
       } catch (error) {
         handleError(error as CustomError);
         throw new Error();
@@ -92,6 +93,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   const emptyCart = useCallback(() => {
     setCartList([]);
+    localStorage.removeItem('cart');
   }, []);
 
   const value = useMemo(
