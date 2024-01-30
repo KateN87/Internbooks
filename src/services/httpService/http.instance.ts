@@ -20,7 +20,6 @@ http.interceptors.response.use(
     return response;
   },
   async (error) => {
-    console.log('INSTANCE ERROR');
     handleAuthenticationErrors(error);
   }
 );

@@ -1,11 +1,6 @@
 import { useContext } from 'react';
 import { UserContext } from '../../../context/UserContext';
-import {
-  SmallInfoContainer,
-  StyledUserCard,
-  ButtonContainer,
-} from './UserCard.styled';
-import CustomButton from '../../Buttons/CustomButton';
+import { SmallInfoContainer, StyledUserCard } from './UserCard.styled';
 
 export const UserCard = () => {
   const { user } = useContext(UserContext);
@@ -19,11 +14,6 @@ export const UserCard = () => {
     Zip: postcode,
     Phone: phoneNumber,
   };
-
-  const updateHandler = () => {
-    console.log('UPDATE');
-  };
-
   return (
     <StyledUserCard>
       {Object.entries(infoArray).map(([key, value]) => (
@@ -32,13 +22,6 @@ export const UserCard = () => {
           <p>{value}</p>
         </SmallInfoContainer>
       ))}
-      <ButtonContainer>
-        <CustomButton
-          text="Update info"
-          className="medium"
-          onClick={updateHandler}
-        />
-      </ButtonContainer>
     </StyledUserCard>
   );
 };
