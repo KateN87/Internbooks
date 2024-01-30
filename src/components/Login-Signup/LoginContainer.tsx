@@ -25,7 +25,11 @@ const LoginContainer = () => {
     clearError();
     const target = e.currentTarget.elements;
 
-    const isFormValid = validateForm({ target, params: loginParams });
+    const isFormValid = validateForm({
+      target,
+      params: loginParams,
+      login: true,
+    });
 
     if (typeof isFormValid === 'object') {
       handleError(isFormValid);

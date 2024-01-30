@@ -1,11 +1,13 @@
 type ValidateFormProps = {
   target: HTMLFormControlsCollection;
   params: FormDataParam[];
+  login?: boolean;
 };
 
 const validateForm = ({
   target,
   params,
+  login,
 }: ValidateFormProps): boolean | CustomError => {
   const validPassword = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
@@ -16,7 +18,7 @@ const validateForm = ({
       return { input: errorType, message: `Please fill in ${name}` };
     }
 
-    if (name === 'password') {
+    if (!login && name === 'password') {
       if (!validPassword.test(inputElement?.value)) {
         return {
           input: errorType,
