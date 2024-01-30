@@ -4,7 +4,7 @@ import Home from '../pages/Home/Home';
 import Book from '../pages/Book/Book';
 import Login from '../pages/LoginSignup/Login';
 import Signup from '../pages/LoginSignup/Signup';
-import NoRoute from '../pages/NoRoute';
+import NoRoute from '../pages/NoRoute/NoRoute';
 import LargeTemplate from '../pageTemplate/LargeTemplate';
 import Unauthorized from '../pages/Unauthorized/Unauthorized';
 

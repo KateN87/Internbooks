@@ -4,7 +4,7 @@ import Home from '../pages/Home/Home';
 import Profile from '../pages/Profile/Profile';
 import Book from '../pages/Book/Book';
 import Cart from '../pages/Cart/Cart';
-import NoRoute from '../pages/NoRoute';
+import NoRoute from '../pages/NoRoute/NoRoute';
 import MyOrders from '../pages/MyOrders/MyOrders';
 import OrderSuccess from '../pages/Cart/OrderSuccess';
 
