@@ -74,7 +74,7 @@ const SignupContainer = () => {
       </form>
 
       <Link to="/login">
-        <p>
+        <p className="login-link">
           Already have an account? <b>Log in here.</b>
         </p>
       </Link>

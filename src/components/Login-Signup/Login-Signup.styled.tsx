@@ -19,17 +19,29 @@ export const StyledLoginSignupContainer = styled.div`
   & form > .button-container {
     display: flex;
     flex-direction: column;
-    margin: 0 20px;
-    justify-content: center;
+    margin: 10px 20px;
+    align-items: flex-end;
+  }
+
+  & a {
+    display: flex;
+    align-self: flex-end;
   }
 `;
 
 export const StyledInputContainer = styled.div`
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: row wrap;
+  flex-basis: 100%;
+  flex: 2;
   gap: 0 3vw;
   justify-content: space-between;
-  max-width: 50vw;
-  max-height: 40vh;
+  width: 50vw;
+  max-width: 600px;
   padding: 0 20px;
+
+  & .login {
+    flex-flow: column;
+    max-height: 40vh;
+  }
 `;

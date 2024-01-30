@@ -42,7 +42,7 @@ const LoginContainer = () => {
       <h1>Log in</h1>
 
       <form onSubmit={handleLogin}>
-        <StyledInputContainer>
+        <StyledInputContainer className="login">
           {loginParams.map(({ type, name, errorType }) => (
             <CustomInputContainer key={name}>
               <CustomTextInput
