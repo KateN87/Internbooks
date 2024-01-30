@@ -3,7 +3,7 @@ import Profile from '../pages/Profile/Profile';
 import AdminTemplate from '../pageTemplate/AdminTemplate';
 import Inventory from '../pages/Inventory/Inventory';
 import Orders from '../pages/Orders/Orders';
-import NoRoute from '../pages/NoRoute';
+import NoRoute from '../pages/NoRoute/NoRoute';
 import Order from '../pages/Orders/Order/Order';
 
 const AdminNavigation = () => {
