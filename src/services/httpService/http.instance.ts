@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { handleAuthenticationErrors } from '../../Util/logoutFunction';
 
 const http = axios.create({});
 
@@ -11,20 +12,16 @@ http.interceptors.request.use((request) => {
 //response interceptor
 http.interceptors.response.use(
   async (response) => {
-    // Todo: change this if token is sent in another way
     if (response.data?.jwtToken) {
       Cookies.set('accesstoken', response.data?.jwtToken);
       return response;
     }
-    /* if (response.headers.authorization) {
-      Cookies.set('accesstoken', response.headers.authorization);
-      return response;
-    } */
 
     return response;
   },
   async (error) => {
-    return Promise.reject(error);
+    console.log('INSTANCE ERROR');
+    handleAuthenticationErrors(error);
   }
 );
 
