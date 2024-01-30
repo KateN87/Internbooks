@@ -6,8 +6,8 @@ export const StyledBookCard = styled.div`
   border-radius: 2px;
   margin: 10px;
   box-shadow: 1px 3px var(--light-grey);
-  width: 20vh;
-  height: 30vh;
+  width: 190px;
+  height: 280px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
