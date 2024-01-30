@@ -11,6 +11,7 @@ import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 import { login, logout, registerUser } from '../services/api/authApi';
 import { ErrorContext } from './ErrorContext';
+import { setLogoutFunction } from '../Util/logoutFunction';
 
 type UserContextType = {
   user: User | null;
@@ -67,16 +68,18 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       Cookies.remove('accesstoken');
       localStorage.removeItem('user');
       localStorage.removeItem('cart');
-      navigate('/');
+      navigate('/unauthorized');
       setUser(null);
     } catch (error) {
       Cookies.remove('accesstoken');
       localStorage.removeItem('user');
       localStorage.removeItem('cart');
-      navigate('/');
+      navigate('/unauthorized');
       setUser(null);
     }
   }, [navigate]);
+
+  setLogoutFunction(logoutUser);
 
   const newUser = useCallback(
     async (formData: Register) => {
