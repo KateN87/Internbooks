@@ -20,7 +20,12 @@ const validateForm = ({
       if (!validPassword.test(inputElement?.value)) {
         return {
           input: errorType,
-          message: `Password does not meet the criteria`,
+          message: `Password must contain: 
+        At least one digit.
+        At least one special character from the set !@#$%^&*.
+        At least one lowercase letter.
+        At least one uppercase letter.
+        The total length of the password must be at least 8 characters`,
         };
       }
     }
