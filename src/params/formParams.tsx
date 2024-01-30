@@ -28,11 +28,6 @@ export const signupParams = [
     errorType: 'email',
   },
   {
-    type: 'password',
-    name: 'password',
-    errorType: 'password',
-  },
-  {
     type: 'text',
     name: 'address',
     errorType: 'address',
@@ -46,6 +41,11 @@ export const signupParams = [
     type: 'number',
     name: 'postcode',
     errorType: 'zip',
+  },
+  {
+    type: 'password',
+    name: 'password',
+    errorType: 'password',
   },
   {
     type: 'tel',
