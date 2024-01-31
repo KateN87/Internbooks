@@ -16,19 +16,19 @@ export const StyledBookCard = styled.div`
     display: flex;
     flex-direction: column;
 
-    width: 18vh;
+    width: 170px;
   }
 
   & img {
-    width: 18vh;
-    height: 20vh;
+    width: 170px;
+    height: 190px;
     margin: 0 auto;
   }
 `;
 
 export const StyledBookInfo = styled.div`
   position: relative;
-  height: 8vh;
+  height: 70px;
 
   .title {
     font-size: 16px;

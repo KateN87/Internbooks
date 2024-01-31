@@ -12,7 +12,10 @@ type BookCardProps = {
 };
 
 const BookCard: FC<BookCardProps> = ({ book }) => {
-  const BASE_IMAGE_URL = '/assets/';
+  const BASE_IMAGE_URL = book?.imageLink?.includes('http')
+    ? `/assets/book-pile.jpg`
+    : `/assets/${book.imageLink}`;
+
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const { updateCart } = useContext(CartContext);
@@ -38,11 +41,7 @@ const BookCard: FC<BookCardProps> = ({ book }) => {
   return (
     <StyledBookCard>
       <div onClick={clickNavigate} className="inner-container">
-        <img
-          src={
-            book?.imageLink ? `${BASE_IMAGE_URL}${book.imageLink}` : blurImage
-          }
-        />
+        <img src={book?.imageLink ? `${BASE_IMAGE_URL}` : blurImage} />
         <StyledBookInfo>
           <p className="title">{book.name}</p>
           <p className="author">{book.author}</p>
